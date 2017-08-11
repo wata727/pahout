@@ -1,4 +1,5 @@
 <?php
+
 namespace Pahout\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -17,6 +18,9 @@ class Check extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Awesome output!");
+        $analyzer = new \Pahout\Analyzer($input->getArgument('files'));
+        $analyzer->run();
+
+        var_dump($analyzer->warnings);
     }
 }
