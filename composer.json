@@ -1,0 +1,22 @@
+{
+    "name": "wata727/pahout",
+    "description": "A linter for not writing legacy PHP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Kazuma Watanabe"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pahout\\": "src/"
+        }
+    },
+    "require": {
+        "php": "~7.1.0",
+        "ext-ast": "^0.1.5",
+        "symfony/console": "^3.3"
+    },
+    "bin": ["pahout"]
+}
