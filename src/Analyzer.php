@@ -12,7 +12,19 @@ class Analyzer
 
     public function __construct(array $files)
     {
-        $this->files = $files;
+        if (count($files) === 0) {
+            $iterator = new \RegexIterator(
+                new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator('.')),
+                '/^.+\.php$/i'
+            );
+
+            foreach ($iterator as $file) {
+                $this->files[] = $file->getPathname();
+            }
+        } else {
+            $this->files = $files;
+        }
+
         $this->analyzers = [
             new LongArray()
         ];
