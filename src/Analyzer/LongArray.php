@@ -11,7 +11,7 @@ class LongArray implements Base
     private const WARNING_TYPE = "long_array";
     private const WARNING_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 
-    public function run(\ast\Node $node): ?Warning
+    public function run(string $file, \ast\Node $node): ?Warning
     {
         if ($node->flags !== \ast\flags\ARRAY_SYNTAX_LONG) {
             return null;
@@ -20,6 +20,7 @@ class LongArray implements Base
         return new Warning(
             self::WARNING_TYPE,
             self::WARNING_MESSAGE,
+            $file,
             $node->lineno
         );
     }

@@ -34,7 +34,7 @@ class Analyzer
     {
         foreach ($this->files as $file) {
             $root = \ast\parse_file($file, 40);
-            $this->traverse($root);
+            $this->traverse($file, $root);
         }
 
         $this->warnings = array_filter($this->warnings, function ($warning) {
@@ -42,17 +42,17 @@ class Analyzer
         });
     }
 
-    private function traverse(\ast\Node $node)
+    private function traverse(string $file, \ast\Node $node)
     {
         foreach ($this->analyzers as $analyzer) {
             if (get_class($analyzer)::ENTRY_POINT === $node->kind) {
-                $this->warnings[] = $analyzer->run($node);
+                $this->warnings[] = $analyzer->run($file, $node);
             }
         }
 
         foreach ($node->children as $type => $child) {
             if ($child instanceof \ast\Node) {
-                $this->traverse($child);
+                $this->traverse($file, $child);
             }
         }
     }
