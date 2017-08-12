@@ -2,6 +2,7 @@
 
 namespace Pahout;
 
+use \ast\Node;
 use Pahout\Tool\ArraySyntaxLong;
 
 class Pahout
@@ -46,7 +47,7 @@ class Pahout
         }
     }
 
-    private function traverse(string $file, \ast\Node $node)
+    private function traverse(string $file, Node $node)
     {
         foreach ($this->tools as $tool) {
             if (get_class($tool)::ENTRY_POINT === $node->kind) {
@@ -58,7 +59,7 @@ class Pahout
         }
 
         foreach ($node->children as $type => $child) {
-            if ($child instanceof \ast\Node) {
+            if ($child instanceof Node) {
                 $this->traverse($file, $child);
             }
         }
