@@ -2,7 +2,7 @@
 
 namespace Pahout;
 
-use Pahout\Analyzer\LongArray;
+use Pahout\Analyzer\ArraySyntaxLong;
 
 class Analyzer
 {
@@ -34,7 +34,7 @@ class Analyzer
         }
 
         $this->analyzers = [
-            new LongArray()
+            new ArraySyntaxLong()
         ];
     }
 

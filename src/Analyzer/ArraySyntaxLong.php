@@ -5,10 +5,10 @@ namespace Pahout\Analyzer;
 use Pahout\Analyzer\Base;
 use Pahout\Hint;
 
-class LongArray implements Base
+class ArraySyntaxLong implements Base
 {
     public const ENTRY_POINT = \ast\AST_ARRAY;
-    private const HINT_TYPE = "long_array";
+    private const HINT_TYPE = "array_syntax_long";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 
     public function run(string $file, \ast\Node $node): ?Hint
