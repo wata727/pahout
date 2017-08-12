@@ -1,2 +1,2 @@
 #!/usr/bin/env php
-<?php require_once __DIR__ . '/src/pahout.php';
+<?php require_once __DIR__ . '/src/bootstrap.php';
