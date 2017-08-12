@@ -1,6 +1,6 @@
 <?php
 
-namespace Pahout\Analyzer;
+namespace Pahout\Tool;
 
 use Pahout\Hint;
 

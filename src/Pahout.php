@@ -2,13 +2,13 @@
 
 namespace Pahout;
 
-use Pahout\Analyzer\ArraySyntaxLong;
+use Pahout\Tool\ArraySyntaxLong;
 
-class Analyzer
+class Pahout
 {
     public $hints = [];
     private $files = [];
-    private $analyzers = [];
+    private $tools = [];
 
     public function __construct(array $files)
     {
@@ -33,12 +33,12 @@ class Analyzer
             }
         }
 
-        $this->analyzers = [
+        $this->tools = [
             new ArraySyntaxLong()
         ];
     }
 
-    public function run()
+    public function instruct()
     {
         foreach ($this->files as $file) {
             $root = \ast\parse_file($file, 40);
@@ -48,9 +48,9 @@ class Analyzer
 
     private function traverse(string $file, \ast\Node $node)
     {
-        foreach ($this->analyzers as $analyzer) {
-            if (get_class($analyzer)::ENTRY_POINT === $node->kind) {
-                $hint = $analyzer->run($file, $node);
+        foreach ($this->tools as $tool) {
+            if (get_class($tool)::ENTRY_POINT === $node->kind) {
+                $hint = $tool->run($file, $node);
                 if ($hint) {
                     $this->hints[] = $hint;
                 }

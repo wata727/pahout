@@ -2,6 +2,7 @@
 
 namespace Pahout\Command;
 
+use Pahout\Pahout;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,9 +18,9 @@ class Check extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $analyzer = new \Pahout\Analyzer($input->getArgument('files'));
-        $analyzer->run();
+        $pahout = new Pahout($input->getArgument('files'));
+        $pahout->instruct();
 
-        var_dump($analyzer->hints);
+        var_dump($pahout->hints);
     }
 }

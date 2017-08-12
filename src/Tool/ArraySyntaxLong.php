@@ -1,8 +1,8 @@
 <?php
 
-namespace Pahout\Analyzer;
+namespace Pahout\Tool;
 
-use Pahout\Analyzer\Base;
+use Pahout\Tool\Base;
 use Pahout\Hint;
 
 class ArraySyntaxLong implements Base
