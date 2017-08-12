@@ -13,16 +13,24 @@ class Analyzer
     public function __construct(array $files)
     {
         if (count($files) === 0) {
-            $iterator = new \RegexIterator(
-                new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator('.')),
-                '/^.+\.php$/i'
-            );
+            $files = ['.'];
+        }
 
-            foreach ($iterator as $file) {
-                $this->files[] = $file->getPathname();
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                $iterator = new \RegexIterator(
+                    new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($file)),
+                    '/^.+\.php$/i'
+                );
+
+                foreach ($iterator as $file_obj) {
+                    $this->files[] = $file_obj->getPathname();
+                }
+            } elseif (is_file($file)) {
+                $this->files[] = $file;
+            } else {
+                # noop
             }
-        } else {
-            $this->files = $files;
         }
 
         $this->analyzers = [
