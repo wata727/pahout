@@ -20,6 +20,6 @@ class Check extends Command
         $analyzer = new \Pahout\Analyzer($input->getArgument('files'));
         $analyzer->run();
 
-        var_dump($analyzer->warnings);
+        var_dump($analyzer->hints);
     }
 }

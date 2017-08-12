@@ -6,7 +6,7 @@ use Pahout\Analyzer\LongArray;
 
 class Analyzer
 {
-    public $warnings = [];
+    public $hints = [];
     private $files = [];
     private $analyzers = [];
 
@@ -44,17 +44,16 @@ class Analyzer
             $root = \ast\parse_file($file, 40);
             $this->traverse($file, $root);
         }
-
-        $this->warnings = array_filter($this->warnings, function ($warning) {
-            return !is_null($warning);
-        });
     }
 
     private function traverse(string $file, \ast\Node $node)
     {
         foreach ($this->analyzers as $analyzer) {
             if (get_class($analyzer)::ENTRY_POINT === $node->kind) {
-                $this->warnings[] = $analyzer->run($file, $node);
+                $hint = $analyzer->run($file, $node);
+                if ($hint) {
+                    $this->hints[] = $hint;
+                }
             }
         }
 

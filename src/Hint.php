@@ -2,7 +2,7 @@
 
 namespace Pahout;
 
-class Warning
+class Hint
 {
     private $type;
     private $message;
