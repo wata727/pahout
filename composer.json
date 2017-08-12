@@ -18,5 +18,8 @@
         "ext-ast": "^0.1.5",
         "symfony/console": "^3.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
     "bin": ["pahout"]
 }
