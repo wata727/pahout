@@ -8,7 +8,7 @@ use Pahout\Tool\ArraySyntaxLong;
 class Pahout
 {
     public $hints = [];
-    private $files = [];
+    public $files = [];
     private $tools = [];
 
     public function __construct(array $files)

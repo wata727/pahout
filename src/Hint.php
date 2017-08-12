@@ -4,10 +4,10 @@ namespace Pahout;
 
 class Hint
 {
-    private $type;
-    private $message;
-    private $filename;
-    private $line;
+    public $type;
+    public $message;
+    public $filename;
+    public $line;
 
     public function __construct(string $type, string $message, string $filename, int $line)
     {

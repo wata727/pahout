@@ -3,6 +3,7 @@
 namespace Pahout\Command;
 
 use Pahout\Pahout;
+use Pahout\Formatter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,6 +22,7 @@ class Check extends Command
         $pahout = new Pahout($input->getArgument('files'));
         $pahout->instruct();
 
-        var_dump($pahout->hints);
+        $formatter = Formatter::create($output, $pahout->files, $pahout->hints, 'pretty');
+        $formatter->print();
     }
 }
