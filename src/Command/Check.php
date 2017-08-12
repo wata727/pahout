@@ -12,7 +12,6 @@ class Check extends Command
     protected function configure()
     {
         $this->setName('check')
-             ->setDescription('Check legacy PHP code')
              ->addArgument('files', InputArgument::IS_ARRAY, 'List of file names or directory names to be analyzed');
     }
 
