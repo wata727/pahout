@@ -4,7 +4,7 @@ namespace Pahout;
 
 use \ast\Node;
 use Pahout\Logger;
-use Pahout\Tool\ArraySyntaxLong;
+use Pahout\Tool;
 
 class Pahout
 {
@@ -42,9 +42,7 @@ class Pahout
             }
         }
 
-        $this->tools = [
-            new ArraySyntaxLong()
-        ];
+        $this->tools = Tool::create();
 
         Logger::getInstance()->info('Target files: '.count($this->files));
         Logger::getInstance()->info('Tools: '.count($this->tools));

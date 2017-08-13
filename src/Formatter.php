@@ -8,6 +8,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Formatter
 {
+    public const VALID_FORMATS = ['pretty'];
+
     public static function create(OutputInterface $output, array $files, array $hints, string $type): Base
     {
         switch ($type) {

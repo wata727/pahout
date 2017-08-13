@@ -10,7 +10,7 @@ use Pahout\Hint;
 class ArraySyntaxLong implements Base
 {
     public const ENTRY_POINT = \ast\AST_ARRAY;
-    private const HINT_TYPE = "array_syntax_long";
+    public const HINT_TYPE = "array_syntax_long";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 
     public function run(string $file, Node $node): ?Hint
