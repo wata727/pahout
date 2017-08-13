@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\InputInterface;
 
 class Config
 {
-    private const DEFAULT_FILE_PATH = './.pahout.yaml';
+    private const DEFAULT_FILE_PATH = '.pahout.yaml';
 
     private static $config;
     public $php_version = '7.1.8';
@@ -28,12 +28,16 @@ class Config
         if (is_file($file)) {
             Logger::getInstance()->info('Load: '.$file);
             $config_yaml = Yaml::parse(file_get_contents($file));
-            foreach ($config_yaml as $key => $value) {
-                // `format` can not be specified from the configuration file.
-                if ($key === 'format') {
-                    throw new InvalidConfigOptionException('format is an invalid option in config file.');
+            if (is_iterable($config_yaml)) {
+                foreach ($config_yaml as $key => $value) {
+                    // `format` can not be specified from the configuration file.
+                    if ($key === 'format') {
+                        throw new InvalidConfigOptionException('format is an invalid option in config file.');
+                    }
+                    self::setOption($key, $value);
                 }
-                self::setOption($key, $value);
+            } else {
+                throw new InvalidConfigFilePathException($file.' is not a valid YAML.');
             }
         } elseif ($file !== self::DEFAULT_FILE_PATH) {
             throw new InvalidConfigFilePathException($file.' is not found.');

@@ -19,18 +19,56 @@ class Check extends Command
         $this->setName('check')
              ->setDescription('A linter for writing better PHP')
              ->addArgument('files', InputArgument::IS_ARRAY, 'List of file names or directory names to be analyzed')
-             ->addOption('php-version', null, InputOption::VALUE_OPTIONAL, 'Target PHP version (default: 7.1.8)', null)
-             ->addOption('ignore-tools', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Ignore tool names (default: Nothing to ignore)', null)
-             ->addOption('ignore-paths', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Ignore paths (default: vendor)', null)
-             ->addOption('vendor', null, InputOption::VALUE_NONE, 'Check vendor directory (default: false)', null)
-             ->addOption('format', 'f', InputOption::VALUE_OPTIONAL, 'Output format (default: pretty, possibles: pretty)', null);
+             ->addOption(
+                 'php-version',
+                 null,
+                 InputOption::VALUE_OPTIONAL,
+                 'Target PHP version <comment>[default: "7.1.8"]</>',
+                 null
+             )
+             ->addOption(
+                 'ignore-tools',
+                 null,
+                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                 'Ignore tool names <comment>[default: Nothing to ignore]</>',
+                 null
+             )
+             ->addOption(
+                 'ignore-paths',
+                 null,
+                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                 'Ignore paths <comment>[default: "vendor"]</>',
+                 null
+             )
+             ->addOption(
+                 'vendor',
+                 null,
+                 InputOption::VALUE_NONE,
+                 'Check vendor directory <comment>[default: false]</>',
+                 null
+             )
+             ->addOption(
+                 'format',
+                 'f',
+                 InputOption::VALUE_OPTIONAL,
+                 'Output format <comment>[default: "pretty", possibles: "pretty"]</>',
+                 null
+             )
+             ->addOption(
+                 'config',
+                 'c',
+                 InputOption::VALUE_OPTIONAL,
+                 'Config file path',
+                 '.pahout.yaml'
+             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         Logger::getInstance($output)->info('Start Pahout command');
 
-        Config::load($input->getOptions());
+        Config::load($input->getOptions(), $input->getOption('config'));
+        var_dump(Config::getInstance());
 
         Logger::getInstance()->info('Start instruction');
         Logger::getInstance()->info('files: '.implode(',', $input->getArgument('files')));
