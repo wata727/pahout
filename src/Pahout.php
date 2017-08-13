@@ -20,7 +20,7 @@ class Pahout
         }
 
         foreach ($files as $file) {
-            Logger::getInstance()->debug('Load: '.$file);
+            Logger::getInstance()->info('Load: '.$file);
 
             if (is_dir($file)) {
                 Logger::getInstance()->debug($file.' is directory. Recursively search the file list.');
@@ -51,7 +51,7 @@ class Pahout
     public function instruct()
     {
         foreach ($this->files as $file) {
-            Logger::getInstance()->debug('Parse: '.$file);
+            Logger::getInstance()->info('Parse: '.$file);
             $root = \ast\parse_file($file, 40);
             $this->traverse($file, $root);
         }

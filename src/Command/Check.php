@@ -68,7 +68,6 @@ class Check extends Command
         Logger::getInstance($output)->info('Start Pahout command');
 
         Config::load($input->getOptions(), $input->getOption('config'));
-        var_dump(Config::getInstance());
 
         Logger::getInstance()->info('Start instruction');
         Logger::getInstance()->info('files: '.implode(',', $input->getArgument('files')));
