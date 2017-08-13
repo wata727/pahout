@@ -7,13 +7,13 @@ class Hint
     public $type;
     public $message;
     public $filename;
-    public $line;
+    public $lineno;
 
-    public function __construct(string $type, string $message, string $filename, int $line)
+    public function __construct(string $type, string $message, string $filename, int $lineno)
     {
         $this->type = $type;
         $this->message = $message;
         $this->filename = $filename;
-        $this->line = $line;
+        $this->lineno = $lineno;
     }
 }

@@ -13,7 +13,7 @@ class Pretty extends Base
             $this->output->write("\n");
         } else {
             foreach ($this->hints as $hint) {
-                $this->output->writeln('<info>'.$hint->filename.':'.$hint->line.'</>');
+                $this->output->writeln('<info>'.$hint->filename.':'.$hint->lineno.'</>');
                 $this->output->writeln("\t".$hint->type.': '.$hint->message);
                 $this->output->write("\n");
             }
