@@ -32,15 +32,15 @@ class Config
                 foreach ($config_yaml as $key => $value) {
                     // `format` can not be specified from the configuration file.
                     if ($key === 'format') {
-                        throw new InvalidConfigOptionException('format is an invalid option in config file.');
+                        throw new InvalidConfigOptionException('`format` is an invalid option in config file.');
                     }
                     self::setOption($key, $value);
                 }
             } else {
-                throw new InvalidConfigFilePathException($file.' is not a valid YAML.');
+                throw new InvalidConfigFilePathException('`'.$file.'` is not a valid YAML.');
             }
         } elseif ($file !== self::DEFAULT_FILE_PATH) {
-            throw new InvalidConfigFilePathException($file.' is not found.');
+            throw new InvalidConfigFilePathException('`'.$file.'` is not found.');
         } else {
             Logger::getInstance()->info(self::DEFAULT_FILE_PATH.' is not found.');
         }
@@ -73,19 +73,19 @@ class Config
             case 'php_version':
                 if (preg_match('/^[0-9]\.[0-9]\.[0-9]$/', $value) !== 1) {
                     throw new InvalidConfigOptionValueException(
-                        $value.' is an invalid PHP version. Please specify the correct version such as `7.1.8`.'
+                        '`'.$value.'` is an invalid PHP version. Please specify the correct version such as `7.1.8`.'
                     );
                 }
                 self::$config->php_version = $value;
                 break;
             case 'ignore_tools':
                 if (!is_array($value)) {
-                    throw new InvalidConfigOptionValueException($value.' is invalid tools. It must be array.');
+                    throw new InvalidConfigOptionValueException('`'.$value.'` is invalid tools. It must be array.');
                 }
                 foreach ($value as $tool) {
                     if (!in_array($tool, Tool::VALID_TOOLS, true)) {
                         throw new InvalidConfigOptionValueException(
-                            $tool.' is an invalid tool. Please check the correct tool list.'
+                            '`'.$tool.'` is an invalid tool. Please check the correct tool list.'
                         );
                     }
                 }
@@ -93,26 +93,28 @@ class Config
                 break;
             case 'ignore_paths':
                 if (!is_array($value)) {
-                    throw new InvalidConfigOptionValueException($value.' is invalid paths. It must be array.');
+                    throw new InvalidConfigOptionValueException('`'.$value.'` is invalid paths. It must be array.');
                 }
                 self::$config->ignore_paths = $value;
                 break;
             case 'vendor':
                 if (!is_bool($value)) {
                     throw new InvalidConfigOptionValueException(
-                        $value.' is an invalid vendor flag. It must be `true` or `false`.'
+                        '`'.$value.'` is an invalid vendor flag. It must be `true` or `false`.'
                     );
                 }
                 self::$config->vendor = $value;
                 break;
             case 'format':
                 if (!in_array($value, Formatter::VALID_FORMATS, true)) {
-                    throw new InvalidConfigOptionValueException($value.' is an invalid format. It must be `pretty`.');
+                    throw new InvalidConfigOptionValueException(
+                        '`'.$value.'` is an invalid format. It must be `pretty`.'
+                    );
                 }
                 self::$config->format = $value;
                 break;
             default:
-                throw new InvalidConfigOptionException($key.' is an invalid option.');
+                throw new InvalidConfigOptionException('`'.$key.'` is an invalid option.');
                 break;
         }
     }

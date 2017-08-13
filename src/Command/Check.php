@@ -37,7 +37,7 @@ class Check extends Command
                  'ignore-paths',
                  null,
                  InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
-                 'Ignore paths <comment>[default: "vendor"]</>',
+                 'Ignore paths <comment>[default: Nothing to ignore]</>',
                  null
              )
              ->addOption(

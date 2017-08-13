@@ -1,0 +1,7 @@
+php_version: 7.0.0
+ignore_tools:
+    - array_syntax_long
+ignore_paths:
+    - tests
+    - bin
+vendor: true
