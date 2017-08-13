@@ -3,6 +3,7 @@
 namespace Pahout\Tool;
 
 use \ast\Node;
+use Pahout\Logger;
 use Pahout\Tool\Base;
 use Pahout\Hint;
 
@@ -15,6 +16,7 @@ class ArraySyntaxLong implements Base
     public function run(string $file, Node $node): ?Hint
     {
         if ($node->flags !== \ast\flags\ARRAY_SYNTAX_LONG) {
+            Logger::getInstance()->debug('Ignore flags: '.$node->flags);
             return null;
         }
 

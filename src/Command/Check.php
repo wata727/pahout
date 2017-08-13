@@ -4,6 +4,7 @@ namespace Pahout\Command;
 
 use Pahout\Pahout;
 use Pahout\Formatter;
+use Pahout\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,10 +21,19 @@ class Check extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        Logger::getInstance($output)->info('Start Pahout command');
+
+        Logger::getInstance()->info('Start instruction');
+        Logger::getInstance()->info('files: '.implode(',', $input->getArgument('files')));
         $pahout = new Pahout($input->getArgument('files'));
         $pahout->instruct();
+        Logger::getInstance()->info('End instruction');
 
+        Logger::getInstance()->info('Start formatter');
         $formatter = Formatter::create($output, $pahout->files, $pahout->hints, 'pretty');
         $formatter->print();
+        Logger::getInstance()->info('End formatter');
+
+        Logger::getInstance()->info('End Pahout command');
     }
 }
