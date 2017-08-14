@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Pahout Coding Standard">
+    <description>The coding standard for Pahout.</description>
+
+    <file>src</file>
+
+    <rule ref="PSR2"></rule>
+    <rule ref="Squiz.Commenting.ClassComment"></rule>
+    <rule ref="Squiz.Commenting.FunctionComment"></rule>
+    <rule ref="Squiz.Commenting.VariableComment"></rule>
+    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"></rule>
+</ruleset>
