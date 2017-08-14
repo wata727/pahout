@@ -20,7 +20,8 @@
         "symfony/yaml": "^3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.2"
+        "phpunit/phpunit": "^6.2",
+        "etsy/phan": "^0.9.3"
     },
     "bin": ["bin/pahout"]
 }
