@@ -21,10 +21,10 @@ class CommandTest extends TestCase
 
             $expected = <<<OUTPUT
 ./subdir/test.php:4
-\tarray_syntax_long: Use [...] syntax instead of array(...) syntax.
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
 ./test.php:3
-\tarray_syntax_long: Use [...] syntax instead of array(...) syntax.
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
 2 files checked, 2 hints detected.
 
@@ -53,13 +53,13 @@ OUTPUT;
         $file3 = self::FIXTURE_PATH.'/receiving_files_and_dirs/test3.php';
         $expected = <<<OUTPUT
 $file1:3
-\tarray_syntax_long: Use [...] syntax instead of array(...) syntax.
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
 $file2:3
-\tarray_syntax_long: Use [...] syntax instead of array(...) syntax.
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
 $file3:3
-\tarray_syntax_long: Use [...] syntax instead of array(...) syntax.
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
 3 files checked, 3 hints detected.
 

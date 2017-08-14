@@ -34,7 +34,7 @@ class ConfigTest extends TestCase
     {
         Config::load([
             'php-version' => '7.1.0',
-            'ignore-tools' => ['array_syntax_long'],
+            'ignore-tools' => ['ArraySyntaxLong'],
             'ignore-paths' => ['tests'],
             'vendor' => true,
             'format' => 'pretty',
@@ -42,7 +42,7 @@ class ConfigTest extends TestCase
         $config = Config::getInstance();
 
         $this->assertEquals('7.1.0', $config->php_version);
-        $this->assertEquals(['array_syntax_long'], $config->ignore_tools);
+        $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
         $this->assertEquals(['tests'], $config->ignore_paths);
         $this->assertTrue($config->vendor);
         $this->assertEquals('pretty', $config->format);
@@ -64,7 +64,7 @@ class ConfigTest extends TestCase
             $config = Config::getInstance();
 
             $this->assertEquals('7.0.0', $config->php_version);
-            $this->assertEquals(['array_syntax_long'], $config->ignore_tools);
+            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
             $this->assertEquals(['tests', 'bin'], $config->ignore_paths);
             $this->assertTrue($config->vendor);
             $this->assertEquals('pretty', $config->format);
@@ -89,7 +89,7 @@ class ConfigTest extends TestCase
             $config = Config::getInstance();
 
             $this->assertEquals('7.1.0', $config->php_version);
-            $this->assertEquals(['array_syntax_long'], $config->ignore_tools);
+            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
             $this->assertEquals(['tests'], $config->ignore_paths);
             $this->assertTrue($config->vendor);
             $this->assertEquals('pretty', $config->format);

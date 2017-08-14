@@ -31,7 +31,7 @@ class ArraySyntaxLong implements Base
 {
     /** Analyze array declarations node (AST_ARRAY) */
     public const ENTRY_POINT = \ast\AST_ARRAY;
-    public const HINT_TYPE = "array_syntax_long";
+    public const HINT_TYPE = "ArraySyntaxLong";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 
     /**

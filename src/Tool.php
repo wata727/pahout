@@ -11,7 +11,7 @@ use Pahout\Tool\Base;
 class Tool
 {
     /** List of valid tool names used by Mahout */
-    public const VALID_TOOLS = ['array_syntax_long'];
+    public const VALID_TOOLS = ['ArraySyntaxLong'];
 
     /**
     * Factory method that returns list of tool instances.

@@ -17,7 +17,7 @@ class ArraySyntaxLongTest extends TestCase
         $tester->test($root);
 
         $this->assertCount(1, $tester->hints);
-        $this->assertEquals('array_syntax_long', $tester->hints[0]->type);
+        $this->assertEquals('ArraySyntaxLong', $tester->hints[0]->type);
         $this->assertEquals('Use [...] syntax instead of array(...) syntax.', $tester->hints[0]->message);
         $this->assertEquals('./test.php', $tester->hints[0]->filename);
         $this->assertEquals(1, $tester->hints[0]->lineno);
