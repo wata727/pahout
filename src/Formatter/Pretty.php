@@ -4,10 +4,33 @@ namespace Pahout\Formatter;
 
 use Pahout\Formatter\Base;
 
+/**
+* Human-readable output formatter
+*
+* Following example:
+*
+* ```
+* ./subdir/test.php:4
+*     array_syntax_long: Use [...] syntax instead of array(...) syntax.
+*
+* ./test.php:3
+*     array_syntax_long: Use [...] syntax instead of array(...) syntax.
+*
+* 2 files checked, 2 hints detected.
+* ```
+*/
 class Pretty extends Base
 {
+    /**
+    * Print hints to the console throught output interface of symfony console.
+    *
+    * If there is no hints, a message of blessing will be displayed.
+    *
+    * @return void
+    */
     public function print()
     {
+        // If there is no hints, print a message for that.
         if (count($this->hints) === 0) {
             $this->output->writeln('<fg=black;bg=green>Awesome! There is nothing from me to teach you!</>');
             $this->output->write("\n");

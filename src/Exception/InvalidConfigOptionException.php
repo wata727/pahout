@@ -2,6 +2,9 @@
 
 namespace Pahout\Exception;
 
+/**
+* Exception when setting nonexistent config option.
+*/
 class InvalidConfigOptionException extends \Exception
 {
 }

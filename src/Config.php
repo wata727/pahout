@@ -10,21 +10,61 @@ use Pahout\Exception\InvalidConfigOptionValueException;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Console\Input\InputInterface;
 
+/**
+* Pahout Config
+*
+* Merge the configuration file and argument setting items to generate the appropriate settings.
+* It also sets default values ​​and validate the values.
+* Since settings are commonly handled as one instance, it is implemented with a singleton pattern.
+*/
 class Config
 {
+    /** The name of the configuration file to load by default. */
     private const DEFAULT_FILE_PATH = '.pahout.yaml';
 
+    /** @var Config the single config instancec */
     private static $config;
+
+    /** @var string Target PHP version. default is latest version */
     public $php_version = '7.1.8';
+
+    /** @var string[] Ignore tool types */
     public $ignore_tools = [];
+
+    /** @var string[] Ignore files or directories */
     public $ignore_paths = [];
+
+    /** @var bool Check vendor directory */
     public $vendor = false;
+
+    /** @var string The name of formatter */
     public $format = 'pretty';
 
+    /**
+    * Merge the configuration file, arguments and default values ​​and set the configuration instance.
+    *
+    * It receives arguments and filenames and merges them with default values.
+    * Priorities are as follows:
+    *
+    * 1. Received arguments
+    * 2. Configuration file
+    * 3. Default values
+    *
+    * If the configuration file does not exist, an exception is thrown,
+    * but if it is a default file name it will not throw an exception.
+    *
+    * @param string[] $arguments Received arguments.
+    * @param string   $file      The name of configuration file.
+    * @throws InvalidConfigFilePathException Exception where the specified configuration file does not exist.
+    * @throws InvalidConfigOptionException   Exception when setting nonexistent config option.
+    * @return void
+    */
     public static function load(array $arguments, string $file = self::DEFAULT_FILE_PATH)
     {
+        // Generate default config instance.
         self::$config = new Config();
 
+        // If received file name is valid file, parses this file.
         if (is_file($file)) {
             Logger::getInstance()->info('Load: '.$file);
             $config_yaml = Yaml::parse(file_get_contents($file));
@@ -36,11 +76,14 @@ class Config
                     }
                     self::setOption($key, $value);
                 }
+            // If object is not iterable, It judges that this configuration file is invalid.
             } else {
                 throw new InvalidConfigFilePathException('`'.$file.'` is not a valid YAML.');
             }
+        // If the configuration file name does not exist and is not the default, throw an exception.
         } elseif ($file !== self::DEFAULT_FILE_PATH) {
             throw new InvalidConfigFilePathException('`'.$file.'` is not found.');
+        // If the configuration file name does not exist and is the default, does not throw an exception.
         } else {
             Logger::getInstance()->info(self::DEFAULT_FILE_PATH.' is not found.');
         }
@@ -62,14 +105,29 @@ class Config
         }
     }
 
-    public static function getInstance()
+    /**
+    * Get the single config instance.
+    *
+    * @return Config the single config instance.
+    */
+    public static function getInstance(): Config
     {
         return self::$config;
     }
 
+    /**
+    * Set a option value to config instance and validate a value.
+    *
+    * @param string $key   Option key.
+    * @param mixed  $value Option value.
+    * @throws InvalidConfigOptionValueException Exception when invalid value is specified in config option.
+    * @throws InvalidConfigOptionException      Exception when setting nonexistent config option.
+    * @return void
+    */
     private static function setOption(string $key, $value)
     {
         switch ($key) {
+            // PHP version format is must have a format like `7.1.8`
             case 'php_version':
                 if (preg_match('/^[0-9]\.[0-9]\.[0-9]$/', $value) !== 1) {
                     throw new InvalidConfigOptionValueException(
@@ -78,6 +136,7 @@ class Config
                 }
                 self::$config->php_version = $value;
                 break;
+            // Ignore tools is must be array of valid tool types.
             case 'ignore_tools':
                 if (!is_array($value)) {
                     throw new InvalidConfigOptionValueException('`'.$value.'` is invalid tools. It must be array.');
@@ -91,12 +150,14 @@ class Config
                 }
                 self::$config->ignore_tools = $value;
                 break;
+            // Ignore paths is must be array of files or directories.
             case 'ignore_paths':
                 if (!is_array($value)) {
                     throw new InvalidConfigOptionValueException('`'.$value.'` is invalid paths. It must be array.');
                 }
                 self::$config->ignore_paths = $value;
                 break;
+            // Vendor flag must be boolean.
             case 'vendor':
                 if (!is_bool($value)) {
                     throw new InvalidConfigOptionValueException(
@@ -105,6 +166,7 @@ class Config
                 }
                 self::$config->vendor = $value;
                 break;
+            // Format is must be valid name of formatter.
             case 'format':
                 if (!in_array($value, Formatter::VALID_FORMATS, true)) {
                     throw new InvalidConfigOptionValueException(
@@ -113,6 +175,7 @@ class Config
                 }
                 self::$config->format = $value;
                 break;
+            // If received unknown option key, throw an exception.
             default:
                 throw new InvalidConfigOptionException('`'.$key.'` is an invalid option.');
                 break;
