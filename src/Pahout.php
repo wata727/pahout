@@ -61,7 +61,7 @@ class Pahout
                 $this->files[] = $file;
             // If the received file is neither a file nor a directory, it ignores this.
             } else {
-                Logger::getInstance()->debug($file.' is unknow. Ignore it.');
+                Logger::getInstance()->debug($file.' is unknown object. Ignore it.');
             }
         }
 
