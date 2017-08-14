@@ -120,4 +120,29 @@ OUTPUT;
             chdir($work_dir);
         }
     }
+
+    public function test_when_specified_ignore_paths()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute([
+                '--ignore-paths' => ['subdir']
+            ]);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+./test.php:3
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+
+1 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
 }

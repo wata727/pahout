@@ -39,20 +39,29 @@ class ConfigTest extends TestCase
 
     public function test_specified_config()
     {
-        Config::load([
-            'php-version' => '7.1.0',
-            'ignore-tools' => ['ArraySyntaxLong'],
-            'ignore-paths' => ['tests'],
-            'vendor' => true,
-            'format' => 'pretty',
-        ]);
-        $config = Config::getInstance();
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_config_file');
 
-        $this->assertEquals('7.1.0', $config->php_version);
-        $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
-        $this->assertEquals(['tests'], $config->ignore_paths);
-        $this->assertTrue($config->vendor);
-        $this->assertEquals('pretty', $config->format);
+            Config::load([
+                'php-version' => '7.1.0',
+                'ignore-tools' => ['ArraySyntaxLong'],
+                'ignore-paths' => ['tests'],
+                'vendor' => true,
+                'format' => 'pretty',
+            ]);
+            $config = Config::getInstance();
+
+            $this->assertEquals('7.1.0', $config->php_version);
+            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
+            $this->assertEquals([
+                self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
+            ], $config->ignore_paths);
+            $this->assertTrue($config->vendor);
+            $this->assertEquals('pretty', $config->format);
+        } finally {
+            chdir($work_dir);
+        }
     }
 
     public function test_with_config_file()
@@ -72,7 +81,11 @@ class ConfigTest extends TestCase
 
             $this->assertEquals('7.0.0', $config->php_version);
             $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
-            $this->assertEquals(['tests', 'bin'], $config->ignore_paths);
+            $this->assertEquals([
+                self::FIXTURE_PATH.'/with_config_file/tests/test1.php',
+                self::FIXTURE_PATH.'/with_config_file/bin/test1.php',
+                self::FIXTURE_PATH.'/with_config_file/bin/test2.php',
+            ], $config->ignore_paths);
             $this->assertTrue($config->vendor);
             $this->assertEquals('pretty', $config->format);
         } finally {
@@ -97,7 +110,9 @@ class ConfigTest extends TestCase
 
             $this->assertEquals('7.1.0', $config->php_version);
             $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
-            $this->assertEquals(['tests'], $config->ignore_paths);
+            $this->assertEquals([
+                self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
+            ], $config->ignore_paths);
             $this->assertTrue($config->vendor);
             $this->assertEquals('pretty', $config->format);
         } finally {

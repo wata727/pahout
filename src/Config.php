@@ -4,6 +4,7 @@ namespace Pahout;
 
 use Pahout\Logger;
 use Pahout\Formatter;
+use Pahout\Loader;
 use Pahout\Exception\InvalidConfigFilePathException;
 use Pahout\Exception\InvalidConfigOptionException;
 use Pahout\Exception\InvalidConfigOptionValueException;
@@ -88,6 +89,7 @@ class Config
             Logger::getInstance()->info(self::DEFAULT_FILE_PATH.' is not found.');
         }
 
+        // If the arguments are given, set it.
         if ($arguments['php-version']) {
             self::setOption('php_version', $arguments['php-version']);
         }
@@ -103,6 +105,11 @@ class Config
         if ($arguments['format']) {
             self::setOption('format', $arguments['format']);
         }
+
+        // Resolve ignore_paths to file name and reset.
+        self::$config->ignore_paths = array_map(function ($path) {
+            return realpath($path);
+        }, Loader::dig(self::$config->ignore_paths));
 
         Logger::getInstance()->info('PHP version: '.self::$config->php_version);
         Logger::getInstance()->info('Ignore tools: '.var_export(self::$config->ignore_tools, true));

@@ -6,6 +6,8 @@ use \ast\Node;
 use Pahout\Logger;
 use Pahout\Tool;
 use Pahout\Tool\Base;
+use Pahout\Loader;
+use Pahout\Config;
 
 /**
 * PHP Mahout
@@ -27,9 +29,6 @@ class Pahout
     /**
     * Acquire the list of files to be analyzed, and prepare a tool lists.
     *
-    * Verify that the received file is correct.
-    * If it receive a directory, recursively search PHP files and add them to the analysis target files.
-    *
     * @param string[] $files List of file names and directory names to analyze.
     */
     public function __construct(array $files)
@@ -40,30 +39,10 @@ class Pahout
             $files = ['.'];
         }
 
-        foreach ($files as $file) {
-            Logger::getInstance()->info('Load: '.$file);
-
-            // If the received file is a directory, it analyzes recursively under the this directory.
-            if (is_dir($file)) {
-                Logger::getInstance()->debug($file.' is directory. Recursively search the file list.');
-                $iterator = new \RegexIterator(
-                    new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($file)),
-                    '/^.+\.php$/i'
-                );
-
-                foreach ($iterator as $file_obj) {
-                    Logger::getInstance()->debug('Add: '.$file_obj->getPathname());
-                    $this->files[] = $file_obj->getPathname();
-                }
-            // If the received file is a file, it analyzes this file.
-            } elseif (is_file($file)) {
-                Logger::getInstance()->debug($file.' is file. Add it to files.');
-                $this->files[] = $file;
-            // If the received file is neither a file nor a directory, it ignores this.
-            } else {
-                Logger::getInstance()->debug($file.' is unknown object. Ignore it.');
-            }
-        }
+        // Set a list of analysis target files.
+        $this->files = array_filter(Loader::dig($files), function ($file) {
+            return !in_array(realpath($file), Config::getInstance()->ignore_paths);
+        });
 
         // Set a list of tool instances matching PHP version.
         $this->tools = Tool::create();
