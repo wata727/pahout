@@ -4,11 +4,18 @@ namespace Pahout\Test;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Console\Output\ConsoleOutput;
 use Pahout\Command\Check;
+use Pahout\Logger;
 
-class CommandTest extends TestCase
+class IntegrationTest extends TestCase
 {
     private const FIXTURE_PATH = __DIR__.'/fixtures';
+
+    public function setUp()
+    {
+        Logger::getInstance(new ConsoleOutput());
+    }
 
     public function test_loads_current_dir_when_not_receiving_any_files()
     {
@@ -66,5 +73,27 @@ $file3:3
 OUTPUT;
 
         $this->assertEquals($expected, $output);
+    }
+
+    public function test_when_specified_old_php_version()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute(['--php-version' => '5.3.3']);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+Awesome! There is nothing from me to teach you!
+
+2 files checked, 0 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
     }
 }

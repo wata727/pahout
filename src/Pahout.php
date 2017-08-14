@@ -65,6 +65,7 @@ class Pahout
             }
         }
 
+        // Set a list of tool instances matching PHP version.
         $this->tools = Tool::create();
 
         Logger::getInstance()->info('Target files: '.count($this->files));

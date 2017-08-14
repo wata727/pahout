@@ -6,10 +6,17 @@ use PHPUnit\Framework\TestCase;
 use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\ArraySyntaxLong;
 use Pahout\Hint;
+use Pahout\Logger;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ArraySyntaxLongTest extends TestCase
 {
-    public function testArraySyntaxLong()
+    public function setUp()
+    {
+        Logger::getInstance(new ConsoleOutput());
+    }
+
+    public function test_array_syntax_long()
     {
         $root = \ast\parse_code('<?php array(1, 2, 3) ?>', 40);
 
@@ -23,7 +30,7 @@ class ArraySyntaxLongTest extends TestCase
         $this->assertEquals(1, $tester->hints[0]->lineno);
     }
 
-    public function testArraySyntaxShort()
+    public function test_array_syntax_short()
     {
         $root = \ast\parse_code('<?php [1, 2, 3] ?>', 40);
 

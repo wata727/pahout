@@ -4,13 +4,20 @@ namespace Pahout\Test;
 
 use PHPUnit\Framework\TestCase;
 use Pahout\Config;
+use Pahout\Logger;
 use Pahout\Exception\InvalidConfigFilePathException;
 use Pahout\Exception\InvalidConfigOptionException;
 use Pahout\Exception\InvalidConfigOptionValueException;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ConfigTest extends TestCase
 {
     private const FIXTURE_PATH = __DIR__.'/fixtures';
+
+    public function setUp()
+    {
+        Logger::getInstance(new ConsoleOutput());
+    }
 
     public function test_default_config()
     {

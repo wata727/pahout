@@ -31,6 +31,8 @@ class ArraySyntaxLong implements Base
 {
     /** Analyze array declarations node (AST_ARRAY) */
     public const ENTRY_POINT = \ast\AST_ARRAY;
+    /** PHP version to enable this tool */
+    public const PHP_VERSION = '5.4.0';
     public const HINT_TYPE = "ArraySyntaxLong";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 

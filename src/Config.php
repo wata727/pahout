@@ -103,6 +103,12 @@ class Config
         if ($arguments['format']) {
             self::setOption('format', $arguments['format']);
         }
+
+        Logger::getInstance()->info('PHP version: '.self::$config->php_version);
+        Logger::getInstance()->info('Ignore tools: '.var_export(self::$config->ignore_tools, true));
+        Logger::getInstance()->info('Ignore paths: '.var_export(self::$config->ignore_paths, true));
+        Logger::getInstance()->info('Vendor: '.var_export(self::$config->vendor, true));
+        Logger::getInstance()->info('Format: '.self::$config->format);
     }
 
     /**
