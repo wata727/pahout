@@ -96,4 +96,28 @@ OUTPUT;
             chdir($work_dir);
         }
     }
+
+    public function test_when_specified_ignore_tools()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute([
+                '--ignore-tools' => ['ArraySyntaxLong']
+            ]);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+Awesome! There is nothing from me to teach you!
+
+2 files checked, 0 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
 }

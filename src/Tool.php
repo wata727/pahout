@@ -24,8 +24,11 @@ class Tool
         return array_filter([
             new ArraySyntaxLong()
         ], function ($tool) {
-            // Filter tools that do not match PHP version.
-            return version_compare(Config::getInstance()->php_version, get_class($tool)::PHP_VERSION, '>=');
+            $klass = get_class($tool);
+            $config = Config::getInstance();
+            // Activate only tools that are not included in ignore_tools, and whose PHP version is applicable.
+            return !in_array($klass::HINT_TYPE, $config->ignore_tools)
+                     && version_compare($config->php_version, $klass::PHP_VERSION, '>=');
         });
     }
 }
