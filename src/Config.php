@@ -106,6 +106,11 @@ class Config
             self::setOption('format', $arguments['format']);
         }
 
+        // If disabled vendor flag, add `vendor` directory to ignore paths.
+        if (!self::$config->vendor) {
+            self::$config->ignore_paths[] = 'vendor';
+        }
+
         // Resolve ignore_paths to file name and reset.
         self::$config->ignore_paths = array_map(function ($path) {
             return realpath($path);
@@ -172,6 +177,12 @@ class Config
                 break;
             // Vendor flag must be boolean.
             case 'vendor':
+                if ($value === 'true') {
+                    $value = true;
+                }
+                if ($value === 'false') {
+                    $value = false;
+                }
                 if (!is_bool($value)) {
                     throw new InvalidConfigOptionValueException(
                         '`'.$value.'` is an invalid vendor flag. It must be `true` or `false`.'

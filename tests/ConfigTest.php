@@ -21,20 +21,29 @@ class ConfigTest extends TestCase
 
     public function test_default_config()
     {
-        Config::load([
-            'php-version' => null,
-            'ignore-tools' => null,
-            'ignore-paths' => null,
-            'vendor' => null,
-            'format' => null,
-        ]);
-        $config = Config::getInstance();
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_vendor');
 
-        $this->assertEquals('7.1.8', $config->php_version);
-        $this->assertEmpty($config->ignore_tools);
-        $this->assertEmpty($config->ignore_paths);
-        $this->assertFalse($config->vendor);
-        $this->assertEquals('pretty', $config->format);
+            Config::load([
+                'php-version' => null,
+                'ignore-tools' => null,
+                'ignore-paths' => null,
+                'vendor' => null,
+                'format' => null,
+            ]);
+            $config = Config::getInstance();
+
+            $this->assertEquals('7.1.8', $config->php_version);
+            $this->assertEmpty($config->ignore_tools);
+            $this->assertEquals([
+                self::FIXTURE_PATH.'/with_vendor/vendor/test.php'
+            ], $config->ignore_paths);
+            $this->assertFalse($config->vendor);
+            $this->assertEquals('pretty', $config->format);
+        } finally {
+            chdir($work_dir);
+        }
     }
 
     public function test_specified_config()

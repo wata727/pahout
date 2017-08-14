@@ -145,4 +145,98 @@ OUTPUT;
             chdir($work_dir);
         }
     }
+
+    public function test_with_default_config_file()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_default_config_file');
+            $command = new CommandTester(new Check());
+            $command->execute([]);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+Awesome! There is nothing from me to teach you!
+
+1 files checked, 0 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
+    public function test_with_custom_config_file()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_default_config_file');
+            $command = new CommandTester(new Check());
+            $command->execute(['--config' => 'custom_pahout.yaml']);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+./test.php:3
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+
+1 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
+    public function test_vendor_with_default()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_vendor');
+            $command = new CommandTester(new Check());
+            $command->execute([]);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+./test.php:3
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+
+1 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
+    public function test_vendor_with_enabled_flag()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_vendor');
+            $command = new CommandTester(new Check());
+            $command->execute(['--vendor' => 'true']);
+            $output = $command->getDisplay();
+
+            $expected = <<<OUTPUT
+./test.php:3
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+
+./vendor/test.php:3
+\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+
+2 files checked, 2 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $output);
+        } finally {
+            chdir($work_dir);
+        }
+    }
 }

@@ -57,7 +57,7 @@ class Check extends Command
              ->addOption(
                  'vendor',
                  null,
-                 InputOption::VALUE_NONE,
+                 InputOption::VALUE_OPTIONAL,
                  'Check vendor directory <comment>[default: false]</>',
                  null
              )
