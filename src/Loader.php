@@ -2,6 +2,8 @@
 
 namespace Pahout;
 
+use Pahout\Exception\InvalidFilePathException;
+
 /**
 * Loader that loads files and directories recursively.
 */
@@ -13,6 +15,7 @@ class Loader
     * If a directory name received, it digs recursively under the directory.
     *
     * @param string[] $files List of file names and directory names to load.
+    * @throws InvalidFilePathException Exception when the specified file or directory does not exist.
     * @return string[] List of readable file paths.
     */
     public static function dig(array $files): array
@@ -38,9 +41,13 @@ class Loader
             } elseif (is_file($file)) {
                 Logger::getInstance()->debug($file.' is file. Add it to files.');
                 $list[] = $file;
-            // If the received name is neither a file nor a directory, it ignores this.
+            // The vendor directory is ignored by default,
+            // so do not throw an exception if the vendor directory does not exist.
+            } elseif ($file === 'vendor') {
+                Logger::getInstance()->debug('vendor directory is not found.');
+            // If the received name is neither a file nor a directory, it throws an exception.
             } else {
-                Logger::getInstance()->debug($file.' is unknown object. Ignore it.');
+                throw new InvalidFilePathException($file.' is neither a file nor a directory.');
             }
         }
 

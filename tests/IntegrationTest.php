@@ -7,6 +7,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Pahout\Command\Check;
 use Pahout\Logger;
+use Pahout\Exception\InvalidFilePathException;
 
 class IntegrationTest extends TestCase
 {
@@ -73,6 +74,15 @@ $file3:3
 OUTPUT;
 
         $this->assertEquals($expected, $output);
+    }
+
+    public function test_throws_an_exception_when_receiving_files_that_do_not_exist()
+    {
+        $this->expectException(InvalidFilePathException::class);
+        $this->expectExceptionMessage('notfound is neither a file nor a directory.');
+
+        $command = new CommandTester(new Check());
+        $command->execute(['files' => ['notfound']]);
     }
 
     public function test_when_specified_old_php_version()
