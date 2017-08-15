@@ -58,10 +58,24 @@ class Pahout
     {
         foreach ($this->files as $file) {
             Logger::getInstance()->info('Parse: '.$file);
-            $root = \ast\parse_file($file, 40);
-            // If file is empty, $root is not instance of Node.
-            if ($root instanceof Node) {
-                $this->traverse($file, $root);
+            try {
+                $root = \ast\parse_file($file, 40);
+                // If file is empty, $root is not instance of Node.
+                if ($root instanceof Node) {
+                    $this->traverse($file, $root);
+                }
+            } catch (\ParseError $exception) {
+                // When a parsing error occurs, the file is determined to be a syntax error.
+                Logger::getInstance()->info('Parse error occurred: '.$file);
+                // SyntaxError is a special tool. Pahout directly generates Hint without checking AST.
+                if (!in_array('SyntaxError', Config::getInstance()->ignore_tools, true)) {
+                    $this->hints[] = new Hint(
+                        'SyntaxError',
+                        $exception->getMessage(),
+                        $exception->getFile(),
+                        $exception->getLine()
+                    );
+                }
             }
         }
 

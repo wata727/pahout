@@ -31,10 +31,13 @@ class IntegrationTest extends TestCase
 ./subdir/test.php:4
 \tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
+./syntax_error.php:3
+\tSyntaxError: syntax error, unexpected 'f' (T_STRING)
+
 ./test.php:3
 \tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
-2 files checked, 2 hints detected.
+3 files checked, 3 hints detected.
 
 OUTPUT;
 
@@ -95,9 +98,10 @@ OUTPUT;
             $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
-Awesome! There is nothing from me to teach you!
+./syntax_error.php:3
+\tSyntaxError: syntax error, unexpected identifier (T_STRING)
 
-2 files checked, 0 hints detected.
+3 files checked, 1 hints detected.
 
 OUTPUT;
 
@@ -114,14 +118,14 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
             $command = new CommandTester(new Check());
             $command->execute([
-                '--ignore-tools' => ['ArraySyntaxLong']
+                '--ignore-tools' => ['ArraySyntaxLong', 'SyntaxError']
             ]);
             $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 Awesome! There is nothing from me to teach you!
 
-2 files checked, 0 hints detected.
+3 files checked, 0 hints detected.
 
 OUTPUT;
 
@@ -143,10 +147,13 @@ OUTPUT;
             $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
+./syntax_error.php:3
+\tSyntaxError: syntax error, unexpected identifier (T_STRING)
+
 ./test.php:3
 \tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
 
-1 files checked, 1 hints detected.
+2 files checked, 2 hints detected.
 
 OUTPUT;
 

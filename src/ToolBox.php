@@ -11,7 +11,10 @@ use Pahout\Tool\Base;
 class ToolBox
 {
     /** List of valid tool names used by Mahout */
-    public const VALID_TOOLS = ['ArraySyntaxLong'];
+    public const VALID_TOOLS = [
+        'ArraySyntaxLong',
+        'SyntaxError',
+    ];
 
     /**
     * Factory method that returns list of tool instances matching PHP version.
