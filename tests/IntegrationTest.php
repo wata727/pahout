@@ -25,7 +25,6 @@ class IntegrationTest extends TestCase
             chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
             $command = new CommandTester(new Check());
             $command->execute([]);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./subdir/test.php:4
@@ -41,7 +40,8 @@ class IntegrationTest extends TestCase
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -57,7 +57,6 @@ OUTPUT;
                 self::FIXTURE_PATH.'/receiving_files_and_dirs/test3.php',
             ]
         ]);
-        $output = $command->getDisplay();
 
         $file1 = self::FIXTURE_PATH.'/receiving_files_and_dirs/subdir/test.php';
         $file2 = self::FIXTURE_PATH.'/receiving_files_and_dirs/test1.php';
@@ -76,7 +75,8 @@ $file3:3
 
 OUTPUT;
 
-        $this->assertEquals($expected, $output);
+        $this->assertEquals($expected, $command->getDisplay());
+        $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
     }
 
     public function test_throws_an_exception_when_receiving_files_that_do_not_exist()
@@ -95,7 +95,6 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
             $command = new CommandTester(new Check());
             $command->execute(['--php-version' => '5.3.3']);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
@@ -105,7 +104,8 @@ OUTPUT;
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -120,7 +120,6 @@ OUTPUT;
             $command->execute([
                 '--ignore-tools' => ['ArraySyntaxLong', 'SyntaxError']
             ]);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 Awesome! There is nothing from me to teach you!
@@ -129,7 +128,8 @@ Awesome! There is nothing from me to teach you!
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_NOT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -144,7 +144,6 @@ OUTPUT;
             $command->execute([
                 '--ignore-paths' => ['subdir']
             ]);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
@@ -157,7 +156,8 @@ OUTPUT;
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -170,7 +170,6 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/with_default_config_file');
             $command = new CommandTester(new Check());
             $command->execute([]);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 Awesome! There is nothing from me to teach you!
@@ -179,7 +178,8 @@ Awesome! There is nothing from me to teach you!
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_NOT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -192,7 +192,6 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/with_default_config_file');
             $command = new CommandTester(new Check());
             $command->execute(['--config' => 'custom_pahout.yaml']);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./test.php:3
@@ -202,7 +201,8 @@ OUTPUT;
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -215,7 +215,6 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/with_vendor');
             $command = new CommandTester(new Check());
             $command->execute([]);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./test.php:3
@@ -225,7 +224,8 @@ OUTPUT;
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
@@ -238,7 +238,6 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/with_vendor');
             $command = new CommandTester(new Check());
             $command->execute(['--vendor' => 'true']);
-            $output = $command->getDisplay();
 
             $expected = <<<OUTPUT
 ./test.php:3
@@ -251,7 +250,8 @@ OUTPUT;
 
 OUTPUT;
 
-            $this->assertEquals($expected, $output);
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
         } finally {
             chdir($work_dir);
         }
