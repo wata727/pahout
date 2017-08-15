@@ -8,7 +8,7 @@ use Pahout\Tool\Base;
 /**
 * Factory of tools used by Mahout
 */
-class Tool
+class ToolBox
 {
     /** List of valid tool names used by Mahout */
     public const VALID_TOOLS = ['ArraySyntaxLong'];

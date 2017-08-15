@@ -157,7 +157,7 @@ class Config
                     throw new InvalidConfigOptionValueException('`'.$value.'` is invalid tools. It must be array.');
                 }
                 foreach ($value as $tool) {
-                    if (!in_array($tool, Tool::VALID_TOOLS, true)) {
+                    if (!in_array($tool, ToolBox::VALID_TOOLS, true)) {
                         throw new InvalidConfigOptionValueException(
                             '`'.$tool.'` is an invalid tool. Please check the correct tool list.'
                         );
