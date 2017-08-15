@@ -82,7 +82,7 @@ OUTPUT;
     public function test_throws_an_exception_when_receiving_files_that_do_not_exist()
     {
         $this->expectException(InvalidFilePathException::class);
-        $this->expectExceptionMessage('notfound is neither a file nor a directory.');
+        $this->expectExceptionMessage('`notfound` is neither a file nor a directory.');
 
         $command = new CommandTester(new Check());
         $command->execute(['files' => ['notfound']]);

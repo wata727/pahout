@@ -47,7 +47,7 @@ class Loader
                 Logger::getInstance()->debug('vendor directory is not found.');
             // If the received name is neither a file nor a directory, it throws an exception.
             } else {
-                throw new InvalidFilePathException($file.' is neither a file nor a directory.');
+                throw new InvalidFilePathException('`'.$file.'` is neither a file nor a directory.');
             }
         }
 
