@@ -191,7 +191,7 @@ class Config
             case 'format':
                 if (!in_array($value, Formatter::VALID_FORMATS, true)) {
                     throw new InvalidConfigOptionValueException(
-                        '`'.$value.'` is an invalid format. It must be `pretty`.'
+                        '`'.$value.'` is an invalid format. It must be `pretty` or `json`.'
                     );
                 }
                 self::$config->format = $value;

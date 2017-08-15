@@ -76,7 +76,7 @@ class Check extends Command
                  'format',
                  'f',
                  InputOption::VALUE_OPTIONAL,
-                 'Output format <comment>[default: "pretty", possibles: "pretty"]</>',
+                 'Output format <comment>[default: "pretty", possibles: "pretty", "json"]</>',
                  null
              )
              ->addOption(
@@ -114,7 +114,7 @@ class Check extends Command
         Logger::getInstance()->info('End instruction');
 
         Logger::getInstance()->info('Start formatter');
-        $formatter = Formatter::create($output, $pahout->files, $pahout->hints, 'pretty');
+        $formatter = Formatter::create($output, $pahout->files, $pahout->hints);
         $formatter->print();
         Logger::getInstance()->info('End formatter');
 

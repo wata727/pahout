@@ -7,6 +7,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Pahout\Command\Check;
 use Pahout\Logger;
+use Pahout\Hint;
 use Pahout\Exception\InvalidFilePathException;
 
 class IntegrationTest extends TestCase
@@ -249,6 +250,34 @@ OUTPUT;
 2 files checked, 2 hints detected.
 
 OUTPUT;
+
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
+    public function test_format_when_specified_json_format()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute(['--format' => 'json']);
+
+            $expected = json_encode([
+                'files' => [
+                    './subdir/test.php',
+                    './syntax_error.php',
+                    './test.php',
+                ],
+                'hints' => [
+                    new Hint('ArraySyntaxLong', 'Use [...] syntax instead of array(...) syntax.', './subdir/test.php', 4),
+                    new Hint('SyntaxError', 'syntax error, unexpected identifier (T_STRING)', './syntax_error.php', 3),
+                    new Hint('ArraySyntaxLong', 'Use [...] syntax instead of array(...) syntax.', './test.php', 3),
+                ],
+            ]);
 
             $this->assertEquals($expected, $command->getDisplay());
             $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());

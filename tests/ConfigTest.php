@@ -57,7 +57,7 @@ class ConfigTest extends TestCase
                 'ignore-tools' => ['ArraySyntaxLong'],
                 'ignore-paths' => ['tests'],
                 'vendor' => true,
-                'format' => 'pretty',
+                'format' => 'json',
             ]);
             $config = Config::getInstance();
 
@@ -67,7 +67,7 @@ class ConfigTest extends TestCase
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
             $this->assertTrue($config->vendor);
-            $this->assertEquals('pretty', $config->format);
+            $this->assertEquals('json', $config->format);
         } finally {
             chdir($work_dir);
         }
@@ -223,7 +223,7 @@ class ConfigTest extends TestCase
     public function test_throw_exception_when_specified_an_invalid_format()
     {
         $this->expectException(InvalidConfigOptionValueException::class);
-        $this->expectExceptionMessage('`xml` is an invalid format. It must be `pretty`.');
+        $this->expectExceptionMessage('`xml` is an invalid format. It must be `pretty` or `json`.');
 
         Config::load([
             'php-version' => null,

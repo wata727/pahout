@@ -4,6 +4,7 @@ namespace Pahout;
 
 use Pahout\Formatter\Base;
 use Pahout\Formatter\Pretty;
+use Pahout\Formatter\JSON;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -12,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Formatter
 {
     /** List of valid format names */
-    public const VALID_FORMATS = ['pretty'];
+    public const VALID_FORMATS = ['pretty', 'json'];
 
     /**
     * Factory method that returns the specified formatter.
@@ -20,14 +21,15 @@ class Formatter
     * @param OutputInterface $output The output interface of symfony console.
     * @param string[]        $files  List of analyzed file names.
     * @param Hint[]          $hints  Hint list obtained as a result of analysis.
-    * @param string          $type   Name of formatter type.
     * @return Base The specified formatter instance.
     */
-    public static function create(OutputInterface $output, array $files, array $hints, string $type): Base
+    public static function create(OutputInterface $output, array $files, array $hints): Base
     {
-        switch ($type) {
+        switch (Config::getInstance()->format) {
             case 'pretty':
                 return new Pretty($output, $files, $hints);
+            case 'json':
+                return new JSON($output, $files, $hints);
             default:
                 return new Pretty($output, $files, $hints);
         }
