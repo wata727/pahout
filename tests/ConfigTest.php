@@ -110,7 +110,7 @@ class ConfigTest extends TestCase
 
             Config::load([
                 'php-version' => '7.1.0',
-                'ignore-tools' => null,
+                'ignore-tools' => ['SyntaxError'],
                 'ignore-paths' => ['tests'],
                 'vendor' => null,
                 'format' => null,
@@ -118,7 +118,7 @@ class ConfigTest extends TestCase
             $config = Config::getInstance();
 
             $this->assertEquals('7.1.0', $config->php_version);
-            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
+            $this->assertEquals(['SyntaxError'], $config->ignore_tools);
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
