@@ -3,11 +3,7 @@
 namespace Pahout;
 
 use \ast\Node;
-use Pahout\Logger;
-use Pahout\Tool;
 use Pahout\Tool\Base;
-use Pahout\Loader;
-use Pahout\Config;
 
 /**
 * PHP Mahout

@@ -4,7 +4,6 @@ namespace Pahout\Tool;
 
 use \ast\Node;
 use Pahout\Logger;
-use Pahout\Tool\Base;
 use Pahout\Hint;
 
 /**

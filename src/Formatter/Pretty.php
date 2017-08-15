@@ -2,8 +2,6 @@
 
 namespace Pahout\Formatter;
 
-use Pahout\Formatter\Base;
-
 /**
 * Human-readable output formatter
 *

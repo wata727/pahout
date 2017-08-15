@@ -2,7 +2,6 @@
 
 namespace Pahout;
 
-use Pahout\Hint;
 use Pahout\Formatter\Base;
 use Pahout\Formatter\Pretty;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -2,9 +2,6 @@
 
 namespace Pahout;
 
-use Pahout\Logger;
-use Pahout\Formatter;
-use Pahout\Loader;
 use Pahout\Exception\InvalidConfigFilePathException;
 use Pahout\Exception\InvalidConfigOptionException;
 use Pahout\Exception\InvalidConfigOptionValueException;

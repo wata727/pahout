@@ -4,7 +4,6 @@ namespace Pahout;
 
 use Pahout\Tool\ArraySyntaxLong;
 use Pahout\Tool\Base;
-use Pahout\Config;
 
 /**
 * Factory of tools used by Mahout

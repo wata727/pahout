@@ -2,8 +2,6 @@
 
 namespace Pahout;
 
-use Pahout\Logger;
-
 /**
 * Loader that loads files and directories recursively.
 */
