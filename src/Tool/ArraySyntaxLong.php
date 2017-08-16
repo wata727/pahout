@@ -7,7 +7,7 @@ use Pahout\Logger;
 use Pahout\Hint;
 
 /**
-* Detect old array syntax.
+* Detect long array syntax.
 *
 * As of PHP 5.4 you can also use the short array syntax.
 * There is no reason other than compatibility to keep using old syntax.
