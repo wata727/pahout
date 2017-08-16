@@ -2,8 +2,9 @@
 
 namespace Pahout;
 
-use Pahout\Tool\ArraySyntaxLong;
 use Pahout\Tool\Base;
+use Pahout\Tool\ArraySyntaxLong;
+use Pahout\Tool\ElvisOperator;
 
 /**
 * Factory of tools used by Mahout
@@ -14,6 +15,7 @@ class ToolBox
     public const VALID_TOOLS = [
         'ArraySyntaxLong',
         'SyntaxError',
+        'ElvisOperator',
     ];
 
     /**
@@ -24,7 +26,8 @@ class ToolBox
     public static function create(): array
     {
         return array_filter([
-            new ArraySyntaxLong()
+            new ArraySyntaxLong(),
+            new ElvisOperator(),
         ], function ($tool) {
             $klass = get_class($tool);
             $config = Config::getInstance();
