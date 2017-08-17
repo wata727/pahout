@@ -6,6 +6,7 @@ use Pahout\Tool\Base;
 use Pahout\Tool\ShortArraySyntax;
 use Pahout\Tool\ElvisOperator;
 use Pahout\Tool\NullCoalescingOperator;
+use Pahout\Tool\VariableLengthArgumentLists;
 
 /**
 * Factory of tools used by Mahout
@@ -18,6 +19,7 @@ class ToolBox
         'SyntaxError',
         'ElvisOperator',
         'NullCoalescingOperator',
+        'VariableLengthArgumentLists',
     ];
 
     /**
@@ -31,6 +33,7 @@ class ToolBox
             new ShortArraySyntax(),
             new ElvisOperator(),
             new NullCoalescingOperator(),
+            new VariableLengthArgumentLists(),
         ], function ($tool) {
             $klass = get_class($tool);
             $config = Config::getInstance();
