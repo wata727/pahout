@@ -54,7 +54,7 @@ class ConfigTest extends TestCase
 
             Config::load([
                 'php-version' => '7.1.0',
-                'ignore-tools' => ['ArraySyntaxLong'],
+                'ignore-tools' => ['ShortArraySyntax'],
                 'ignore-paths' => ['tests'],
                 'vendor' => true,
                 'format' => 'json',
@@ -62,7 +62,7 @@ class ConfigTest extends TestCase
             $config = Config::getInstance();
 
             $this->assertEquals('7.1.0', $config->php_version);
-            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
+            $this->assertEquals(['ShortArraySyntax'], $config->ignore_tools);
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
@@ -89,7 +89,7 @@ class ConfigTest extends TestCase
             $config = Config::getInstance();
 
             $this->assertEquals('7.0.0', $config->php_version);
-            $this->assertEquals(['ArraySyntaxLong'], $config->ignore_tools);
+            $this->assertEquals(['ShortArraySyntax'], $config->ignore_tools);
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php',
                 self::FIXTURE_PATH.'/with_config_file/bin/test1.php',

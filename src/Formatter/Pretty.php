@@ -9,10 +9,10 @@ namespace Pahout\Formatter;
 *
 * ```
 * ./subdir/test.php:4
-*     array_syntax_long: Use [...] syntax instead of array(...) syntax.
+*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 *
 * ./test.php:3
-*     array_syntax_long: Use [...] syntax instead of array(...) syntax.
+*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 *
 * 2 files checked, 2 hints detected.
 * ```

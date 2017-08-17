@@ -16,7 +16,7 @@ namespace Pahout\Formatter;
 *  ],
 *  "hints": [
 *    {
-*      "type": "ArraySyntaxLong",
+*      "type": "ShortArraySyntax",
 *      "message": "Use [...] syntax instead of array(...) syntax.",
 *      "filename": "./subdir/test.php",
 *      "lineno": 4
@@ -28,7 +28,7 @@ namespace Pahout\Formatter;
 *      "lineno": 3
 *    },
 *    {
-*      "type": "ArraySyntaxLong",
+*      "type": "ShortArraySyntax",
 *      "message": "Use [...] syntax instead of array(...) syntax.",
 *      "filename": "./test.php",
 *      "lineno": 3

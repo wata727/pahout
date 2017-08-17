@@ -29,13 +29,13 @@ class IntegrationTest extends TestCase
 
             $expected = <<<OUTPUT
 ./subdir/test.php:4
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 ./syntax_error.php:3
 \tSyntaxError: syntax error, unexpected 'f' (T_STRING)
 
 ./test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 3 files checked, 3 hints detected.
 
@@ -64,13 +64,13 @@ OUTPUT;
         $file3 = self::FIXTURE_PATH.'/receiving_files_and_dirs/test3.php';
         $expected = <<<OUTPUT
 $file1:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 $file2:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 $file3:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 3 files checked, 3 hints detected.
 
@@ -119,7 +119,7 @@ OUTPUT;
             chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
             $command = new CommandTester(new Check());
             $command->execute([
-                '--ignore-tools' => ['ArraySyntaxLong', 'SyntaxError']
+                '--ignore-tools' => ['ShortArraySyntax', 'SyntaxError']
             ]);
 
             $expected = <<<OUTPUT
@@ -151,7 +151,7 @@ OUTPUT;
 \tSyntaxError: syntax error, unexpected identifier (T_STRING)
 
 ./test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 2 files checked, 2 hints detected.
 
@@ -196,7 +196,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 1 files checked, 1 hints detected.
 
@@ -219,7 +219,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 1 files checked, 1 hints detected.
 
@@ -242,10 +242,10 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 ./vendor/test.php:3
-\tArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 
 2 files checked, 2 hints detected.
 
@@ -273,9 +273,9 @@ OUTPUT;
                     './test.php',
                 ],
                 'hints' => [
-                    new Hint('ArraySyntaxLong', 'Use [...] syntax instead of array(...) syntax.', './subdir/test.php', 4),
+                    new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './subdir/test.php', 4),
                     new Hint('SyntaxError', 'syntax error, unexpected identifier (T_STRING)', './syntax_error.php', 3),
-                    new Hint('ArraySyntaxLong', 'Use [...] syntax instead of array(...) syntax.', './test.php', 3),
+                    new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './test.php', 3),
                 ],
             ]);
 

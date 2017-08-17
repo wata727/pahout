@@ -3,7 +3,7 @@
 namespace Pahout;
 
 use Pahout\Tool\Base;
-use Pahout\Tool\ArraySyntaxLong;
+use Pahout\Tool\ShortArraySyntax;
 use Pahout\Tool\ElvisOperator;
 
 /**
@@ -13,7 +13,7 @@ class ToolBox
 {
     /** List of valid tool names used by Mahout */
     public const VALID_TOOLS = [
-        'ArraySyntaxLong',
+        'ShortArraySyntax',
         'SyntaxError',
         'ElvisOperator',
     ];
@@ -26,7 +26,7 @@ class ToolBox
     public static function create(): array
     {
         return array_filter([
-            new ArraySyntaxLong(),
+            new ShortArraySyntax(),
             new ElvisOperator(),
         ], function ($tool) {
             $klass = get_class($tool);

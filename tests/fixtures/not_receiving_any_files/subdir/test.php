@@ -1,7 +1,7 @@
 <?php
 
 $array = array(
-    1, // ArraySyntaxLong
+    1, // ShortArraySyntax
     2, 
     3,
 );

@@ -1,4 +1,4 @@
-# ArraySyntaxLong
+# ShortArraySyntax
 
 As of PHP 5.4, you can also use the short array syntax.
 There is no reason other than compatibility to keep using old syntax.
@@ -7,7 +7,7 @@ There is no reason other than compatibility to keep using old syntax.
 
 ```php
 <?php
-$a = array(1, 2, 3); // ArraySyntaxLong: Use [...] syntax instead of array(...) syntax.
+$a = array(1, 2, 3); // ShortArraySyntax: Use [...] syntax instead of array(...) syntax.
 ```
 
 ## After

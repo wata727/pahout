@@ -1,3 +1,3 @@
 <?php
 
-$array = array(1, 2, 3); // ArraySyntaxLong
+$array = array(1, 2, 3); // ShortArraySyntax

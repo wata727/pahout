@@ -26,13 +26,13 @@ use Pahout\Hint;
 * $a = [1, 2, 3];
 * ```
 */
-class ArraySyntaxLong implements Base
+class ShortArraySyntax implements Base
 {
     /** Analyze array declarations node (AST_ARRAY) */
     public const ENTRY_POINT = \ast\AST_ARRAY;
     /** PHP version to enable this tool */
     public const PHP_VERSION = '5.4.0';
-    public const HINT_TYPE = "ArraySyntaxLong";
+    public const HINT_TYPE = "ShortArraySyntax";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
 
     /**
