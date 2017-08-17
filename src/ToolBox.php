@@ -5,6 +5,7 @@ namespace Pahout;
 use Pahout\Tool\Base;
 use Pahout\Tool\ShortArraySyntax;
 use Pahout\Tool\ElvisOperator;
+use Pahout\Tool\NullCoalescingOperator;
 
 /**
 * Factory of tools used by Mahout
@@ -16,6 +17,7 @@ class ToolBox
         'ShortArraySyntax',
         'SyntaxError',
         'ElvisOperator',
+        'NullCoalescingOperator',
     ];
 
     /**
@@ -28,6 +30,7 @@ class ToolBox
         return array_filter([
             new ShortArraySyntax(),
             new ElvisOperator(),
+            new NullCoalescingOperator(),
         ], function ($tool) {
             $klass = get_class($tool);
             $config = Config::getInstance();
