@@ -28,7 +28,7 @@ use Pahout\Hint;
 */
 class ElvisOperator implements Base
 {
-    /** Analyze ternary oprator node (AST_CONDITIONAL) */
+    /** Analyze ternary operator node (AST_CONDITIONAL) */
     public const ENTRY_POINT = \ast\AST_CONDITIONAL;
     /** PHP version to enable this tool */
     public const PHP_VERSION = '5.3.0';
