@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\ShortArraySyntax;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ShortArraySyntaxTest extends TestCase
@@ -18,7 +19,7 @@ class ShortArraySyntaxTest extends TestCase
 
     public function test_array_syntax_long()
     {
-        $root = \ast\parse_code('<?php array(1, 2, 3) ?>', 40);
+        $root = \ast\parse_code('<?php array(1, 2, 3) ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ShortArraySyntax());
         $tester->test($root);
@@ -33,7 +34,7 @@ class ShortArraySyntaxTest extends TestCase
 
     public function test_array_syntax_short()
     {
-        $root = \ast\parse_code('<?php [1, 2, 3] ?>', 40);
+        $root = \ast\parse_code('<?php [1, 2, 3] ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ShortArraySyntax());
         $tester->test($root);

@@ -20,6 +20,9 @@ class Config
     /** The name of the configuration file to load by default. */
     private const DEFAULT_FILE_PATH = '.pahout.yaml';
 
+    /** php-ast version */
+    public const AST_VERSION = 40;
+
     /** @var Config the single config instancec */
     private static $config;
 

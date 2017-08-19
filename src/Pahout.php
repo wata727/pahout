@@ -60,7 +60,7 @@ class Pahout
         foreach ($this->files as $file) {
             Logger::getInstance()->info('Parse: '.$file);
             try {
-                $root = \ast\parse_file($file, 40);
+                $root = \ast\parse_file($file, Config::AST_VERSION);
                 // If file is empty, $root is not instance of Node.
                 if ($root instanceof Node) {
                     $this->traverse($file, $root);

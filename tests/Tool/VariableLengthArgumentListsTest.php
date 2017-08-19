@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\VariableLengthArgumentLists;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class VariableLengthArgumentListsTest extends TestCase
@@ -28,7 +29,7 @@ function sum() {
     return $acc;
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
@@ -54,7 +55,7 @@ function get_first_arg() {
     return func_get_arg(0);
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
@@ -80,7 +81,7 @@ function get_arguments_count() {
     return func_num_args();
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
@@ -110,7 +111,7 @@ function sum(...$numbers) {
     return $acc;
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);

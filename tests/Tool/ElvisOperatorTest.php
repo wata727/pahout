@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\ElvisOperator;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ElvisOperatorTest extends TestCase
@@ -18,7 +19,7 @@ class ElvisOperatorTest extends TestCase
 
     public function test_ternary_operator_with_same_node()
     {
-        $root = \ast\parse_code('<?php $a = $a ? $a : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = $a ? $a : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
@@ -33,7 +34,7 @@ class ElvisOperatorTest extends TestCase
 
     public function test_ternary_operator_with_same_string()
     {
-        $root = \ast\parse_code('<?php $a = \'a\' ? \'a\' : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = \'a\' ? \'a\' : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
@@ -48,7 +49,7 @@ class ElvisOperatorTest extends TestCase
 
     public function test_ternary_operator_with_different_node()
     {
-        $root = \ast\parse_code('<?php $a = $a ? $b : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = $a ? $b : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
@@ -58,7 +59,7 @@ class ElvisOperatorTest extends TestCase
 
     public function test_ternary_operator_with_different_type()
     {
-        $root = \ast\parse_code('<?php $a = $a ? 1 : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = $a ? 1 : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
@@ -68,7 +69,7 @@ class ElvisOperatorTest extends TestCase
 
     public function test_elvis_operator()
     {
-        $root = \ast\parse_code('<?php $a = $a ?: false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = $a ?: false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);

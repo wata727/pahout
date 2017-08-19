@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\NullCoalescingOperator;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class NullCoalescingOperatorTest extends TestCase
@@ -18,7 +19,7 @@ class NullCoalescingOperatorTest extends TestCase
 
     public function test_ternary_operator_with_isset_node()
     {
-        $root = \ast\parse_code('<?php $a = isset($b) ? $b : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = isset($b) ? $b : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
@@ -33,7 +34,7 @@ class NullCoalescingOperatorTest extends TestCase
 
     public function test_ternary_operator_with_isset_string()
     {
-        $root = \ast\parse_code('<?php $a = isset("a") ? "a" : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = isset("a") ? "a" : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
@@ -48,7 +49,7 @@ class NullCoalescingOperatorTest extends TestCase
 
     public function test_ternary_operator_with_different_node()
     {
-        $root = \ast\parse_code('<?php $a = isset($b) ? $c : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = isset($b) ? $c : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
@@ -58,7 +59,7 @@ class NullCoalescingOperatorTest extends TestCase
 
     public function test_ternary_operator_with_different_type()
     {
-        $root = \ast\parse_code('<?php $a = isset($b) ? 1 : false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = isset($b) ? 1 : false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
@@ -68,7 +69,7 @@ class NullCoalescingOperatorTest extends TestCase
 
     public function test_null_coalescing_operator()
     {
-        $root = \ast\parse_code('<?php $a = $b ?? false; ?>', 40);
+        $root = \ast\parse_code('<?php $a = $b ?? false; ?>', Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);

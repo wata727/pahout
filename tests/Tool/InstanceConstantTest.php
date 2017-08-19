@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\InstanceConstant;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class InstanceConstantTest extends TestCase
@@ -23,7 +24,7 @@ class InstanceConstantTest extends TestCase
 $instance = new Hoge();
 get_class($instance)::CONSTANT;
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new InstanceConstant());
         $tester->test($root);
@@ -43,7 +44,7 @@ CODE;
 $instance = new Hoge();
 $instance::CONSTANT;
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new InstanceConstant());
         $tester->test($root);

@@ -7,6 +7,7 @@ use Pahout\Test\helper\PahoutHelper;
 use Pahout\Tool\MultipleCatch;
 use Pahout\Hint;
 use Pahout\Logger;
+use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class MultipleCatchTest extends TestCase
@@ -34,7 +35,7 @@ try {
     echo "catch!";
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new MultipleCatch());
         $tester->test($root);
@@ -61,7 +62,7 @@ try {
     echo "catch!";
 }
 CODE;
-        $root = \ast\parse_code($code, 40);
+        $root = \ast\parse_code($code, Config::AST_VERSION);
 
         $tester = PahoutHelper::create(new MultipleCatch());
         $tester->test($root);
