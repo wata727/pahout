@@ -27,6 +27,7 @@ class ToolBox
     public static function create(): array
     {
         $tools = [];
+        $config = Config::getInstance();
         foreach (self::VALID_TOOLS as $tool) {
             // SyntaxError is a special tool. Pahout directly generates Hint without checking AST.
             if ($tool !== 'SyntaxError') {
@@ -35,8 +36,7 @@ class ToolBox
             }
         }
 
-        return array_filter($tools, function ($tool) {
-            $config = Config::getInstance();
+        return array_filter($tools, function ($tool) use ($config) {
             // Activate only tools that are not included in ignore_tools, and whose PHP version is applicable.
             return !in_array($tool::HINT_TYPE, $config->ignore_tools)
                      && version_compare($config->php_version, $tool::PHP_VERSION, '>=');
