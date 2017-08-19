@@ -27,7 +27,10 @@ try {
     fuga();
 } catch (B $exn) {
     echo "catch!";
+    fuga();
 } catch (C $exn) {
+    echo "catch!";
+} catch (D $exn) {
     echo "catch!";
 }
 CODE;
@@ -36,11 +39,13 @@ CODE;
         $tester = PahoutHelper::create(new MultipleCatch());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('MultipleCatch', $tester->hints[0]->type);
-        $this->assertEquals('A catch block may specify multiple exceptions.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(7, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('MultipleCatch', 'A catch block may specify multiple exceptions.', './test.php', 4),
+                new Hint('MultipleCatch', 'A catch block may specify multiple exceptions.', './test.php', 10),
+            ],
+            $tester->hints
+        );
     }
 
     public function test_catch_multiple_exceptions()
@@ -49,10 +54,10 @@ CODE;
 <?php
 try {
     hoge();
-} catch (A $exn) {
+} catch (A | B $exn) {
     echo "catch!";
     fuga();
-} catch (B | C $exn) {
+} catch (C | D $exn) {
     echo "catch!";
 }
 CODE;

@@ -60,23 +60,25 @@ class MultipleCatch implements Base
     */
     public function run(string $file, Node $node): array
     {
+        $hints = [];
         $catch_stmts_list = [];
+
         foreach ($node->children as $catch) {
             $stmts = $catch->children['stmts'];
             foreach ($catch_stmts_list as $catch_stmts) {
                 if ($this->isEqualsWithoutLineno($catch_stmts, $stmts)) {
-                    return [new Hint(
+                    $hints[] = new Hint(
                         self::HINT_TYPE,
                         self::HINT_MESSAGE,
                         $file,
                         $catch_stmts->lineno
-                    )];
+                    );
                 }
             }
             $catch_stmts_list[] = $stmts;
         }
 
-        return [];
+        return $hints;
     }
 
     /**
