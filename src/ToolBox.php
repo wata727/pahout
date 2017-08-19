@@ -17,6 +17,7 @@ class ToolBox
         'NullCoalescingOperator',
         'VariableLengthArgumentLists',
         'InstanceConstant',
+        'MultipleCatch',
     ];
 
     /**
