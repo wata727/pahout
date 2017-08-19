@@ -23,11 +23,12 @@ class NullCoalescingOperatorTest extends TestCase
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('NullCoalescingOperator', $tester->hints[0]->type);
-        $this->assertEquals('Use null coalecing operator instead of ternary operator.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(1, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('NullCoalescingOperator', 'Use null coalecing operator instead of ternary operator.', './test.php', 1)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_ternary_operator_with_isset_string()
@@ -37,11 +38,12 @@ class NullCoalescingOperatorTest extends TestCase
         $tester = PahoutHelper::create(new NullCoalescingOperator());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('NullCoalescingOperator', $tester->hints[0]->type);
-        $this->assertEquals('Use null coalecing operator instead of ternary operator.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(1, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('NullCoalescingOperator', 'Use null coalecing operator instead of ternary operator.', './test.php', 1)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_ternary_operator_with_different_node()

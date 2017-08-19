@@ -28,11 +28,12 @@ CODE;
         $tester = PahoutHelper::create(new InstanceConstant());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('InstanceConstant', $tester->hints[0]->type);
-        $this->assertEquals('You can access class constants from instances.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(3, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('InstanceConstant', 'You can access class constants from instances.', './test.php', 3)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_instance_constants()

@@ -23,11 +23,12 @@ class ElvisOperatorTest extends TestCase
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('ElvisOperator', $tester->hints[0]->type);
-        $this->assertEquals('Use elvis operator instead of ternary operator.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(1, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('ElvisOperator', 'Use elvis operator instead of ternary operator.', './test.php', 1)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_ternary_operator_with_same_string()
@@ -37,11 +38,12 @@ class ElvisOperatorTest extends TestCase
         $tester = PahoutHelper::create(new ElvisOperator());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('ElvisOperator', $tester->hints[0]->type);
-        $this->assertEquals('Use elvis operator instead of ternary operator.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(1, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('ElvisOperator', 'Use elvis operator instead of ternary operator.', './test.php', 1)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_ternary_operator_with_different_node()

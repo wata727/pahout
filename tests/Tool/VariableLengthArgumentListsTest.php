@@ -33,11 +33,17 @@ CODE;
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('VariableLengthArgumentLists', $tester->hints[0]->type);
-        $this->assertEquals('Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(4, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint(
+                    'VariableLengthArgumentLists',
+                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    './test.php',
+                    4
+                )
+            ],
+            $tester->hints
+        );
     }
 
     public function test_func_get_arg()
@@ -53,11 +59,17 @@ CODE;
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('VariableLengthArgumentLists', $tester->hints[0]->type);
-        $this->assertEquals('Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(3, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint(
+                    'VariableLengthArgumentLists',
+                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    './test.php',
+                    3
+                )
+            ],
+            $tester->hints
+        );
     }
 
     public function test_func_num_args()
@@ -73,11 +85,17 @@ CODE;
         $tester = PahoutHelper::create(new VariableLengthArgumentLists());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('VariableLengthArgumentLists', $tester->hints[0]->type);
-        $this->assertEquals('Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(3, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint(
+                    'VariableLengthArgumentLists',
+                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    './test.php',
+                    3
+                )
+            ],
+            $tester->hints
+        );
     }
 
     public function test_veriable_length_argument_lists()

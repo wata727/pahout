@@ -23,11 +23,12 @@ class ShortArraySyntaxTest extends TestCase
         $tester = PahoutHelper::create(new ShortArraySyntax());
         $tester->test($root);
 
-        $this->assertCount(1, $tester->hints);
-        $this->assertEquals('ShortArraySyntax', $tester->hints[0]->type);
-        $this->assertEquals('Use [...] syntax instead of array(...) syntax.', $tester->hints[0]->message);
-        $this->assertEquals('./test.php', $tester->hints[0]->filename);
-        $this->assertEquals(1, $tester->hints[0]->lineno);
+        $this->assertEquals(
+            [
+                new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './test.php', 1)
+            ],
+            $tester->hints
+        );
     }
 
     public function test_array_syntax_short()
