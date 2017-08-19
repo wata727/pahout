@@ -44,7 +44,7 @@ use Pahout\Hint;
 */
 class MultipleCatch implements Base
 {
-    /** Analyze calling class constants (AST_CATCH_LIST) */
+    /** Analyze catch block list (AST_CATCH_LIST) */
     public const ENTRY_POINT = \ast\AST_CATCH_LIST;
     /** PHP version to enable this tool */
     public const PHP_VERSION = '7.1.0';
