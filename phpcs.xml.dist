@@ -4,9 +4,11 @@
 
     <file>src</file>
 
-    <rule ref="PSR2"></rule>
-    <rule ref="Squiz.Commenting.ClassComment"></rule>
-    <rule ref="Squiz.Commenting.FunctionComment"></rule>
-    <rule ref="Squiz.Commenting.VariableComment"></rule>
-    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"></rule>
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineLength.TooLong" />
+    </rule>
+    <rule ref="Squiz.Commenting.ClassComment" />
+    <rule ref="Squiz.Commenting.FunctionComment" />
+    <rule ref="Squiz.Commenting.VariableComment" />
+    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
 </ruleset>
