@@ -19,6 +19,7 @@ class ToolBox
         'InstanceConstant',
         'MultipleCatch',
         'PasswordHash',
+        'SymmetricArrayDestructuring',
     ];
 
     /**
