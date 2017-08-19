@@ -31,4 +31,4 @@ function sum(...$numbers) { // OK!
 
 ## Reference
 
-http://php.net/manual/functions.arguments.php
+http://php.net/manual/en/functions.arguments.php#functions.variable-arg-list

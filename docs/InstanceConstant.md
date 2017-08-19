@@ -8,7 +8,7 @@ Class constants are defined for classes, but they can also be referenced from in
 ```php
 <?php
 $instance = new Hoge();
-get_class($instance)::CONSTANT; //InstanceConstant: You can access class constants from instances.
+get_class($instance)::CONSTANT; // InstanceConstant: You can access class constants from instances.
 ```
 
 ## After
@@ -21,4 +21,4 @@ $instance::CONSTANT; // OK!
 
 ## Reference
 
-http://php.net/manual/language.oop5.constants.php#language.oop5.constants
+http://php.net/manual/language.oop5.constants.php
