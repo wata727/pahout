@@ -18,6 +18,7 @@ class ToolBox
         'VariableLengthArgumentLists',
         'InstanceConstant',
         'MultipleCatch',
+        'PasswordHash',
     ];
 
     /**
