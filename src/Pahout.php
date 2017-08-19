@@ -102,10 +102,12 @@ class Pahout
             Logger::getInstance()->debug('Entrypoint check: '.get_class($tool));
             if ($tool::ENTRY_POINT === $node->kind) {
                 Logger::getInstance()->debug('Run: '.get_class($tool));
-                $hint = $tool->run($file, $node);
-                if ($hint) {
-                    Logger::getInstance()->debug('Detected hints: line='.$hint->lineno);
-                    $this->hints[] = $hint;
+                $hints = $tool->run($file, $node);
+                if (count($hints) > 0) {
+                    foreach ($hints as $hint) {
+                        Logger::getInstance()->debug('Detected hints: line='.$hint->lineno);
+                    }
+                    array_push($this->hints, ...$hints);
                 }
             }
         }

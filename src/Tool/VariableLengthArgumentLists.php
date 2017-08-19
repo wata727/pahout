@@ -53,20 +53,20 @@ class VariableLengthArgumentLists implements Base
     *
     * @param string $file File name to be analyzed.
     * @param Node   $node AST node to be analyzed.
-    * @return Hint|null A Hint obtained from results. If it does not exist, it returns null.
+    * @return Hint[] List of hints obtained from results.
     */
-    public function run(string $file, Node $node): ?Hint
+    public function run(string $file, Node $node): array
     {
         $expr = $node->children['expr'];
 
         if ($expr->kind === \ast\AST_NAME) {
             if (in_array($expr->children['name'], self::FUNCTION_LIST, true)) {
-                return new Hint(
+                return [new Hint(
                     self::HINT_TYPE,
                     self::HINT_MESSAGE,
                     $file,
                     $node->lineno
-                );
+                )];
             } else {
                 Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);
             }
@@ -74,6 +74,6 @@ class VariableLengthArgumentLists implements Base
             Logger::getInstance()->debug('Ignore AST kind: '.$expr->kind);
         }
 
-        return null;
+        return [];
     }
 }

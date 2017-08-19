@@ -40,20 +40,20 @@ class ShortArraySyntax implements Base
     *
     * @param string $file File name to be analyzed.
     * @param Node   $node AST node to be analyzed.
-    * @return Hint|null A Hint obtained from results. If it does not exist, it returns null.
+    * @return Hint[] List of hints obtained from results.
     */
-    public function run(string $file, Node $node): ?Hint
+    public function run(string $file, Node $node): array
     {
         if ($node->flags !== \ast\flags\ARRAY_SYNTAX_LONG) {
             Logger::getInstance()->debug('Ignore flags: '.$node->flags);
-            return null;
+            return [];
         }
 
-        return new Hint(
+        return [new Hint(
             self::HINT_TYPE,
             self::HINT_MESSAGE,
             $file,
             $node->lineno
-        );
+        )];
     }
 }

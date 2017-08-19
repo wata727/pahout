@@ -56,27 +56,27 @@ class MultipleCatch implements Base
     *
     * @param string $file File name to be analyzed.
     * @param Node   $node AST node to be analyzed.
-    * @return Hint|null A Hint obtained from results. If it does not exist, it returns null.
+    * @return Hint[] List of hints obtained from results.
     */
-    public function run(string $file, Node $node): ?Hint
+    public function run(string $file, Node $node): array
     {
         $catch_stmts_list = [];
         foreach ($node->children as $catch) {
             $stmts = $catch->children['stmts'];
             foreach ($catch_stmts_list as $catch_stmts) {
                 if ($this->isEqualsWithoutLineno($catch_stmts, $stmts)) {
-                    return new Hint(
+                    return [new Hint(
                         self::HINT_TYPE,
                         self::HINT_MESSAGE,
                         $file,
                         $catch_stmts->lineno
-                    );
+                    )];
                 }
             }
             $catch_stmts_list[] = $stmts;
         }
 
-        return null;
+        return [];
     }
 
     /**
