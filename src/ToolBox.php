@@ -3,11 +3,6 @@
 namespace Pahout;
 
 use Pahout\Tool\Base;
-use Pahout\Tool\ShortArraySyntax;
-use Pahout\Tool\ElvisOperator;
-use Pahout\Tool\NullCoalescingOperator;
-use Pahout\Tool\VariableLengthArgumentLists;
-use Pahout\Tool\InstanceConstant;
 
 /**
 * Factory of tools used by Mahout
@@ -31,13 +26,16 @@ class ToolBox
     */
     public static function create(): array
     {
-        return array_filter([
-            new ShortArraySyntax(),
-            new ElvisOperator(),
-            new NullCoalescingOperator(),
-            new VariableLengthArgumentLists(),
-            new InstanceConstant(),
-        ], function ($tool) {
+        $tools = [];
+        foreach (self::VALID_TOOLS as $tool) {
+            // SyntaxError is a special tool. Pahout directly generates Hint without checking AST.
+            if ($tool !== 'SyntaxError') {
+                $klass = "Pahout\\Tool\\".$tool;
+                $tools[] = new $klass();
+            }
+        }
+
+        return array_filter($tools, function ($tool) {
             $config = Config::getInstance();
             // Activate only tools that are not included in ignore_tools, and whose PHP version is applicable.
             return !in_array($tool::HINT_TYPE, $config->ignore_tools)
