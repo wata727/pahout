@@ -99,7 +99,7 @@ class Pahout
 
         foreach ($this->tools as $tool) {
             Logger::getInstance()->debug('Entrypoint check: '.get_class($tool));
-            if (get_class($tool)::ENTRY_POINT === $node->kind) {
+            if ($tool::ENTRY_POINT === $node->kind) {
                 Logger::getInstance()->debug('Run: '.get_class($tool));
                 $hint = $tool->run($file, $node);
                 if ($hint) {
