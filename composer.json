@@ -1,6 +1,6 @@
 {
     "name": "wata727/pahout",
-    "description": "A linter for writing better PHP",
+    "description": "A pair programming partner for writing better PHP",
     "type": "project",
     "authors": [
         {
