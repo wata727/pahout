@@ -7,14 +7,14 @@ Also, since it is compatible with existing password hashes, you should use this.
 
 ```php
 <?php
-$password = crypt('secret text', generate_salt());
+$password = crypt('secret text', generate_salt()); // PasswordHash: Use of `password_hash()` is encouraged.
 ```
 
 ## After
 
 ```php
 <?php
-$password = password_hash('secret text', PASSWORD_DEFAULT);
+$password = password_hash('secret text', PASSWORD_DEFAULT); // OK!
 ```
 
 ## Reference
