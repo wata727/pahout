@@ -17,6 +17,11 @@ if (extension_loaded('ast')) {
     exit(1);
 }
 
+if (!file_exists('vendor/autoload.php')) {
+    fprintf(STDERR, "Autoload file could not be found. Please run `composer install` at first.\n");
+    exit(1);
+}
+
 require_once 'vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
