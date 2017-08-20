@@ -20,6 +20,7 @@ class ToolBox
         'MultipleCatch',
         'PasswordHash',
         'SymmetricArrayDestructuring',
+        'RandomInt',
     ];
 
     /**
