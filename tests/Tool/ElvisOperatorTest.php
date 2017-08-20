@@ -26,7 +26,13 @@ class ElvisOperatorTest extends TestCase
 
         $this->assertEquals(
             [
-                new Hint('ElvisOperator', 'Use elvis operator instead of ternary operator.', './test.php', 1)
+                new Hint(
+                    'ElvisOperator',
+                    'Use elvis operator instead of ternary operator.',
+                    './test.php',
+                    1,
+                    Hint::DOCUMENT_LINK.'/ElvisOperator.md'
+                )
             ],
             $tester->hints
         );
@@ -41,7 +47,13 @@ class ElvisOperatorTest extends TestCase
 
         $this->assertEquals(
             [
-                new Hint('ElvisOperator', 'Use elvis operator instead of ternary operator.', './test.php', 1)
+                new Hint(
+                    'ElvisOperator',
+                    'Use elvis operator instead of ternary operator.',
+                    './test.php',
+                    1,
+                    Hint::DOCUMENT_LINK.'/ElvisOperator.md'
+                )
             ],
             $tester->hints
         );

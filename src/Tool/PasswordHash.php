@@ -34,6 +34,7 @@ class PasswordHash implements Base
     public const PHP_VERSION = '5.5.0';
     public const HINT_TYPE = "PasswordHash";
     private const HINT_MESSAGE = "Use of `password_hash()` is encouraged.";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/PasswordHash.md";
 
     /**
     * Detect calls to `crypt()` function.
@@ -52,7 +53,8 @@ class PasswordHash implements Base
                     self::HINT_TYPE,
                     self::HINT_MESSAGE,
                     $file,
-                    $node->lineno
+                    $node->lineno,
+                    self::HINT_LINK
                 )];
             }
         }

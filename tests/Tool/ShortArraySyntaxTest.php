@@ -26,7 +26,13 @@ class ShortArraySyntaxTest extends TestCase
 
         $this->assertEquals(
             [
-                new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './test.php', 1)
+                new Hint(
+                    'ShortArraySyntax',
+                    'Use [...] syntax instead of array(...) syntax.',
+                    './test.php',
+                    1,
+                    Hint::DOCUMENT_LINK.'/ShortArraySyntax.md'
+                )
             ],
             $tester->hints
         );

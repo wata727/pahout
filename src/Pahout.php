@@ -74,7 +74,8 @@ class Pahout
                         'SyntaxError',
                         $exception->getMessage(),
                         $exception->getFile(),
-                        $exception->getLine()
+                        $exception->getLine(),
+                        Hint::DOCUMENT_LINK."/SyntaxError.md"
                     );
                 }
             }

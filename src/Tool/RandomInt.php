@@ -34,6 +34,7 @@ class RandomInt implements Base
     public const PHP_VERSION = '7.0.0';
     public const HINT_TYPE = "RandomInt";
     private const HINT_MESSAGE = "This function is not cryptographically secure. Consider using `random_int()`, `random_bytes()`, or `openssl_random_pseudo_bytes()` instead.";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/RandomInt.md";
     private const FUNCTION_LIST = ['rand', 'mt_rand'];
 
     /**
@@ -53,7 +54,8 @@ class RandomInt implements Base
                     self::HINT_TYPE,
                     self::HINT_MESSAGE,
                     $file,
-                    $node->lineno
+                    $node->lineno,
+                    self::HINT_LINK
                 )];
             } else {
                 Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);

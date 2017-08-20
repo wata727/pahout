@@ -42,8 +42,20 @@ CODE;
 
         $this->assertEquals(
             [
-                new Hint('MultipleCatch', 'A catch block may specify multiple exceptions.', './test.php', 4),
-                new Hint('MultipleCatch', 'A catch block may specify multiple exceptions.', './test.php', 10),
+                new Hint(
+                    'MultipleCatch',
+                    'A catch block may specify multiple exceptions.',
+                    './test.php',
+                    4,
+                    Hint::DOCUMENT_LINK.'/MultipleCatch.md'
+                ),
+                new Hint(
+                    'MultipleCatch',
+                    'A catch block may specify multiple exceptions.',
+                    './test.php',
+                    10,
+                    Hint::DOCUMENT_LINK.'/MultipleCatch.md'
+                ),
             ],
             $tester->hints
         );

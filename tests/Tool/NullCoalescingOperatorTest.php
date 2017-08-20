@@ -26,7 +26,13 @@ class NullCoalescingOperatorTest extends TestCase
 
         $this->assertEquals(
             [
-                new Hint('NullCoalescingOperator', 'Use null coalecing operator instead of ternary operator.', './test.php', 1)
+                new Hint(
+                    'NullCoalescingOperator',
+                    'Use null coalecing operator instead of ternary operator.',
+                    './test.php',
+                    1,
+                    Hint::DOCUMENT_LINK.'/NullCoalescingOperator.md'
+                )
             ],
             $tester->hints
         );
@@ -41,7 +47,13 @@ class NullCoalescingOperatorTest extends TestCase
 
         $this->assertEquals(
             [
-                new Hint('NullCoalescingOperator', 'Use null coalecing operator instead of ternary operator.', './test.php', 1)
+                new Hint(
+                    'NullCoalescingOperator',
+                    'Use null coalecing operator instead of ternary operator.',
+                    './test.php',
+                    1,
+                    Hint::DOCUMENT_LINK.'/NullCoalescingOperator.md'
+                )
             ],
             $tester->hints
         );

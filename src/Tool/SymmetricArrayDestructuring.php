@@ -33,6 +33,7 @@ class SymmetricArrayDestructuring implements Base
     public const PHP_VERSION = '7.1.0';
     public const HINT_TYPE = "SymmetricArrayDestructuring";
     private const HINT_MESSAGE = "Use [...] syntax instead of list(...) syntax.";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/SymmetricArrayDestructuring.md";
 
     /**
     * Detect ARRAY_SYNTAX_LIST node.
@@ -52,7 +53,8 @@ class SymmetricArrayDestructuring implements Base
             self::HINT_TYPE,
             self::HINT_MESSAGE,
             $file,
-            $node->lineno
+            $node->lineno,
+            self::HINT_LINK
         )];
     }
 }

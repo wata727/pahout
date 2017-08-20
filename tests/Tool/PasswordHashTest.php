@@ -30,7 +30,13 @@ CODE;
 
         $this->assertEquals(
             [
-                new Hint('PasswordHash', 'Use of `password_hash()` is encouraged.', './test.php', 2)
+                new Hint(
+                    'PasswordHash',
+                    'Use of `password_hash()` is encouraged.',
+                    './test.php',
+                    2,
+                    Hint::DOCUMENT_LINK.'/PasswordHash.md'
+                )
             ],
             $tester->hints
         );

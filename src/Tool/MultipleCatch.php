@@ -50,6 +50,7 @@ class MultipleCatch implements Base
     public const PHP_VERSION = '7.1.0';
     public const HINT_TYPE = "MultipleCatch";
     private const HINT_MESSAGE = 'A catch block may specify multiple exceptions.';
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/MultipleCatch.md";
 
     /**
     * Detect catch blocks of the same implementation.
@@ -71,7 +72,8 @@ class MultipleCatch implements Base
                         self::HINT_TYPE,
                         self::HINT_MESSAGE,
                         $file,
-                        $catch_stmts->lineno
+                        $catch_stmts->lineno,
+                        self::HINT_LINK
                     );
                 }
             }

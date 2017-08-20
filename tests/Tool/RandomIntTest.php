@@ -34,7 +34,8 @@ CODE;
                     'RandomInt',
                     'This function is not cryptographically secure. Consider using `random_int()`, `random_bytes()`, or `openssl_random_pseudo_bytes()` instead.',
                     './test.php',
-                    2
+                    2,
+                    Hint::DOCUMENT_LINK.'/RandomInt.md'
                 )
             ],
             $tester->hints
@@ -58,7 +59,8 @@ CODE;
                     'RandomInt',
                     'This function is not cryptographically secure. Consider using `random_int()`, `random_bytes()`, or `openssl_random_pseudo_bytes()` instead.',
                     './test.php',
-                    2
+                    2,
+                    Hint::DOCUMENT_LINK.'/RandomInt.md'
                 )
             ],
             $tester->hints

@@ -36,6 +36,7 @@ class InstanceConstant implements Base
     public const PHP_VERSION = '5.3.0';
     public const HINT_TYPE = "InstanceConstant";
     private const HINT_MESSAGE = 'You can access class constants from instances.';
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/InstanceConstant.md";
 
     /**
     * Detects reference to class constants with call to `get_class` function
@@ -56,7 +57,8 @@ class InstanceConstant implements Base
                         self::HINT_TYPE,
                         self::HINT_MESSAGE,
                         $file,
-                        $klass->lineno
+                        $klass->lineno,
+                        self::HINT_LINK
                     )];
                 } else {
                     Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);

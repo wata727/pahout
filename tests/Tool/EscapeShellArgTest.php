@@ -37,7 +37,8 @@ CODE;
                     'EscapeShellArg',
                     'This function allows the attacker to pass arbitrary number of arguments.',
                     './test.php',
-                    4
+                    4,
+                    Hint::DOCUMENT_LINK.'/EscapeShellArg.md'
                 )
             ],
             $tester->hints

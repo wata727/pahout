@@ -30,7 +30,13 @@ CODE;
 
         $this->assertEquals(
             [
-                new Hint('SymmetricArrayDestructuring', 'Use [...] syntax instead of list(...) syntax.', './test.php', 2)
+                new Hint(
+                    'SymmetricArrayDestructuring',
+                    'Use [...] syntax instead of list(...) syntax.',
+                    './test.php',
+                    2,
+                    Hint::DOCUMENT_LINK.'/SymmetricArrayDestructuring.md'
+                )
             ],
             $tester->hints
         );

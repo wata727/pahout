@@ -31,7 +31,13 @@ CODE;
 
         $this->assertEquals(
             [
-                new Hint('InstanceConstant', 'You can access class constants from instances.', './test.php', 3)
+                new Hint(
+                    'InstanceConstant',
+                    'You can access class constants from instances.',
+                    './test.php',
+                    3,
+                    Hint::DOCUMENT_LINK.'/InstanceConstant.md'
+                )
             ],
             $tester->hints
         );

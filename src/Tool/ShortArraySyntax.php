@@ -34,6 +34,7 @@ class ShortArraySyntax implements Base
     public const PHP_VERSION = '5.4.0';
     public const HINT_TYPE = "ShortArraySyntax";
     private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/ShortArraySyntax.md";
 
     /**
     * Detect ARRAY_SYNTAX_LONG node.
@@ -53,7 +54,8 @@ class ShortArraySyntax implements Base
             self::HINT_TYPE,
             self::HINT_MESSAGE,
             $file,
-            $node->lineno
+            $node->lineno,
+            self::HINT_LINK
         )];
     }
 }

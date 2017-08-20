@@ -34,6 +34,7 @@ class NullCoalescingOperator implements Base
     public const PHP_VERSION = '7.0.0';
     public const HINT_TYPE = "NullCoalescingOperator";
     private const HINT_MESSAGE = 'Use null coalecing operator instead of ternary operator.';
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/NullCoalescingOperator.md";
 
     /**
     * Detects ternary operators with isset().
@@ -68,7 +69,8 @@ class NullCoalescingOperator implements Base
                 self::HINT_TYPE,
                 self::HINT_MESSAGE,
                 $file,
-                $node->lineno
+                $node->lineno,
+                self::HINT_LINK
             )];
         }
 

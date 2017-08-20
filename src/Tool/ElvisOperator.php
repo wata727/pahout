@@ -34,6 +34,7 @@ class ElvisOperator implements Base
     public const PHP_VERSION = '5.3.0';
     public const HINT_TYPE = "ElvisOperator";
     private const HINT_MESSAGE = 'Use elvis operator instead of ternary operator.';
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/ElvisOperator.md";
 
     /**
     * Detects ternary operators that have the same condition expression and true expression.
@@ -64,7 +65,8 @@ class ElvisOperator implements Base
             self::HINT_TYPE,
             self::HINT_MESSAGE,
             $file,
-            $node->lineno
+            $node->lineno,
+            self::HINT_LINK
         )];
     }
 }

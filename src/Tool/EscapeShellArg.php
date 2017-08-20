@@ -40,6 +40,7 @@ class EscapeShellArg implements Base
     public const PHP_VERSION = '4.0.3';
     public const HINT_TYPE = "EscapeShellArg";
     private const HINT_MESSAGE = "This function allows the attacker to pass arbitrary number of arguments.";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/EscapeShellArg.md";
 
     /**
     * Detect escapeshellcmd() function call.
@@ -58,7 +59,8 @@ class EscapeShellArg implements Base
                     self::HINT_TYPE,
                     self::HINT_MESSAGE,
                     $file,
-                    $node->lineno
+                    $node->lineno,
+                    self::HINT_LINK
                 )];
             } else {
                 Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);

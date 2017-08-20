@@ -273,9 +273,27 @@ OUTPUT;
                     './test.php',
                 ],
                 'hints' => [
-                    new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './subdir/test.php', 4),
-                    new Hint('SyntaxError', 'syntax error, unexpected identifier (T_STRING)', './syntax_error.php', 3),
-                    new Hint('ShortArraySyntax', 'Use [...] syntax instead of array(...) syntax.', './test.php', 3),
+                    new Hint(
+                        'ShortArraySyntax',
+                        'Use [...] syntax instead of array(...) syntax.',
+                        './subdir/test.php',
+                        4,
+                        Hint::DOCUMENT_LINK.'/ShortArraySyntax.md'
+                    ),
+                    new Hint(
+                        'SyntaxError',
+                        'syntax error, unexpected identifier (T_STRING)',
+                        './syntax_error.php',
+                        3,
+                        Hint::DOCUMENT_LINK.'/SyntaxError.md'
+                    ),
+                    new Hint(
+                        'ShortArraySyntax',
+                        'Use [...] syntax instead of array(...) syntax.',
+                        './test.php',
+                        3,
+                        Hint::DOCUMENT_LINK.'/ShortArraySyntax.md'
+                    ),
                 ],
             ]);
 

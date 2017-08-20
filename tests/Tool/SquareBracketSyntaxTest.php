@@ -34,7 +34,8 @@ CODE;
                     'SquareBracketSyntax',
                     'Since `array_push()` has the function call overhead, let\'s use `$array[] =`.',
                     './test.php',
-                    2
+                    2,
+                    Hint::DOCUMENT_LINK.'/SquareBracketSyntax.md'
                 )
             ],
             $tester->hints
