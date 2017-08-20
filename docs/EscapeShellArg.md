@@ -25,4 +25,4 @@ system($cmd);
 
 ## Reference
 
-http://php.net/manual/function.escapeshellcmd.php
+https://secure.php.net/manual/function.escapeshellcmd.php

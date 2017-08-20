@@ -21,4 +21,4 @@ $instance::CONSTANT; // OK!
 
 ## Reference
 
-http://php.net/manual/language.oop5.constants.php
+https://secure.php.net/manual/language.oop5.constants.php

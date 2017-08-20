@@ -35,4 +35,4 @@ try {
 
 ## Reference
 
-http://php.net/manual/language.exceptions.php
+https://secure.php.net/manual/language.exceptions.php

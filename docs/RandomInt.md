@@ -19,4 +19,4 @@ $rand = random_int(0, PHP_INT_MAX); // OK!
 
 ## Reference
 
-http://php.net/manual/function.mt-rand.php
+https://secure.php.net/manual/function.mt-rand.php

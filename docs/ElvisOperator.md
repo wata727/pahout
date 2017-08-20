@@ -19,4 +19,4 @@ $a = $a ?: false; // OK!
 
 ## Reference
 
-http://php.net/manual/language.operators.comparison.php#language.operators.comparison.ternary
+https://secure.php.net/manual/language.operators.comparison.php#language.operators.comparison.ternary

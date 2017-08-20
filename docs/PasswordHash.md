@@ -19,4 +19,4 @@ $password = password_hash('secret text', PASSWORD_DEFAULT); // OK!
 
 ## Reference
 
-http://php.net/manual/function.password-hash.php
+https://secure.php.net/manual/function.password-hash.php

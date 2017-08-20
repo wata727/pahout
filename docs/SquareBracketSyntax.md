@@ -18,4 +18,4 @@ $array[] = 1; // OK!
 
 ## Reference
 
-http://php.net/manual/function.array-push.php
+https://secure.php.net/manual/function.array-push.php

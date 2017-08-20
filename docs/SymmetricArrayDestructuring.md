@@ -18,4 +18,4 @@ list($a, $b) = $array; // SymmetricArrayDestructuring: Use [...] syntax instead 
 
 ## Reference
 
-http://php.net/manual/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring
+https://secure.php.net/manual/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring

@@ -19,4 +19,4 @@ $a = [1, 2, 3]; // OK!
 
 ## Reference
 
-http://php.net/manual/en/language.types.array.php#language.types.array.syntax.array-func
+https://secure.php.net/manual/en/language.types.array.php#language.types.array.syntax.array-func
