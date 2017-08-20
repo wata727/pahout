@@ -29,13 +29,13 @@ class IntegrationTest extends TestCase
 
             $expected = <<<OUTPUT
 ./subdir/test.php:4
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected 'f' (T_STRING)
+\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 ./test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 3 files checked, 3 hints detected.
 
@@ -64,13 +64,13 @@ OUTPUT;
         $file3 = self::FIXTURE_PATH.'/receiving_files_and_dirs/test3.php';
         $expected = <<<OUTPUT
 $file1:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 $file2:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 $file3:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 3 files checked, 3 hints detected.
 
@@ -99,7 +99,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected identifier (T_STRING)
+\tSyntaxError: syntax error, unexpected identifier (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 3 files checked, 1 hints detected.
 
@@ -148,10 +148,10 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected identifier (T_STRING)
+\tSyntaxError: syntax error, unexpected identifier (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 ./test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 2 files checked, 2 hints detected.
 
@@ -196,7 +196,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 1 files checked, 1 hints detected.
 
@@ -219,7 +219,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 1 files checked, 1 hints detected.
 
@@ -242,10 +242,10 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 ./vendor/test.php:3
-\tShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 2 files checked, 2 hints detected.
 

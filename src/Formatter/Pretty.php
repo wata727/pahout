@@ -9,10 +9,10 @@ namespace Pahout\Formatter;
 *
 * ```
 * ./subdir/test.php:4
-*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 *
 * ./test.php:3
-*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax.
+*     ShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 *
 * 2 files checked, 2 hints detected.
 * ```
@@ -35,7 +35,7 @@ class Pretty extends Base
         } else {
             foreach ($this->hints as $hint) {
                 $this->output->writeln('<info>'.$hint->filename.':'.$hint->lineno.'</>');
-                $this->output->writeln("\t".$hint->type.': '.$hint->message);
+                $this->output->writeln("\t".$hint->type.': '.$hint->message." [$hint->link]");
                 $this->output->write("\n");
             }
         }

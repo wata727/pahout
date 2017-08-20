@@ -19,19 +19,22 @@ namespace Pahout\Formatter;
 *      "type": "ShortArraySyntax",
 *      "message": "Use [...] syntax instead of array(...) syntax.",
 *      "filename": "./subdir/test.php",
-*      "lineno": 4
+*      "lineno": 4,
+*      "link": "https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md"
 *    },
 *    {
 *      "type": "SyntaxError",
 *      "message": "syntax error, unexpected 'f' (T_STRING)",
 *      "filename": "./syntax_error.php",
-*      "lineno": 3
+*      "lineno": 3,
+*      "link": "https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md"
 *    },
 *    {
 *      "type": "ShortArraySyntax",
 *      "message": "Use [...] syntax instead of array(...) syntax.",
 *      "filename": "./test.php",
-*      "lineno": 3
+*      "lineno": 3,
+*      "link": "https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md"
 *    }
 *  ]
 *}
