@@ -22,6 +22,7 @@ class ToolBox
         'SymmetricArrayDestructuring',
         'RandomInt',
         'EscapeShellArg',
+        'SquareBracketSyntax',
     ];
 
     /**
