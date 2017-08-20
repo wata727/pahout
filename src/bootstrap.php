@@ -1,20 +1,26 @@
-<?php declare(strict_types=1);
+<?php
 
-require_once 'vendor/autoload.php';
-
-use Symfony\Component\Console\Application;
-use Pahout\Command\Check;
+$php_version = phpversion();
+if (version_compare($php_version, '7.1.0', '<')) {
+    fprintf(STDERR, "Pahout requires PHP version 7.1.0 or newer. The installed version is $php_version.\n");
+    exit(1);
+}
 
 if (extension_loaded('ast')) {
     $ast_version = phpversion('ast');
     if (version_compare($ast_version, '0.1.4', '<')) {
         fprintf(STDERR, "php-ast extension was found. But, Pahout requires php-ast version 0.1.4 or newer. The installed version is $ast_version.\n");
-        exit(Check::EXIT_CODE_ERROR);
+        exit(1);
     }
 } else {
     fprintf(STDERR, "php-ast extension could not be found. Pahout requires php-ast version 0.1.4 or newer.\n");
-    exit(Check::EXIT_CODE_ERROR);
+    exit(1);
 }
+
+require_once 'vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Pahout\Command\Check;
 
 $check = new Check();
 
