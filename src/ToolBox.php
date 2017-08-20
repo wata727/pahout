@@ -21,6 +21,7 @@ class ToolBox
         'PasswordHash',
         'SymmetricArrayDestructuring',
         'RandomInt',
+        'EscapeShellArg',
     ];
 
     /**
