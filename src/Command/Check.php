@@ -42,7 +42,7 @@ class Check extends Command
     protected function configure()
     {
         $this->setName('check')
-             ->setDescription('A linter for writing better PHP')
+             ->setDescription('A pair programming partner for writing better PHP')
              ->addArgument('files', InputArgument::IS_ARRAY, 'List of file names or directory names to be analyzed')
              ->addOption(
                  'php-version',
