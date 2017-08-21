@@ -26,7 +26,12 @@ TODO
 
 ### Using Composer
 
-TODO
+If you have the above environment, you can install with composer.
+
+```
+$ composer require wata727/pahout
+$ vendor/bin/pahout -V
+```
 
 ## Quick Start
 
