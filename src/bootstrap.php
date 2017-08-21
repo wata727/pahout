@@ -29,7 +29,7 @@ use Pahout\Command\Check;
 
 $check = new Check();
 
-$app = new Application('Pahout', '0.0.1');
+$app = new Application('Pahout', '0.1.0');
 $app->add($check);
 $app->setDefaultCommand($check->getName(), true);
 $app->run();
