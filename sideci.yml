@@ -1,0 +1,6 @@
+linter:
+  code_sniffer:
+    version: 3
+    dir: src
+    options:
+      standard: phpcs.xml.dist
