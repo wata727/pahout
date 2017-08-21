@@ -22,7 +22,11 @@ Preparing this environment is very time-consuming. I recommend using [Docker](ht
 
 ### Using Docker
 
-TODO
+By using the [Docker image](https://hub.docker.com/r/wata727/pahout/), you can easily try Pahout without affecting the local environment.
+
+```
+$ docker run --rm -t -v $(pwd):/workdir wata727/pahout
+```
 
 ### Using Composer
 
