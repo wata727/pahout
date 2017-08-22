@@ -94,6 +94,8 @@ class Pahout
     * @param string $file File name to be analyzed.
     * @param Node   $node AST node to be analyzed.
     * @return void
+    *
+    * @suppress PhanUndeclaredConstant
     */
     private function traverse(string $file, Node $node)
     {
