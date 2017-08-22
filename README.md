@@ -1,4 +1,7 @@
 # Pahout
+[![Build Status](https://travis-ci.org/wata727/pahout.svg?branch=master)](https://travis-ci.org/wata727/pahout)
+[![Latest Stable Version](https://poser.pugx.org/wata727/pahout/v/stable)](https://packagist.org/packages/wata727/pahout)
+[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/wata727/pahout/)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 A pair programming partner for writing better PHP. Pahout means PHP mahout :elephant:
