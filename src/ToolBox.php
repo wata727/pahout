@@ -23,6 +23,7 @@ class ToolBox
         'RandomInt',
         'EscapeShellArg',
         'SquareBracketSyntax',
+        'RedundantTernaryOperator',
     ];
 
     /**

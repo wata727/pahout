@@ -31,6 +31,7 @@
 
 - [EscapeShellArg](EscapeShellArg.md)
 
-## Others
+## All versions
 
 - [SquareBracketSyntax](SquareBracketSyntax.md)
+- [RedundantTernaryOperator](RedundantTernaryOperator.md)
