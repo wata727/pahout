@@ -28,6 +28,11 @@ abstract class Base
     */
     public function __construct(OutputInterface $output, array $files, array $hints)
     {
+        sort($files);
+        usort($hints, function ($a, $b) {
+            return strnatcmp($a->filename, $b->filename);
+        });
+
         $this->output = $output;
         $this->files = $files;
         $this->hints = $hints;
