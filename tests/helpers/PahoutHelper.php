@@ -3,6 +3,7 @@
 namespace Pahout\Test\helper;
 
 use Pahout\Pahout;
+use Pahout\Config;
 use Pahout\Tool\Base;
 use \ast\Node;
 
@@ -18,6 +19,13 @@ class PahoutHelper
 
     public static function create(Base $tool)
     {
+        Config::load([
+            'php-version' => null,
+            'ignore-tools' => null,
+            'ignore-paths' => null,
+            'vendor' => null,
+            'format' => null,
+        ]);
         $pahout = new Pahout([]);
         $klass = new \ReflectionClass('\Pahout\Pahout');
         $property = $klass->getProperty('tools');
