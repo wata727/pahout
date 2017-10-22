@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/requirements.php';
+require_once __DIR__ . '/../utils/ast.php';
+
+use Pahout\Config;
+
+echo ast_dump(ast\parse_file($argv[1], Config::AST_VERSION)) . "\n";
