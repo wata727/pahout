@@ -35,3 +35,4 @@
 
 - [SquareBracketSyntax](SquareBracketSyntax.md)
 - [RedundantTernaryOperator](RedundantTernaryOperator.md)
+- [DuplicateKey](DuplicateKey.md)

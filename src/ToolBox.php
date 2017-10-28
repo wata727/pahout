@@ -24,6 +24,7 @@ class ToolBox
         'EscapeShellArg',
         'SquareBracketSyntax',
         'RedundantTernaryOperator',
+        'DuplicateKey',
     ];
 
     /**
