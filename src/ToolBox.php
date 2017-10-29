@@ -25,6 +25,7 @@ class ToolBox
         'SquareBracketSyntax',
         'RedundantTernaryOperator',
         'DuplicateKey',
+        'UnreachableCatch',
     ];
 
     /**
