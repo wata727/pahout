@@ -26,6 +26,7 @@ class ToolBox
         'RedundantTernaryOperator',
         'DuplicateKey',
         'UnreachableCatch',
+        'DuplicateCaseCondition',
     ];
 
     /**
