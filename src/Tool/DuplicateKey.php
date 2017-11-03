@@ -28,6 +28,8 @@ use Pahout\Hint;
 */
 class DuplicateKey implements Base
 {
+    use Howdah;
+
     /** Analyze array declarations node (AST_ARRAY) */
     public const ENTRY_POINT = \ast\AST_ARRAY;
     /** PHP version to enable this tool */
@@ -47,36 +49,23 @@ class DuplicateKey implements Base
     {
         $hints = [];
         $keys = [];
-        $elems = [];
 
         foreach ($node->children as $elem) {
-            if ($elem instanceof Node && !is_null($elem->children['key'])) {
-                $elems[] = $elem;
-                $key = $elem->children['key'];
-                $keys[] = $key instanceof Node ? $key->children : $key;
-            }
-        }
-
-        while (count($keys) > 0) {
-            $elem = array_pop($elems);
-            $key = array_pop($keys);
-
-            if ($key instanceof Node) {
-                // If the key is a node, use equal comparison operator
-                $strict = false;
-            } else {
-                // If the key is not a node, use identical comparison operator
-                $strict = true;
-            }
-
-            if (in_array($key, $keys, $strict)) {
-                $hints[] = new Hint(
-                    self::HINT_TYPE,
-                    self::HINT_MESSAGE,
-                    $file,
-                    $elem->lineno,
-                    self::HINT_LINK
-                );
+            $key = $elem->children['key'];
+            // If the array does not have key, ignores this element.
+            if (!is_null($key)) {
+                foreach ($keys as $other_key) {
+                    if ($this->isEqualsWithoutLineno($key, $other_key)) {
+                        $hints[] = new Hint(
+                            self::HINT_TYPE,
+                            self::HINT_MESSAGE,
+                            $file,
+                            $elem->lineno,
+                            self::HINT_LINK
+                        );
+                    }
+                }
+                $keys[] = $key;
             }
         }
 
