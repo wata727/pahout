@@ -19,7 +19,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Pahout
-ENV PAHOUT_VERSION 0.1.1
+ENV PAHOUT_VERSION 0.2.0
 RUN composer global require "wata727/pahout:${PAHOUT_VERSION}"
 
 RUN apk del .build-deps
