@@ -65,6 +65,11 @@ class Config
         // Generate default config instance.
         self::$config = new Config();
 
+        // If `.php-version` file exists, changes default php_version
+        if (is_file('.php-version')) {
+            self::setOption('php_version', trim(file_get_contents('.php-version')));
+        }
+
         // If received file name is valid file, parses this file.
         if (is_file($file)) {
             Logger::getInstance()->info('Load: '.$file);
