@@ -141,6 +141,8 @@ vendor: true
 
 Specify the PHP version of your project. The default is the latest version. By setting correctly, you can control the type of hint appropriately.
 
+If you use [phpenv](https://github.com/phpenv/phpenv), changes the default PHP version to `.php-version`.
+
 ### Ignore Tools
 
 In Pahout, what generates hints is called "Tool". You can specify the tool name you want to ignore. Please look at the documentation for a list of tool names.

@@ -73,6 +73,48 @@ class ConfigTest extends TestCase
         }
     }
 
+    public function test_php_version_file()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_php-version');
+
+            Config::load([
+                'php-version' => null,
+                'ignore-tools' => null,
+                'ignore-paths' => null,
+                'vendor' => null,
+                'format' => null,
+            ]);
+            $config = Config::getInstance();
+
+            $this->assertEquals('7.0.0', $config->php_version);
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
+    public function test_php_version_file_with_arguments()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/with_php-version');
+
+            Config::load([
+                'php-version' => '7.1.0',
+                'ignore-tools' => null,
+                'ignore-paths' => null,
+                'vendor' => null,
+                'format' => null,
+            ]);
+            $config = Config::getInstance();
+
+            $this->assertEquals('7.1.0', $config->php_version);
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
     public function test_with_config_file()
     {
         $work_dir = getcwd();
