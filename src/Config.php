@@ -146,6 +146,11 @@ class Config
     * @throws InvalidConfigOptionValueException Exception when invalid value is specified in config option.
     * @throws InvalidConfigOptionException      Exception when setting nonexistent config option.
     * @return void
+    *
+    * Phan says `array to string comparison` to mixed value. why?
+    * @suppress PhanTypeComparisonFromArray
+    * Phan says `Assigning bool to property but \Pahout\Config::format is string` to mized value. why?
+    * @suppress PhanTypeMismatchProperty
     */
     private static function setOption(string $key, $value)
     {
