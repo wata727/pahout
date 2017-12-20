@@ -38,6 +38,9 @@ class Check extends Command
     * Default values ​​are not specified for configuration merging.
     *
     * @return void
+    *
+    * Argument 2 (shortcut) is null but \Pahout\Command\Check::addOption() takes string defined at vendor/symfony/console/Command/Command.php: vendoring library causes this warnings :(
+    * @suppress PhanTypeMismatchArgument
     */
     protected function configure()
     {
