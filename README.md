@@ -36,7 +36,7 @@ $ docker run --rm -t -v $(pwd):/workdir wata727/pahout
 If you have the above environment, you can install with composer.
 
 ```
-$ composer require wata727/pahout
+$ composer require --dev wata727/pahout
 $ vendor/bin/pahout -V
 ```
 
