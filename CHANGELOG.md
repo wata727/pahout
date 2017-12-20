@@ -1,3 +1,15 @@
+## v0.3.0 (2017-12-21)
+
+We relaxed dependencies from this release. There is no change in the behavior of the analysis.
+
+### Changes
+
+- Relax composer requirements ([#18](https://github.com/wata727/pahout/pull/18))
+
+### Enhancements
+
+- Parses `.php-version` to change default php_version ([#16](https://github.com/wata727/pahout/pull/16))
+
 ## v0.2.0 (2017-11-05)
 
 In this release we have added 4 tools. These tools will make your code better :)
