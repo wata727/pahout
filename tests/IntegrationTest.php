@@ -99,7 +99,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected identifier (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 3 files checked, 1 hints detected.
 
@@ -148,7 +148,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected identifier (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 ./test.php:3
 \tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
@@ -282,7 +282,7 @@ OUTPUT;
                     ),
                     new Hint(
                         'SyntaxError',
-                        'syntax error, unexpected identifier (T_STRING)',
+                        "syntax error, unexpected 'f' (T_STRING)",
                         './syntax_error.php',
                         3,
                         Hint::DOCUMENT_LINK.'/SyntaxError.md'
