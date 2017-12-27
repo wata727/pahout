@@ -3,6 +3,7 @@
 namespace Pahout\Annotation;
 
 use Pahout\Hint;
+use Pahout\Logger;
 
 /**
 * Rebel annocation
@@ -26,12 +27,11 @@ class Rebel extends Base
     public static function create(string $comment, int $start_line, string $filename): ?Rebel
     {
         if (preg_match('/@rebel\s+([^\s]+)/', $comment, $match) === 1) {
-            return new Rebel(
-                $match[1],
-                $start_line,
-                $start_line + substr_count($comment, PHP_EOL),
-                $filename
-            );
+            $body = $match[1];
+            $end_line = $start_line + substr_count($comment, PHP_EOL);
+
+            Logger::getInstance()->debug("Rebel annotation found: body=$body start=$start_line end=$end_line");
+            return new Rebel($body, $start_line, $end_line, $filename);
         } else {
             return null;
         }
