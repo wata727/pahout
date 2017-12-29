@@ -75,8 +75,8 @@ class Pahout
                 if (!in_array('SyntaxError', Config::getInstance()->ignore_tools, true)) {
                     $this->hints[] = new Hint(
                         'SyntaxError',
-                        $exception->getMessage(),
-                        $exception->getFile(),
+                        'Syntax error occurred.',
+                        $file,
                         $exception->getLine(),
                         Hint::DOCUMENT_LINK."/SyntaxError.md"
                     );

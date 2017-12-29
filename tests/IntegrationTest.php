@@ -32,7 +32,7 @@ class IntegrationTest extends TestCase
 \tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
 
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+\tSyntaxError: Syntax error occurred. [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 ./test.php:3
 \tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
@@ -99,7 +99,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+\tSyntaxError: Syntax error occurred. [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 3 files checked, 1 hints detected.
 
@@ -148,7 +148,7 @@ OUTPUT;
 
             $expected = <<<OUTPUT
 ./syntax_error.php:3
-\tSyntaxError: syntax error, unexpected 'f' (T_STRING) [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+\tSyntaxError: Syntax error occurred. [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
 
 ./test.php:3
 \tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
@@ -282,7 +282,7 @@ OUTPUT;
                     ),
                     new Hint(
                         'SyntaxError',
-                        "syntax error, unexpected 'f' (T_STRING)",
+                        "Syntax error occurred.",
                         './syntax_error.php',
                         3,
                         Hint::DOCUMENT_LINK.'/SyntaxError.md'
