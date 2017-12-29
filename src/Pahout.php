@@ -3,7 +3,6 @@
 namespace Pahout;
 
 use \ast\Node;
-use Pahout\Tool\Base;
 
 /**
 * PHP Mahout
@@ -19,7 +18,10 @@ class Pahout
     /** @var string[] The file names to be analyzed. */
     public $files = [];
 
-    /** @var Base[] The tools provided from tool factory */
+    /** @var Annotation\Base[] The annotations of the file being processed */
+    private $annotations = [];
+
+    /** @var Tool\Base[] The tools provided from tool factory */
     private $tools = [];
 
     /**
@@ -61,6 +63,7 @@ class Pahout
             Logger::getInstance()->info('Parse: '.$file);
             try {
                 $root = \ast\parse_file($file, Config::AST_VERSION);
+                $this->annotations = Annotation::create($file, file_get_contents($file));
                 // If file is empty, $root is not instance of Node.
                 if ($root instanceof Node) {
                     $this->traverse($file, $root);
@@ -103,16 +106,30 @@ class Pahout
 
         foreach ($this->tools as $tool) {
             Logger::getInstance()->debug('Entrypoint check: '.get_class($tool));
-            if ($tool::ENTRY_POINT === $node->kind) {
-                Logger::getInstance()->debug('Run: '.get_class($tool));
-                $hints = $tool->run($file, $node);
-                if (count($hints) > 0) {
-                    foreach ($hints as $hint) {
-                        Logger::getInstance()->debug('Detected hints: line='.$hint->lineno);
-                    }
-                    array_push($this->hints, ...$hints);
-                }
+            if ($tool::ENTRY_POINT !== $node->kind) {
+                continue;
             }
+
+            Logger::getInstance()->debug('Run: '.get_class($tool));
+            $hints = $tool->run($file, $node);
+            $hints = array_filter($hints, function ($hint) {
+                foreach ($this->annotations as $annotation) {
+                    if (!($annotation instanceof Annotation\Rebel)) {
+                        continue;
+                    }
+                    if ($annotation->isAffected($hint)) {
+                        Logger::getInstance()->debug('Annotation effecting to hint: line='.$hint->lineno);
+                        return false;
+                    }
+                }
+                Logger::getInstance()->debug('Detected hints: line='.$hint->lineno);
+                return true;
+            });
+
+            if (count($hints) === 0) {
+                continue;
+            }
+            array_push($this->hints, ...$hints);
         }
 
         foreach ($node->children as $type => $child) {

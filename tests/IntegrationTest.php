@@ -303,4 +303,27 @@ OUTPUT;
             chdir($work_dir);
         }
     }
+
+    public function test_rebel_annotations()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/rebel_annotations');
+            $command = new CommandTester(new Check());
+            $command->execute([]);
+
+            $expected = <<<OUTPUT
+./test.php:6
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
+
+1 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
+        } finally {
+            chdir($work_dir);
+        }
+    }
 }
