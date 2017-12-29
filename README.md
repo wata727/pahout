@@ -91,7 +91,7 @@ $ pahout --php-version 7.1.8 test.php test2.php ...
 If you specify a directory name, all `.php` files under that directory will be covered.
 
 ```
-$ pahout --php-version src
+$ pahout --php-version 7.1.8 src
 ```
 
 ## Configuration
@@ -164,6 +164,30 @@ Specify the output format. Currently only `pretty` and `json` are supported.
 ### Config
 
 Specify the configuration file name. This is useful when you want to use a file name other than `.pahout.yaml` in the configuration file.
+
+## Annotation
+
+Using annotations, you can ignore hints for specific lines. Specify the tool name you want to ignore with `@rebel`.
+
+```php
+<?php
+
+/** @rebel RedundantTernaryOperator */
+$checked = $a === $b ? true : false;
+```
+
+The following comments will work in the same way.
+
+```php
+<?php
+
+/**
+* @rebel RedundantTernaryOperator
+*/
+$checked = $a === $b ? true : false;
+
+$checked = $a === $b ? true : false; # @rebel RedundantTernaryOperator
+```
 
 ## Author
 
