@@ -34,6 +34,8 @@ use Pahout\Hint;
 */
 class EscapeShellArg implements Base
 {
+    use Howdah;
+
     /** Analyze function call declarations (AST_CALL) */
     public const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
@@ -51,22 +53,14 @@ class EscapeShellArg implements Base
     */
     public function run(string $file, Node $node): array
     {
-        $expr = $node->children['expr'];
-
-        if ($expr->kind === \ast\AST_NAME) {
-            if ($expr->children['name'] === 'escapeshellcmd') {
-                return [new Hint(
-                    self::HINT_TYPE,
-                    self::HINT_MESSAGE,
-                    $file,
-                    $node->lineno,
-                    self::HINT_LINK
-                )];
-            } else {
-                Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);
-            }
-        } else {
-            Logger::getInstance()->debug('Ignore AST kind: '.$expr->kind);
+        if ($this->isFunctionCall($node, 'escapeshellcmd')) {
+            return [new Hint(
+                self::HINT_TYPE,
+                self::HINT_MESSAGE,
+                $file,
+                $node->lineno,
+                self::HINT_LINK
+            )];
         }
 
         return [];

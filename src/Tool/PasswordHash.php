@@ -28,6 +28,8 @@ use Pahout\Hint;
 */
 class PasswordHash implements Base
 {
+    use Howdah;
+
     /** Analyze function call (AST_CALL) */
     public const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
@@ -45,18 +47,14 @@ class PasswordHash implements Base
     */
     public function run(string $file, Node $node): array
     {
-        $expr = $node->children['expr'];
-
-        if ($expr->kind === \ast\AST_NAME) {
-            if ($expr->children['name'] === 'crypt') {
-                return [new Hint(
-                    self::HINT_TYPE,
-                    self::HINT_MESSAGE,
-                    $file,
-                    $node->lineno,
-                    self::HINT_LINK
-                )];
-            }
+        if ($this->isFunctionCall($node, 'crypt')) {
+            return [new Hint(
+                self::HINT_TYPE,
+                self::HINT_MESSAGE,
+                $file,
+                $node->lineno,
+                self::HINT_LINK
+            )];
         }
 
         return [];
