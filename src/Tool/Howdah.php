@@ -38,4 +38,24 @@ trait Howdah
 
         return true;
     }
+
+    /**
+    * Verify that node is AST_CALL of the specified function name.
+    *
+    * @param mixed  $node     Node or others.
+    * @param string $function A function name.
+    * @return boolean Result.
+    */
+    public function isFunctionCall($node, string $function): Bool
+    {
+        if ($node instanceof Node && $node->kind === \ast\AST_CALL) {
+            $expr = $node->children['expr'];
+
+            if ($expr->kind === \ast\AST_NAME && $expr->children['name'] === $function) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

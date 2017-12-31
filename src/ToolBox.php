@@ -5,11 +5,11 @@ namespace Pahout;
 use Pahout\Tool\Base;
 
 /**
-* Factory of tools used by Mahout
+* Factory of tools used by Pahout
 */
 class ToolBox
 {
-    /** List of valid tool names used by Mahout */
+    /** List of valid tool names used by Pahout */
     public const VALID_TOOLS = [
         'ShortArraySyntax',
         'SyntaxError',
@@ -27,6 +27,7 @@ class ToolBox
         'DuplicateKey',
         'UnreachableCatch',
         'DuplicateCaseCondition',
+        'AmbiguousReturnCheck',
     ];
 
     /**
