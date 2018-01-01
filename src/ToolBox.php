@@ -28,6 +28,7 @@ class ToolBox
         'UnreachableCatch',
         'DuplicateCaseCondition',
         'AmbiguousReturnCheck',
+        'UnneededRegularExpression',
     ];
 
     /**

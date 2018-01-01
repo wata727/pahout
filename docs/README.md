@@ -39,3 +39,4 @@
 - [UnreachableCatch](UnreachableCatch.md)
 - [DuplicateCaseCondition](DuplicateCaseCondition.md)
 - [AmbiguousReturnCheck](AmbiguousReturnCheck.md)
+- [UnneededRegularExpression](UnneededRegularExpression.md)
