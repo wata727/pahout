@@ -30,6 +30,8 @@ use Pahout\Hint;
 */
 class InstanceConstant implements Base
 {
+    use Howdah;
+
     /** Analyze calling class constants (AST_CLASS_CONST) */
     public const ENTRY_POINT = \ast\AST_CLASS_CONST;
     /** PHP version to enable this tool */
@@ -49,25 +51,14 @@ class InstanceConstant implements Base
     {
         $klass = $node->children['class'];
 
-        if ($klass->kind === \ast\AST_CALL) {
-            $expr = $klass->children['expr'];
-            if ($expr->kind === \ast\AST_NAME) {
-                if ($expr->children['name'] === 'get_class') {
-                    return [new Hint(
-                        self::HINT_TYPE,
-                        self::HINT_MESSAGE,
-                        $file,
-                        $klass->lineno,
-                        self::HINT_LINK
-                    )];
-                } else {
-                    Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);
-                }
-            } else {
-                Logger::getInstance()->debug('Ignore expr AST kind: '.$expr->kind);
-            }
-        } else {
-            Logger::getInstance()->debug('Ignore klass AST kind: '.$klass->kind);
+        if ($this->isFunctionCall($klass, 'get_class')) {
+            return [new Hint(
+                self::HINT_TYPE,
+                self::HINT_MESSAGE,
+                $file,
+                $klass->lineno,
+                self::HINT_LINK
+            )];
         }
 
         return [];

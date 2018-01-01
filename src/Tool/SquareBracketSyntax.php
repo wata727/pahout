@@ -27,6 +27,8 @@ use Pahout\Hint;
 */
 class SquareBracketSyntax implements Base
 {
+    use Howdah;
+
     /** Analyze function call declarations (AST_CALL) */
     public const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
@@ -44,30 +46,22 @@ class SquareBracketSyntax implements Base
     */
     public function run(string $file, Node $node): array
     {
-        $expr = $node->children['expr'];
-        $args = $node->children['args'];
-
-        if ($expr->kind === \ast\AST_NAME) {
-            if ($expr->children['name'] === 'array_push') {
-                $second_arg = $args->children[1];
-                // If using `...$list` pattern, skip this tool.
-                if ($second_arg instanceof Node && $second_arg->kind === \ast\AST_UNPACK) {
-                    return [];
-                }
-                if (count($args->children) === 2) {
-                    return [new Hint(
-                        self::HINT_TYPE,
-                        self::HINT_MESSAGE,
-                        $file,
-                        $node->lineno,
-                        self::HINT_LINK
-                    )];
-                }
-            } else {
-                Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);
+        if ($this->isFunctionCall($node, 'array_push')) {
+            $args = $node->children['args'];
+            $second_arg = $args->children[1];
+            // If using `...$list` pattern, skip this tool.
+            if ($second_arg instanceof Node && $second_arg->kind === \ast\AST_UNPACK) {
+                return [];
             }
-        } else {
-            Logger::getInstance()->debug('Ignore AST kind: '.$expr->kind);
+            if (count($args->children) === 2) {
+                return [new Hint(
+                    self::HINT_TYPE,
+                    self::HINT_MESSAGE,
+                    $file,
+                    $node->lineno,
+                    self::HINT_LINK
+                )];
+            }
         }
 
         return [];

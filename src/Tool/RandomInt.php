@@ -28,6 +28,8 @@ use Pahout\Hint;
 */
 class RandomInt implements Base
 {
+    use Howdah;
+
     /** Analyze function call declarations (AST_CALL) */
     public const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
@@ -46,10 +48,8 @@ class RandomInt implements Base
     */
     public function run(string $file, Node $node): array
     {
-        $expr = $node->children['expr'];
-
-        if ($expr->kind === \ast\AST_NAME) {
-            if (in_array($expr->children['name'], self::FUNCTION_LIST, true)) {
+        foreach (self::FUNCTION_LIST as $function) {
+            if ($this->isFunctionCall($node, $function)) {
                 return [new Hint(
                     self::HINT_TYPE,
                     self::HINT_MESSAGE,
@@ -57,11 +57,7 @@ class RandomInt implements Base
                     $node->lineno,
                     self::HINT_LINK
                 )];
-            } else {
-                Logger::getInstance()->debug('Ignore function name: '.$expr->children['name']);
             }
-        } else {
-            Logger::getInstance()->debug('Ignore AST kind: '.$expr->kind);
         }
 
         return [];
