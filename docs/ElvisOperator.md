@@ -1,13 +1,12 @@
 # ElvisOperator
 
-As of PHP 5.3, you can use the "elvis operator".
-You can avoid redundant expressions by using this.
+The Elvis operator introduced in PHP 5.3 makes particular ternary operators easier.
 
 ## Before
 
 ```php
 <?php
-$a = $a ? $a : false; // ElvisOperator: Use elvis operator instead of ternary operator.
+$a = $a ? $a : false; // ElvisOperator: Use the Elvis operator instead of the ternary operator.
 ```
 
 ## After
