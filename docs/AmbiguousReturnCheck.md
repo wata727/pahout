@@ -1,8 +1,29 @@
 # AmbiguousReturnCheck
 
-In functions returning falsy value, do not compare return values ​​without using the `===` operator.
+When testing the return value of functions that return not only false but falsy values, you should use the === (or !==) operator.
 
-For example, `strpos` returns integer or false, so if you check this with the `==` operator, when returning 0, the condition is the same as false.
+For example, `strpos()` returns integers or false, so it may cause the following bug:
+
+```php
+<?php
+
+if (strpos("abc", $argv[1])) {
+    echo "`$argv[1]` is found in `abc`.";
+} else {
+    echo "`$argv[1]` is not found in `abc`.";
+}
+```
+
+```
+$ php test.php d
+`d` is not found in `abc`.
+$ php test.php b
+`b` is found in `abc`.
+$ php test.php a
+`a` is not found in `abc`. # Why?
+```
+
+This is because the condition is treated as false when returning 0.
 
 The following functions are checked:
 
@@ -17,7 +38,7 @@ The following functions are checked:
 ## Before
 
 ```php
-if (strpos($var, "a")) { // AmbiguousReturnCheck: Use the === operator for testing a function that returns falsy value.
+if (strpos($var, "a")) { // AmbiguousReturnCheck: Use the === (or !==) operator for testing the return value of `strpos`.
     echo "`a` is found.";
 }
 ```
@@ -25,7 +46,7 @@ if (strpos($var, "a")) { // AmbiguousReturnCheck: Use the === operator for testi
 ## After
 
 ```php
-if (strpos($var, "a") !== false) {
+if (strpos($var, "a") !== false) { // OK!
     echo "`a` is found.";
 }
 ```
