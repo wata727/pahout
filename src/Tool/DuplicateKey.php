@@ -35,7 +35,7 @@ class DuplicateKey implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '0.0.0';
     public const HINT_TYPE = "DuplicateKey";
-    private const HINT_MESSAGE = 'Duplicate keys found in array.';
+    private const HINT_MESSAGE = 'Duplicate key found in array.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/DuplicateKey.md";
 
     /**

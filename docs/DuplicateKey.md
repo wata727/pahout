@@ -1,14 +1,12 @@
 # DuplicateKey
 
-If the keys of the array duplicate, it will be overwritten with the specified value later.
-
-NOTE: Array keys are cast in some cases. However, it is not possible to detect duplicate keys in such cases.
+When duplicate keys are in an array, it will be overwritten with the specified value later.
 
 ## Before
 
 ```php
 <?php
-$array = ["a" => 1, "a" => 2]; // DuplicateKey: Duplicate keys found in array.
+$array = ["a" => 1, "a" => 2]; // DuplicateKey: Duplicate key found in array.
 ```
 
 ## After
