@@ -89,4 +89,22 @@ CODE;
 
         $this->assertEmpty($tester->hints);
     }
+
+    public function test_array_destructuring()
+    {
+        $code = <<<'CODE'
+<?php
+
+list('foo' => $a, 'bar' => $b) = $x;
+[$a, $b] = $x;
+['foo' => $a, 'bar' => $b] = $x;
+[, [$a]] = $x;
+CODE;
+        $root = \ast\parse_code($code, Config::AST_VERSION);
+
+        $tester = PahoutHelper::create(new DuplicateKey());
+        $tester->test($root);
+
+        $this->assertEmpty($tester->hints);
+    }
 }
