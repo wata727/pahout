@@ -51,6 +51,10 @@ class DuplicateKey implements Base
         $keys = [];
 
         foreach ($node->children as $elem) {
+            if (is_null($elem)) {
+                continue;
+            }
+
             $key = $elem->children['key'];
             // If the array does not have key, ignores this element.
             if (!is_null($key)) {
