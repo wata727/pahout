@@ -1,7 +1,7 @@
 # InstanceConstant
 
-As of PHP 5.3.0, it's possible to reference the class using a variable.
-Class constants are defined for classes, but they can also be referenced from instances. Therefore, it is not necessary to get the class name from the instance.
+As of PHP 5.3.0, it's possible to reference class using a variable.
+Class constants are defined for classes, but they can also be referenced from instances. So it is not necessary to get the class name from the instance.
 
 ## Before
 
