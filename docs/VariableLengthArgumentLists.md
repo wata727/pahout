@@ -9,7 +9,7 @@ Previously, we needed `func_num_args()`, `func_get_arg()` and `func_get_args()` 
 <?php
 function sum() {
     $acc = 0;
-    foreach (func_get_args() as $n) { // VariableLengthArgumentLists: Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.
+    foreach (func_get_args() as $n) { // VariableLengthArgumentLists: Using variable length arguments make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.
         $acc += $n;
     }
     return $acc;
