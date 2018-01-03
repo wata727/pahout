@@ -28,7 +28,7 @@ class NullCoalescingOperatorTest extends TestCase
             [
                 new Hint(
                     'NullCoalescingOperator',
-                    'Use null coalecing operator instead of ternary operator.',
+                    'Use the null coalecing operator instead of the ternary operator.',
                     './test.php',
                     1,
                     Hint::DOCUMENT_LINK.'/NullCoalescingOperator.md'
@@ -49,7 +49,7 @@ class NullCoalescingOperatorTest extends TestCase
             [
                 new Hint(
                     'NullCoalescingOperator',
-                    'Use null coalecing operator instead of ternary operator.',
+                    'Use the null coalecing operator instead of the ternary operator.',
                     './test.php',
                     1,
                     Hint::DOCUMENT_LINK.'/NullCoalescingOperator.md'

@@ -28,7 +28,7 @@ class ElvisOperatorTest extends TestCase
             [
                 new Hint(
                     'ElvisOperator',
-                    'Use elvis operator instead of ternary operator.',
+                    'Use the Elvis operator instead of the ternary operator.',
                     './test.php',
                     1,
                     Hint::DOCUMENT_LINK.'/ElvisOperator.md'
@@ -49,7 +49,7 @@ class ElvisOperatorTest extends TestCase
             [
                 new Hint(
                     'ElvisOperator',
-                    'Use elvis operator instead of ternary operator.',
+                    'Use the Elvis operator instead of the ternary operator.',
                     './test.php',
                     1,
                     Hint::DOCUMENT_LINK.'/ElvisOperator.md'

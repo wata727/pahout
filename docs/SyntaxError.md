@@ -1,7 +1,7 @@
 # SyntaxError
 
-Pahout treats syntax errors as one type of hint.
-This is because when a parse error occurs, it does not affect the confirmation of other files.
+Pahout treats syntax errors as one type of hints.
+This is because when a parse error occurs, it doesn't affect the confirmation of other files.
 
 ## Before
 
@@ -12,6 +12,6 @@ funcion f[] ( ... ) // SyntaxError: Syntax error occurred.
 
 ## After
 
-Let's write the correct PHP script.
+Write a code that doesn't occur syntax errors.
 
 ## Reference

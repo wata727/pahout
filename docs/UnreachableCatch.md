@@ -1,6 +1,6 @@
 # UnreachableCatch
 
-For example, Exception is the base class for all user exceptions, so if you catch it, it will not reach any further catch expressions. This checks for `Exception` and `Throwable`.
+For example, `Exception` is the base class for all user-defined exceptions, so when you catch it, the later exception handling will no be reached. This checks for `Exception` and `Throwable`.
 
 ## Before
 

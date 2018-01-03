@@ -41,7 +41,7 @@ class EscapeShellArg implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '4.0.3';
     public const HINT_TYPE = "EscapeShellArg";
-    private const HINT_MESSAGE = "This function allows the attacker to pass arbitrary number of arguments.";
+    private const HINT_MESSAGE = "This function allows attackers to pass arbitrary number of arguments.";
     private const HINT_LINK = Hint::DOCUMENT_LINK."/EscapeShellArg.md";
 
     /**

@@ -38,7 +38,7 @@ CODE;
             [
                 new Hint(
                     'VariableLengthArgumentLists',
-                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    'Using variable length arguments make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
                     './test.php',
                     4,
                     Hint::DOCUMENT_LINK.'/VariableLengthArgumentLists.md'
@@ -65,7 +65,7 @@ CODE;
             [
                 new Hint(
                     'VariableLengthArgumentLists',
-                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    'Using variable length arguments make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
                     './test.php',
                     3,
                     Hint::DOCUMENT_LINK.'/VariableLengthArgumentLists.md'
@@ -92,7 +92,7 @@ CODE;
             [
                 new Hint(
                     'VariableLengthArgumentLists',
-                    'Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
+                    'Using variable length arguments make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.',
                     './test.php',
                     3,
                     Hint::DOCUMENT_LINK.'/VariableLengthArgumentLists.md'

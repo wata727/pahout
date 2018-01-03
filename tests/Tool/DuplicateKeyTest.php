@@ -35,7 +35,7 @@ CODE;
             [
                 new Hint(
                     'DuplicateKey',
-                    'Duplicate keys found in array.',
+                    'Duplicate key found in array.',
                     './test.php',
                     4,
                     Hint::DOCUMENT_LINK.'/DuplicateKey.md'
@@ -63,7 +63,7 @@ CODE;
             [
                 new Hint(
                     'DuplicateKey',
-                    'Duplicate keys found in array.',
+                    'Duplicate key found in array.',
                     './test.php',
                     4,
                     Hint::DOCUMENT_LINK.'/DuplicateKey.md'

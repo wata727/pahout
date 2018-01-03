@@ -35,7 +35,7 @@ CODE;
             [
                 new Hint(
                     'EscapeShellArg',
-                    'This function allows the attacker to pass arbitrary number of arguments.',
+                    'This function allows attackers to pass arbitrary number of arguments.',
                     './test.php',
                     4,
                     Hint::DOCUMENT_LINK.'/EscapeShellArg.md'

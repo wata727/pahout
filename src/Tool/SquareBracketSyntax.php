@@ -34,7 +34,7 @@ class SquareBracketSyntax implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '0.0.0';
     public const HINT_TYPE = "SquareBracketSyntax";
-    private const HINT_MESSAGE = 'Since `array_push()` has the function call overhead, let\'s use `$array[] =`.';
+    private const HINT_MESSAGE = 'Since `array_push()` has the function call overhead, Consider using `$array[] =`.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/SquareBracketSyntax.md";
 
     /**

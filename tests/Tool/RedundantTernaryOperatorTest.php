@@ -32,7 +32,7 @@ CODE;
             [
                 new Hint(
                     'RedundantTernaryOperator',
-                    'There is no need to use a ternary operator.',
+                    'There is no need to use the ternary operator.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/RedundantTernaryOperator.md'
@@ -57,7 +57,7 @@ CODE;
             [
                 new Hint(
                     'RedundantTernaryOperator',
-                    'There is no need to use a ternary operator.',
+                    'There is no need to use the ternary operator.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/RedundantTernaryOperator.md'
@@ -82,7 +82,7 @@ CODE;
             [
                 new Hint(
                     'RedundantTernaryOperator',
-                    'There is no need to use a ternary operator.',
+                    'There is no need to use the ternary operator.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/RedundantTernaryOperator.md'
@@ -107,7 +107,7 @@ CODE;
             [
                 new Hint(
                     'RedundantTernaryOperator',
-                    'There is no need to use a ternary operator.',
+                    'There is no need to use the ternary operator.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/RedundantTernaryOperator.md'

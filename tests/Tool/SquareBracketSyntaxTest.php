@@ -32,7 +32,7 @@ CODE;
             [
                 new Hint(
                     'SquareBracketSyntax',
-                    'Since `array_push()` has the function call overhead, let\'s use `$array[] =`.',
+                    'Since `array_push()` has the function call overhead, Consider using `$array[] =`.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/SquareBracketSyntax.md'

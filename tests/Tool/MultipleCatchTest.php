@@ -17,7 +17,7 @@ class MultipleCatchTest extends TestCase
         Logger::getInstance(new ConsoleOutput());
     }
 
-    public function test_catch_single_exception()
+    public function test_redundant_catch_block()
     {
         $code = <<<'CODE'
 <?php
@@ -26,12 +26,12 @@ try {
 } catch (A $exn) {
     echo "catch!";
     fuga();
-} catch (B $exn) {
+} catch (B | C $exn) {
     echo "catch!";
     fuga();
-} catch (C $exn) {
-    echo "catch!";
 } catch (D $exn) {
+    echo "catch!";
+} catch (E $exn) {
     echo "catch!";
 }
 CODE;
@@ -44,14 +44,14 @@ CODE;
             [
                 new Hint(
                     'MultipleCatch',
-                    'A catch block may specify multiple exceptions.',
+                    'Specifying `A`, `B` and `C` in this catch block avoids redundant catch blocks.',
                     './test.php',
                     4,
                     Hint::DOCUMENT_LINK.'/MultipleCatch.md'
                 ),
                 new Hint(
                     'MultipleCatch',
-                    'A catch block may specify multiple exceptions.',
+                    'Specifying `D` and `E` in this catch block avoids redundant catch blocks.',
                     './test.php',
                     10,
                     Hint::DOCUMENT_LINK.'/MultipleCatch.md'
@@ -67,7 +67,7 @@ CODE;
 <?php
 try {
     hoge();
-} catch (A | B $exn) {
+} catch (A | B | C $exn) {
     echo "catch!";
     fuga();
 } catch (C | D $exn) {

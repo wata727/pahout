@@ -1,6 +1,6 @@
 # RedundantTernaryOperator
 
-If the ternary operator returns boolean, depending on the condition expression, it is not necessary to use the ternary operator. It detects the following code:
+If ternary operators return boolean, depending on the condition expression, it is not necessary to use the ternary operator. It detects the following code:
 
 - `$a === $b ? true : false`
 - `$a == $b ? true : false`
@@ -11,7 +11,7 @@ If the ternary operator returns boolean, depending on the condition expression, 
 
 ```php
 <?php
-$a = $b === $c ? true : false; // RedundantTernaryOperator: There is no need to use a ternary operator.
+$a = $b === $c ? true : false; // RedundantTernaryOperator: There is no need to use the ternary operator.
 ```
 
 ## After

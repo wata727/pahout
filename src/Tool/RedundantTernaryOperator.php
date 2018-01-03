@@ -32,7 +32,7 @@ class RedundantTernaryOperator implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '0.0.0';
     public const HINT_TYPE = "RedundantTernaryOperator";
-    private const HINT_MESSAGE = 'There is no need to use a ternary operator.';
+    private const HINT_MESSAGE = 'There is no need to use the ternary operator.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/RedundantTernaryOperator.md";
 
     /**

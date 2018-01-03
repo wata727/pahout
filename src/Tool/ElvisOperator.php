@@ -33,7 +33,7 @@ class ElvisOperator implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '5.3.0';
     public const HINT_TYPE = "ElvisOperator";
-    private const HINT_MESSAGE = 'Use elvis operator instead of ternary operator.';
+    private const HINT_MESSAGE = 'Use the Elvis operator instead of the ternary operator.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/ElvisOperator.md";
 
     /**

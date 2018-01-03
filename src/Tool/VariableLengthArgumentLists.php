@@ -47,7 +47,7 @@ class VariableLengthArgumentLists implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '5.6.0';
     public const HINT_TYPE = "VariableLengthArgumentLists";
-    private const HINT_MESSAGE = "Using variable length arguments may make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.";
+    private const HINT_MESSAGE = "Using variable length arguments make it unnecessary to use `func_num_args()`, `func_get_arg()` and `func_get_args()`.";
     private const HINT_LINK = Hint::DOCUMENT_LINK."/VariableLengthArgumentLists.md";
     private const FUNCTION_LIST = ['func_num_args', 'func_get_arg', 'func_get_args'];
 

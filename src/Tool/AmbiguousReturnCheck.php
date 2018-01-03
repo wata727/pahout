@@ -37,7 +37,7 @@ class AmbiguousReturnCheck implements Base
     public const ENTRY_POINT = \ast\AST_IF_ELEM;
     public const PHP_VERSION = '0.0.0';
     public const HINT_TYPE = "AmbiguousReturnCheck";
-    private const HINT_MESSAGE = "Use the === operator for testing a function that returns falsy value.";
+    private const HINT_MESSAGE = "Use the === (or !==) operator for testing the return value of `%s`.";
     private const HINT_LINK = Hint::DOCUMENT_LINK."/AmbiguousReturnCheck.md";
     private const FUNCTION_LIST = [
         'strpos',
@@ -70,7 +70,7 @@ class AmbiguousReturnCheck implements Base
             if ($this->isFunctionCall($cond, $function)) {
                 $hints[] = new Hint(
                     self::HINT_TYPE,
-                    self::HINT_MESSAGE,
+                    sprintf(self::HINT_MESSAGE, $function),
                     $file,
                     $cond->lineno,
                     self::HINT_LINK
@@ -84,7 +84,7 @@ class AmbiguousReturnCheck implements Base
                 if ($this->isFunctionCall($expr, $function)) {
                     $hints[] = new Hint(
                         self::HINT_TYPE,
-                        self::HINT_MESSAGE,
+                        sprintf(self::HINT_MESSAGE, $function),
                         $file,
                         $expr->lineno,
                         self::HINT_LINK
@@ -101,7 +101,7 @@ class AmbiguousReturnCheck implements Base
                 if ($this->isFunctionCall($left, $function) || $this->isFunctionCall($right, $function)) {
                     $hints[] = new Hint(
                         self::HINT_TYPE,
-                        self::HINT_MESSAGE,
+                        sprintf(self::HINT_MESSAGE, $function),
                         $file,
                         $cond->lineno,
                         self::HINT_LINK

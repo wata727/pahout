@@ -34,7 +34,7 @@ CODE;
             [
                 new Hint(
                     'AmbiguousReturnCheck',
-                    'Use the === operator for testing a function that returns falsy value.',
+                    'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
@@ -61,7 +61,7 @@ CODE;
             [
                 new Hint(
                     'AmbiguousReturnCheck',
-                    'Use the === operator for testing a function that returns falsy value.',
+                    'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
@@ -88,7 +88,7 @@ CODE;
             [
                 new Hint(
                     'AmbiguousReturnCheck',
-                    'Use the === operator for testing a function that returns falsy value.',
+                    'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
@@ -115,7 +115,7 @@ CODE;
             [
                 new Hint(
                     'AmbiguousReturnCheck',
-                    'Use the === operator for testing a function that returns falsy value.',
+                    'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
                     Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
