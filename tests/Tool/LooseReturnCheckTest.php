@@ -4,13 +4,13 @@ namespace Pahout\Test\Tool;
 
 use PHPUnit\Framework\TestCase;
 use Pahout\Test\helper\PahoutHelper;
-use Pahout\Tool\AmbiguousReturnCheck;
+use Pahout\Tool\LooseReturnCheck;
 use Pahout\Hint;
 use Pahout\Logger;
 use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class AmbiguousReturnCheckTest extends TestCase
+class LooseReturnCheckTest extends TestCase
 {
     public function setUp()
     {
@@ -27,17 +27,17 @@ if (strpos($var, "a")) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEquals(
             [
                 new Hint(
-                    'AmbiguousReturnCheck',
+                    'LooseReturnCheck',
                     'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
-                    Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
+                    Hint::DOCUMENT_LINK.'/LooseReturnCheck.md'
                 )
             ],
             $tester->hints
@@ -54,17 +54,17 @@ if (!strpos($var, "a")) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEquals(
             [
                 new Hint(
-                    'AmbiguousReturnCheck',
+                    'LooseReturnCheck',
                     'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
-                    Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
+                    Hint::DOCUMENT_LINK.'/LooseReturnCheck.md'
                 )
             ],
             $tester->hints
@@ -81,17 +81,17 @@ if (strpos($var, "a") == false) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEquals(
             [
                 new Hint(
-                    'AmbiguousReturnCheck',
+                    'LooseReturnCheck',
                     'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
-                    Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
+                    Hint::DOCUMENT_LINK.'/LooseReturnCheck.md'
                 )
             ],
             $tester->hints
@@ -108,17 +108,17 @@ if (strpos($var, "a") != false) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEquals(
             [
                 new Hint(
-                    'AmbiguousReturnCheck',
+                    'LooseReturnCheck',
                     'Use the === (or !==) operator for testing the return value of `strpos`.',
                     './test.php',
                     2,
-                    Hint::DOCUMENT_LINK.'/AmbiguousReturnCheck.md'
+                    Hint::DOCUMENT_LINK.'/LooseReturnCheck.md'
                 )
             ],
             $tester->hints
@@ -135,7 +135,7 @@ if (strpos($var, "a") === false) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEmpty($tester->hints);
@@ -151,7 +151,7 @@ if (strpos($var, "a") !== false) {
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new AmbiguousReturnCheck());
+        $tester = PahoutHelper::create(new LooseReturnCheck());
         $tester->test($root);
 
         $this->assertEmpty($tester->hints);

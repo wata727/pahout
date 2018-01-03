@@ -30,15 +30,15 @@ use Pahout\Hint;
 * ```
 *
 */
-class AmbiguousReturnCheck implements Base
+class LooseReturnCheck implements Base
 {
     use Howdah;
 
     public const ENTRY_POINT = \ast\AST_IF_ELEM;
     public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "AmbiguousReturnCheck";
+    public const HINT_TYPE = "LooseReturnCheck";
     private const HINT_MESSAGE = "Use the === (or !==) operator for testing the return value of `%s`.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/AmbiguousReturnCheck.md";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/LooseReturnCheck.md";
     private const FUNCTION_LIST = [
         'strpos',
         'mb_strpos',

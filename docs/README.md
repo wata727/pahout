@@ -38,5 +38,5 @@
 - [DuplicateKey](DuplicateKey.md)
 - [UnreachableCatch](UnreachableCatch.md)
 - [DuplicateCaseCondition](DuplicateCaseCondition.md)
-- [AmbiguousReturnCheck](AmbiguousReturnCheck.md)
+- [LooseReturnCheck](LooseReturnCheck.md)
 - [UnneededRegularExpression](UnneededRegularExpression.md)

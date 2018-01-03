@@ -27,7 +27,7 @@ class ToolBox
         'DuplicateKey',
         'UnreachableCatch',
         'DuplicateCaseCondition',
-        'AmbiguousReturnCheck',
+        'LooseReturnCheck',
         'UnneededRegularExpression',
     ];
 
