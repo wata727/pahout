@@ -33,7 +33,7 @@ class NullCoalescingOperator implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '7.0.0';
     public const HINT_TYPE = "NullCoalescingOperator";
-    private const HINT_MESSAGE = 'Use null coalecing operator instead of ternary operator.';
+    private const HINT_MESSAGE = 'Use the null coalecing operator instead of the ternary operator.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/NullCoalescingOperator.md";
 
     /**

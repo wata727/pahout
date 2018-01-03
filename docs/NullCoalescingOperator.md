@@ -1,13 +1,12 @@
 # NullCoalescingOperator
 
-As of PHP 7, you can use the "null coalescing operator".
-You can avoid redundant expressions by using this.
+The null coalescing operator introduced in PHP 7 makes particular ternary operators easier.
 
 ## Before
 
 ```php
 <?php
-$a = isset($b) ? $b : false; // NullCoalescingOperator: Use null coalecing operator instead of ternary operator.
+$a = isset($b) ? $b : false; // NullCoalescingOperator: Use the null coalecing operator instead of the ternary operator.
 ```
 
 ## After
