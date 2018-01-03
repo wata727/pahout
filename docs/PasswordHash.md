@@ -1,6 +1,6 @@
 # PasswordHash
 
-The `password_hash()` function added in PHP 5.5 is a wrapper for `crypt()` function.
+The `password_hash()` function added in PHP 5.5 is a wrapper for the `crypt()` function.
 Also, since it is compatible with existing password hashes, you should use this.
 
 ## Before
