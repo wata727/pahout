@@ -51,7 +51,7 @@ class MultipleCatch implements Base
     /** PHP version to enable this tool */
     public const PHP_VERSION = '7.1.0';
     public const HINT_TYPE = "MultipleCatch";
-    private const HINT_MESSAGE = 'A catch block may specify multiple exceptions.';
+    private const HINT_MESSAGE = 'Specifying %s in this catch block avoids redundant catch blocks.';
     private const HINT_LINK = Hint::DOCUMENT_LINK."/MultipleCatch.md";
 
     /**
@@ -64,24 +64,50 @@ class MultipleCatch implements Base
     public function run(string $file, Node $node): array
     {
         $hints = [];
-        $catch_stmts_list = [];
+        $catch_block_list = [];
 
         foreach ($node->children as $catch) {
+            $klasses = $catch->children['class'];
             $stmts = $catch->children['stmts'];
-            foreach ($catch_stmts_list as $catch_stmts) {
+            foreach ($catch_block_list as $catch_block) {
+                $catch_klasses = $catch_block->children['class'];
+                $catch_stmts = $catch_block->children['stmts'];
                 if ($this->isEqualsWithoutLineno($catch_stmts, $stmts)) {
                     $hints[] = new Hint(
                         self::HINT_TYPE,
-                        self::HINT_MESSAGE,
+                        $this->messages(array_merge($catch_klasses->children, $klasses->children)),
                         $file,
                         $catch_stmts->lineno,
                         self::HINT_LINK
                     );
                 }
             }
-            $catch_stmts_list[] = $stmts;
+            $catch_block_list[] = $catch;
         }
 
         return $hints;
+    }
+
+    /**
+    * Build a hint message from exceptions.
+    *
+    * @param Node[] $exceptions List of exceptions to specify.
+    * @return string Hint message.
+    */
+    private function messages(array $exceptions)
+    {
+        $names = array_map(function ($exception) {
+            return $exception->children['name'];
+        }, $exceptions);
+
+        if (count($names) > 1) {
+            $last = array_slice($names, -1);
+            $message = implode("`, `", array_slice($names, 0, count($names) - 1));
+            $message = "`$message` and `$last[0]`";
+        } else {
+            $message = "`$names[0]`";
+        }
+
+        return sprintf(self::HINT_MESSAGE, $message);
     }
 }
