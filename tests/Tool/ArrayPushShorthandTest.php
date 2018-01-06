@@ -4,13 +4,13 @@ namespace Pahout\Test\Tool;
 
 use PHPUnit\Framework\TestCase;
 use Pahout\Test\helper\PahoutHelper;
-use Pahout\Tool\SquareBracketSyntax;
+use Pahout\Tool\ArrayPushShorthand;
 use Pahout\Hint;
 use Pahout\Logger;
 use Pahout\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class SquareBracketSyntaxTest extends TestCase
+class ArrayPushShorthandTest extends TestCase
 {
     public function setUp()
     {
@@ -25,17 +25,17 @@ array_push($array, 1);
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new SquareBracketSyntax());
+        $tester = PahoutHelper::create(new ArrayPushShorthand());
         $tester->test($root);
 
         $this->assertEquals(
             [
                 new Hint(
-                    'SquareBracketSyntax',
+                    'ArrayPushShorthand',
                     'Since `array_push()` has the function call overhead, Consider using `$array[] =`.',
                     './test.php',
                     2,
-                    Hint::DOCUMENT_LINK.'/SquareBracketSyntax.md'
+                    Hint::DOCUMENT_LINK.'/ArrayPushShorthand.md'
                 )
             ],
             $tester->hints
@@ -50,7 +50,7 @@ array_push($array, 1, 2);
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new SquareBracketSyntax());
+        $tester = PahoutHelper::create(new ArrayPushShorthand());
         $tester->test($root);
 
         $this->assertEmpty($tester->hints);
@@ -64,7 +64,7 @@ array_push($array, ...$list);
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new SquareBracketSyntax());
+        $tester = PahoutHelper::create(new ArrayPushShorthand());
         $tester->test($root);
 
         $this->assertEmpty($tester->hints);
@@ -78,7 +78,7 @@ $array[] = 1;
 CODE;
         $root = \ast\parse_code($code, Config::AST_VERSION);
 
-        $tester = PahoutHelper::create(new SquareBracketSyntax());
+        $tester = PahoutHelper::create(new ArrayPushShorthand());
         $tester->test($root);
 
         $this->assertEmpty($tester->hints);

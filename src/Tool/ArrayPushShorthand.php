@@ -25,7 +25,7 @@ use Pahout\Hint;
 * $array[] = 1;
 * ```
 */
-class SquareBracketSyntax implements Base
+class ArrayPushShorthand implements Base
 {
     use Howdah;
 
@@ -33,9 +33,9 @@ class SquareBracketSyntax implements Base
     public const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
     public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "SquareBracketSyntax";
+    public const HINT_TYPE = "ArrayPushShorthand";
     private const HINT_MESSAGE = 'Since `array_push()` has the function call overhead, Consider using `$array[] =`.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/SquareBracketSyntax.md";
+    private const HINT_LINK = Hint::DOCUMENT_LINK."/ArrayPushShorthand.md";
 
     /**
     * Detect array_push() with single element.

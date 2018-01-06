@@ -1,4 +1,4 @@
-# AmbiguousReturnCheck
+# LooseReturnCheck
 
 When testing the return value of functions that return not only false but falsy values, you should use the === (or !==) operator.
 
@@ -38,7 +38,7 @@ The following functions are checked:
 ## Before
 
 ```php
-if (strpos($var, "a")) { // AmbiguousReturnCheck: Use the === (or !==) operator for testing the return value of `strpos`.
+if (strpos($var, "a")) { // LooseReturnCheck: Use the === (or !==) operator for testing the return value of `strpos`.
     echo "`a` is found.";
 }
 ```
