@@ -34,12 +34,12 @@ class LooseReturnCheck implements Base
 {
     use Howdah;
 
-    public const ENTRY_POINT = \ast\AST_IF_ELEM;
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "LooseReturnCheck";
-    private const HINT_MESSAGE = "Use the === (or !==) operator for testing the return value of `%s`.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/LooseReturnCheck.md";
-    private const FUNCTION_LIST = [
+    const ENTRY_POINT = \ast\AST_IF_ELEM;
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "LooseReturnCheck";
+    const HINT_MESSAGE = "Use the === (or !==) operator for testing the return value of `%s`.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/LooseReturnCheck.md";
+    const FUNCTION_LIST = [
         'strpos',
         'mb_strpos',
         'stripos',

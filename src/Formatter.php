@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Formatter
 {
     /** List of valid format names */
-    public const VALID_FORMATS = ['pretty', 'json'];
+    const VALID_FORMATS = ['pretty', 'json'];
 
     /**
     * Factory method that returns the specified formatter.

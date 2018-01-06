@@ -1,8 +1,8 @@
 <?php
 
 $php_version = phpversion();
-if (version_compare($php_version, '7.1.0', '<')) {
-    fprintf(STDERR, "Pahout requires PHP version 7.1.0 or newer. The installed version is $php_version.\n");
+if (version_compare($php_version, '7.0.0', '<')) {
+    fprintf(STDERR, "Pahout requires PHP version 7.0.0 or newer. The installed version is $php_version.\n");
     exit(1);
 }
 

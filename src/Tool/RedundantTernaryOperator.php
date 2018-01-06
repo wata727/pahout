@@ -28,12 +28,12 @@ use Pahout\Hint;
 class RedundantTernaryOperator implements Base
 {
     /** Analyze ternary operator node (AST_CONDITIONAL) */
-    public const ENTRY_POINT = \ast\AST_CONDITIONAL;
+    const ENTRY_POINT = \ast\AST_CONDITIONAL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "RedundantTernaryOperator";
-    private const HINT_MESSAGE = 'There is no need to use the ternary operator.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/RedundantTernaryOperator.md";
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "RedundantTernaryOperator";
+    const HINT_MESSAGE = 'There is no need to use the ternary operator.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/RedundantTernaryOperator.md";
 
     /**
     * Detect the following ternary operator:

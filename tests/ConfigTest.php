@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ConfigTest extends TestCase
 {
-    private const FIXTURE_PATH = __DIR__.'/fixtures';
+    const FIXTURE_PATH = __DIR__.'/fixtures';
 
     public function setUp()
     {

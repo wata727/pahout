@@ -1,8 +1,9 @@
 language: php
 php:
-  - 7.2.0
+  - 7.0.26
   - 7.1.12
-before_script:
+  - 7.2.0
+install:
   - phpenv config-rm xdebug.ini
   - pecl install ast
   - composer install

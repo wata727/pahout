@@ -27,11 +27,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Check extends Command
 {
     // If hints are not found, it will return 0 as exit code.
-    public const EXIT_CODE_HINT_NOT_FOUND = 0;
+    const EXIT_CODE_HINT_NOT_FOUND = 0;
     // If an error has occurred, it will return 1 as exit code. This behavior is due to the Symfony Console.
-    public const EXIT_CODE_ERROR = 1;
+    const EXIT_CODE_ERROR = 1;
     // If hints are found, it will return 2 as exit code.
-    public const EXIT_CODE_HINT_FOUND = 2;
+    const EXIT_CODE_HINT_FOUND = 2;
     /**
     * Define commands and other options.
     *

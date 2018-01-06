@@ -18,10 +18,10 @@ use Symfony\Component\Console\Input\InputInterface;
 class Config
 {
     /** The name of the configuration file to load by default. */
-    private const DEFAULT_FILE_PATH = '.pahout.yaml';
+    const DEFAULT_FILE_PATH = '.pahout.yaml';
 
     /** php-ast version */
-    public const AST_VERSION = 40;
+    const AST_VERSION = 40;
 
     /** @var Config the single config instancec */
     private static $config;
@@ -73,8 +73,8 @@ class Config
         // If received file name is valid file, parses this file.
         if (is_file($file)) {
             Logger::getInstance()->info('Load: '.$file);
-            $config_yaml = Yaml::parse(file_get_contents($file));
-            if (is_iterable($config_yaml)) {
+            $config_yaml = Yaml::parseFile($file);
+            if (!is_null($config_yaml)) {
                 foreach ($config_yaml as $key => $value) {
                     // `format` can not be specified from the configuration file.
                     if ($key === 'format') {
@@ -82,9 +82,6 @@ class Config
                     }
                     self::setOption($key, $value);
                 }
-            // If object is not iterable, It judges that this configuration file is invalid.
-            } else {
-                throw new InvalidConfigFilePathException('`'.$file.'` is not a valid YAML.');
             }
         // If the configuration file name does not exist and is not the default, throw an exception.
         } elseif ($file !== self::DEFAULT_FILE_PATH) {

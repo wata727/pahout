@@ -28,12 +28,12 @@ use Pahout\Hint;
 class SymmetricArrayDestructuring implements Base
 {
     /** Analyze array declarations node (AST_ARRAY) */
-    public const ENTRY_POINT = \ast\AST_ARRAY;
+    const ENTRY_POINT = \ast\AST_ARRAY;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '7.1.0';
-    public const HINT_TYPE = "SymmetricArrayDestructuring";
-    private const HINT_MESSAGE = "Use [...] syntax instead of list(...) syntax.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/SymmetricArrayDestructuring.md";
+    const PHP_VERSION = '7.1.0';
+    const HINT_TYPE = "SymmetricArrayDestructuring";
+    const HINT_MESSAGE = "Use [...] syntax instead of list(...) syntax.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/SymmetricArrayDestructuring.md";
 
     /**
     * Detect ARRAY_SYNTAX_LIST node.
