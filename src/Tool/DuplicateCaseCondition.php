@@ -51,12 +51,12 @@ class DuplicateCaseCondition implements Base
     use Howdah;
 
     /** Analyze switch statement node (AST_SWITCH_LIST) */
-    public const ENTRY_POINT = \ast\AST_SWITCH_LIST;
+    const ENTRY_POINT = \ast\AST_SWITCH_LIST;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "DuplicateCaseCondition";
-    private const HINT_MESSAGE = 'Duplicate case condition found.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/DuplicateCaseCondition.md";
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "DuplicateCaseCondition";
+    const HINT_MESSAGE = 'Duplicate case condition found.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/DuplicateCaseCondition.md";
 
     /**
     * Detect case condition in switch statement.

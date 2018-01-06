@@ -20,11 +20,11 @@ class UnneededRegularExpression implements Base
 {
     use Howdah;
 
-    public const ENTRY_POINT = \ast\AST_CALL;
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "UnneededRegularExpression";
-    private const HINT_MESSAGE = 'Using `strpos()` instead of `preg_match()` will be faster.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/UnneededRegularExpression.md";
+    const ENTRY_POINT = \ast\AST_CALL;
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "UnneededRegularExpression";
+    const HINT_MESSAGE = 'Using `strpos()` instead of `preg_match()` will be faster.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/UnneededRegularExpression.md";
 
     /**
     * Find `preg_match()` which does not need regular expressions.

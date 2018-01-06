@@ -33,12 +33,12 @@ class InstanceConstant implements Base
     use Howdah;
 
     /** Analyze calling class constants (AST_CLASS_CONST) */
-    public const ENTRY_POINT = \ast\AST_CLASS_CONST;
+    const ENTRY_POINT = \ast\AST_CLASS_CONST;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '5.3.0';
-    public const HINT_TYPE = "InstanceConstant";
-    private const HINT_MESSAGE = 'You can access class constants from instances.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/InstanceConstant.md";
+    const PHP_VERSION = '5.3.0';
+    const HINT_TYPE = "InstanceConstant";
+    const HINT_MESSAGE = 'You can access class constants from instances.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/InstanceConstant.md";
 
     /**
     * Detects reference to class constants with call to `get_class` function

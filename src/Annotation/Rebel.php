@@ -24,7 +24,7 @@ class Rebel extends Base
     * @param string  $filename   The file name including the comment.
     * @return null|Rebel If the comment contains rebel annotation, its instance, otherwise null.
     */
-    public static function create(string $comment, int $start_line, string $filename): ?Rebel
+    public static function create(string $comment, int $start_line, string $filename)
     {
         if (preg_match('/@rebel\s+([^\s]+)/', $comment, $match) === 1) {
             $body = $match[1];

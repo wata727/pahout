@@ -37,12 +37,12 @@ class EscapeShellArg implements Base
     use Howdah;
 
     /** Analyze function call declarations (AST_CALL) */
-    public const ENTRY_POINT = \ast\AST_CALL;
+    const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '4.0.3';
-    public const HINT_TYPE = "EscapeShellArg";
-    private const HINT_MESSAGE = "This function allows attackers to pass arbitrary number of arguments.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/EscapeShellArg.md";
+    const PHP_VERSION = '4.0.3';
+    const HINT_TYPE = "EscapeShellArg";
+    const HINT_MESSAGE = "This function allows attackers to pass arbitrary number of arguments.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/EscapeShellArg.md";
 
     /**
     * Detect escapeshellcmd() function call.

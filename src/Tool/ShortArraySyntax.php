@@ -29,12 +29,12 @@ use Pahout\Hint;
 class ShortArraySyntax implements Base
 {
     /** Analyze array declarations node (AST_ARRAY) */
-    public const ENTRY_POINT = \ast\AST_ARRAY;
+    const ENTRY_POINT = \ast\AST_ARRAY;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '5.4.0';
-    public const HINT_TYPE = "ShortArraySyntax";
-    private const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/ShortArraySyntax.md";
+    const PHP_VERSION = '5.4.0';
+    const HINT_TYPE = "ShortArraySyntax";
+    const HINT_MESSAGE = "Use [...] syntax instead of array(...) syntax.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/ShortArraySyntax.md";
 
     /**
     * Detect ARRAY_SYNTAX_LONG node.
@@ -45,6 +45,7 @@ class ShortArraySyntax implements Base
     */
     public function run(string $file, Node $node): array
     {
+        echo $node->flags;
         if ($node->flags !== \ast\flags\ARRAY_SYNTAX_LONG) {
             Logger::getInstance()->debug('Ignore flags: '.$node->flags);
             return [];

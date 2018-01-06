@@ -10,7 +10,7 @@ use Pahout\Tool\Base;
 class ToolBox
 {
     /** List of valid tool names used by Pahout */
-    public const VALID_TOOLS = [
+    const VALID_TOOLS = [
         'ShortArraySyntax',
         'SyntaxError',
         'ElvisOperator',

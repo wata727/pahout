@@ -45,12 +45,12 @@ use Pahout\Hint;
 class UnreachableCatch implements Base
 {
     /** Analyze catch block list (AST_CATCH_LIST) */
-    public const ENTRY_POINT = \ast\AST_CATCH_LIST;
+    const ENTRY_POINT = \ast\AST_CATCH_LIST;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "UnreachableCatch";
-    private const HINT_MESSAGE = 'This exception handling will not be reached.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/UnreachableCatch.md";
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "UnreachableCatch";
+    const HINT_MESSAGE = 'This exception handling will not be reached.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/UnreachableCatch.md";
 
     /**
     * Detect a catch expression not reachable by catch expressions of `Exception` or `Throwable`

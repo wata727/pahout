@@ -31,13 +31,13 @@ class RandomInt implements Base
     use Howdah;
 
     /** Analyze function call declarations (AST_CALL) */
-    public const ENTRY_POINT = \ast\AST_CALL;
+    const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '7.0.0';
-    public const HINT_TYPE = "RandomInt";
-    private const HINT_MESSAGE = "This function is not cryptographically secure. Consider using `random_int()`, `random_bytes()`, or `openssl_random_pseudo_bytes()` instead.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/RandomInt.md";
-    private const FUNCTION_LIST = ['rand', 'mt_rand'];
+    const PHP_VERSION = '7.0.0';
+    const HINT_TYPE = "RandomInt";
+    const HINT_MESSAGE = "This function is not cryptographically secure. Consider using `random_int()`, `random_bytes()`, or `openssl_random_pseudo_bytes()` instead.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/RandomInt.md";
+    const FUNCTION_LIST = ['rand', 'mt_rand'];
 
     /**
     * Detect rand() and mt_rand() function call.

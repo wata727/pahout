@@ -30,12 +30,12 @@ class ArrayPushShorthand implements Base
     use Howdah;
 
     /** Analyze function call declarations (AST_CALL) */
-    public const ENTRY_POINT = \ast\AST_CALL;
+    const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "ArrayPushShorthand";
-    private const HINT_MESSAGE = 'Since `array_push()` has the function call overhead, Consider using `$array[] =`.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/ArrayPushShorthand.md";
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "ArrayPushShorthand";
+    const HINT_MESSAGE = 'Since `array_push()` has the function call overhead, Consider using `$array[] =`.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/ArrayPushShorthand.md";
 
     /**
     * Detect array_push() with single element.

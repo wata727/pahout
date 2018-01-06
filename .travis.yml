@@ -3,7 +3,7 @@ php:
   - 7.0.26
   - 7.1.12
   - 7.2.0
-before_script:
+install:
   - phpenv config-rm xdebug.ini
   - pecl install ast
   - composer install

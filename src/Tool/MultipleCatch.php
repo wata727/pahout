@@ -47,12 +47,12 @@ class MultipleCatch implements Base
     use Howdah;
 
     /** Analyze catch block list (AST_CATCH_LIST) */
-    public const ENTRY_POINT = \ast\AST_CATCH_LIST;
+    const ENTRY_POINT = \ast\AST_CATCH_LIST;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '7.1.0';
-    public const HINT_TYPE = "MultipleCatch";
-    private const HINT_MESSAGE = 'Specifying %s in this catch block avoids redundant catch blocks.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/MultipleCatch.md";
+    const PHP_VERSION = '7.1.0';
+    const HINT_TYPE = "MultipleCatch";
+    const HINT_MESSAGE = 'Specifying %s in this catch block avoids redundant catch blocks.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/MultipleCatch.md";
 
     /**
     * Detect catch blocks of the same implementation.

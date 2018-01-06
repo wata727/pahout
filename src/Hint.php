@@ -9,7 +9,7 @@ namespace Pahout;
 */
 class Hint
 {
-    public const DOCUMENT_LINK = "https://github.com/wata727/pahout/blob/master/docs";
+    const DOCUMENT_LINK = "https://github.com/wata727/pahout/blob/master/docs";
 
     /** @var string Types of hints to identify tool */
     public $type;

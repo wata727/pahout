@@ -29,12 +29,12 @@ use Pahout\Hint;
 class NullCoalescingOperator implements Base
 {
     /** Analyze ternary operator node (AST_CONDITIONAL) */
-    public const ENTRY_POINT = \ast\AST_CONDITIONAL;
+    const ENTRY_POINT = \ast\AST_CONDITIONAL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '7.0.0';
-    public const HINT_TYPE = "NullCoalescingOperator";
-    private const HINT_MESSAGE = 'Use the null coalecing operator instead of the ternary operator.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/NullCoalescingOperator.md";
+    const PHP_VERSION = '7.0.0';
+    const HINT_TYPE = "NullCoalescingOperator";
+    const HINT_MESSAGE = 'Use the null coalecing operator instead of the ternary operator.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/NullCoalescingOperator.md";
 
     /**
     * Detects ternary operators with isset().

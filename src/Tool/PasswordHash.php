@@ -31,12 +31,12 @@ class PasswordHash implements Base
     use Howdah;
 
     /** Analyze function call (AST_CALL) */
-    public const ENTRY_POINT = \ast\AST_CALL;
+    const ENTRY_POINT = \ast\AST_CALL;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '5.5.0';
-    public const HINT_TYPE = "PasswordHash";
-    private const HINT_MESSAGE = "Use of `password_hash()` is encouraged.";
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/PasswordHash.md";
+    const PHP_VERSION = '5.5.0';
+    const HINT_TYPE = "PasswordHash";
+    const HINT_MESSAGE = "Use of `password_hash()` is encouraged.";
+    const HINT_LINK = Hint::DOCUMENT_LINK."/PasswordHash.md";
 
     /**
     * Detect calls to `crypt()` function.

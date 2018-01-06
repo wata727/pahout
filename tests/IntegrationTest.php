@@ -12,7 +12,7 @@ use Pahout\Exception\InvalidFilePathException;
 
 class IntegrationTest extends TestCase
 {
-    private const FIXTURE_PATH = __DIR__.'/fixtures';
+    const FIXTURE_PATH = __DIR__.'/fixtures';
 
     public function setUp()
     {

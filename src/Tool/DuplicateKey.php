@@ -31,12 +31,12 @@ class DuplicateKey implements Base
     use Howdah;
 
     /** Analyze array declarations node (AST_ARRAY) */
-    public const ENTRY_POINT = \ast\AST_ARRAY;
+    const ENTRY_POINT = \ast\AST_ARRAY;
     /** PHP version to enable this tool */
-    public const PHP_VERSION = '0.0.0';
-    public const HINT_TYPE = "DuplicateKey";
-    private const HINT_MESSAGE = 'Duplicate key found in array.';
-    private const HINT_LINK = Hint::DOCUMENT_LINK."/DuplicateKey.md";
+    const PHP_VERSION = '0.0.0';
+    const HINT_TYPE = "DuplicateKey";
+    const HINT_MESSAGE = 'Duplicate key found in array.';
+    const HINT_LINK = Hint::DOCUMENT_LINK."/DuplicateKey.md";
 
     /**
     * Detect duplicate numbers, strings, node key
