@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2289251f3c760eb99ab95c9b4ac409d1",
+    "content-hash": "21af339c02945e6eb5bc7294d85e0ae4",
     "packages": [
         {
             "name": "psr/log",
@@ -532,23 +532,23 @@
         },
         {
             "name": "phan/phan",
-            "version": "0.9.7",
+            "version": "0.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phan/phan.git",
-                "reference": "6e2b77f42f0be2d107b9f53d59c01e778754373a"
+                "reference": "2520ce1292974b274017570cffaa8454018baee7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phan/phan/zipball/6e2b77f42f0be2d107b9f53d59c01e778754373a",
-                "reference": "6e2b77f42f0be2d107b9f53d59c01e778754373a",
+                "url": "https://api.github.com/repos/phan/phan/zipball/2520ce1292974b274017570cffaa8454018baee7",
+                "reference": "2520ce1292974b274017570cffaa8454018baee7",
                 "shasum": ""
             },
             "require": {
-                "ext-ast": "^0.1.4",
+                "ext-ast": "^0.1.5",
                 "felixfbecker/advanced-json-rpc": "^2.0",
                 "nikic/php-parser": "~3.1.1",
-                "php": "~7.1.0 || ~7.2.0",
+                "php": "~7.0.0 || ~7.1.0 || ~7.2.0",
                 "sabre/event": "^5.0",
                 "symfony/console": "~2.3|~3.0"
             },
@@ -587,7 +587,7 @@
                 "php",
                 "static"
             ],
-            "time": "2017-10-21T02:13:00+00:00"
+            "time": "2017-11-18T05:39:49+00:00"
         },
         {
             "name": "phar-io/manifest",
