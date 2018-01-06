@@ -33,7 +33,7 @@
 
 ## All versions
 
-- [SquareBracketSyntax](SquareBracketSyntax.md)
+- [ArrayPushShorthand](ArrayPushShorthand.md)
 - [RedundantTernaryOperator](RedundantTernaryOperator.md)
 - [DuplicateKey](DuplicateKey.md)
 - [UnreachableCatch](UnreachableCatch.md)

@@ -1,4 +1,4 @@
-# SquareBracketSyntax
+# ArrayPushShorthand
 
 If you use `array_push()` to add one element to an array it's better to use `$array[] =` because in that way there is no overhead of calling the function.
 
@@ -6,7 +6,7 @@ If you use `array_push()` to add one element to an array it's better to use `$ar
 
 ```php
 <?php
-array_push($array, 1); // SquareBracketSyntax: Since `array_push()` has the function call overhead, Consider using `$array[] =`.
+array_push($array, 1); // ArrayPushShorthand: Since `array_push()` has the function call overhead, Consider using `$array[] =`.
 ```
 
 ## After

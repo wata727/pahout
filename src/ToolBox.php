@@ -22,7 +22,7 @@ class ToolBox
         'SymmetricArrayDestructuring',
         'RandomInt',
         'EscapeShellArg',
-        'SquareBracketSyntax',
+        'ArrayPushShorthand',
         'RedundantTernaryOperator',
         'DuplicateKey',
         'UnreachableCatch',
