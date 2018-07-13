@@ -120,6 +120,7 @@ Options:
       --vendor[=VENDOR]              Check vendor directory [default: false]
   -f, --format[=FORMAT]              Output format [default: "pretty", possibles: "pretty", "json"]
   -c, --config[=CONFIG]              Config file path [default: ".pahout.yaml"]
+      --only-tools[=ONLY-TOOLS]      Check only the given tool types (multiple values allowed)
   -h, --help                         Display this help message
   -q, --quiet                        Do not output any message
   -V, --version                      Display this application version
@@ -153,6 +154,10 @@ If you use [phpenv](https://github.com/phpenv/phpenv), changes the default PHP v
 ### Ignore Tools
 
 In Pahout, what generates hints is called "Tool". You can specify the tool name you want to ignore. Please look at the documentation for the list of tool names.
+
+### Only Tools
+
+Contrary to `ignore_tools`, specify tools to check.
 
 ### Ignore Paths
 

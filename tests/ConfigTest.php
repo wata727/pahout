@@ -5,6 +5,7 @@ namespace Pahout\Test;
 use PHPUnit\Framework\TestCase;
 use Pahout\Config;
 use Pahout\Logger;
+use Pahout\ToolBox;
 use Pahout\Exception\InvalidConfigFilePathException;
 use Pahout\Exception\InvalidConfigOptionException;
 use Pahout\Exception\InvalidConfigOptionValueException;
@@ -31,6 +32,7 @@ class ConfigTest extends TestCase
                 'ignore-paths' => null,
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ]);
             $config = Config::getInstance();
 
@@ -58,11 +60,12 @@ class ConfigTest extends TestCase
                 'ignore-paths' => ['tests'],
                 'vendor' => true,
                 'format' => 'json',
+                'only-tools' => array_diff(ToolBox::VALID_TOOLS, ['ElvisOperator']),
             ]);
             $config = Config::getInstance();
 
             $this->assertEquals('7.1.0', $config->php_version);
-            $this->assertEquals(['ShortArraySyntax'], $config->ignore_tools);
+            $this->assertEquals(['ShortArraySyntax', 'ElvisOperator'], array_values($config->ignore_tools));
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
@@ -85,6 +88,7 @@ class ConfigTest extends TestCase
                 'ignore-paths' => null,
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ]);
             $config = Config::getInstance();
 
@@ -106,6 +110,7 @@ class ConfigTest extends TestCase
                 'ignore-paths' => null,
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ]);
             $config = Config::getInstance();
 
@@ -127,11 +132,12 @@ class ConfigTest extends TestCase
                 'ignore-paths' => null,
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ], 'custom_config.yaml');
             $config = Config::getInstance();
 
             $this->assertEquals('7.0.0', $config->php_version);
-            $this->assertEquals(['ShortArraySyntax'], $config->ignore_tools);
+            $this->assertEquals(['ShortArraySyntax'], array_values($config->ignore_tools));
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php',
                 self::FIXTURE_PATH.'/with_config_file/bin/test1.php',
@@ -156,11 +162,12 @@ class ConfigTest extends TestCase
                 'ignore-paths' => ['tests'],
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ], 'custom_config.yaml');
             $config = Config::getInstance();
 
             $this->assertEquals('7.1.0', $config->php_version);
-            $this->assertEquals(['SyntaxError'], $config->ignore_tools);
+            $this->assertEquals(['SyntaxError'], array_values($config->ignore_tools));
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
@@ -182,6 +189,7 @@ class ConfigTest extends TestCase
             'ignore-paths' => null,
             'vendor' => null,
             'format' => null,
+            'only-tools' => null,
         ], 'invalid_config_file.yaml');
     }
 
@@ -200,6 +208,7 @@ class ConfigTest extends TestCase
                 'ignore-paths' => null,
                 'vendor' => null,
                 'format' => null,
+                'only-tools' => null,
             ], 'invalid_config.yaml');
         } finally {
             chdir($work_dir);
@@ -217,10 +226,11 @@ class ConfigTest extends TestCase
             'ignore-paths' => null,
             'vendor' => null,
             'format' => null,
+            'only-tools' => null,
         ]);
     }
 
-    public function test_throw_exception_when_specified_an_invalid_tools()
+    public function test_throw_exception_when_specified_an_invalid_tools_as_ignore_tools()
     {
         $this->expectException(InvalidConfigOptionValueException::class);
         $this->expectExceptionMessage('`invalid_tool` is an invalid tool. Please check the correct tool list.');
@@ -231,6 +241,22 @@ class ConfigTest extends TestCase
             'ignore-paths' => null,
             'vendor' => null,
             'format' => null,
+            'only-tools' => null,
+        ]);
+    }
+
+    public function test_throw_exception_when_specified_an_invalid_tools_as_only_tools()
+    {
+        $this->expectException(InvalidConfigOptionValueException::class);
+        $this->expectExceptionMessage('`invalid_tool` is an invalid tool. Please check the correct tool list.');
+
+        Config::load([
+            'php-version' => null,
+            'ignore-tools' => null,
+            'ignore-paths' => null,
+            'vendor' => null,
+            'format' => null,
+            'only-tools' => ['invalid_tool'],
         ]);
     }
 
@@ -245,6 +271,7 @@ class ConfigTest extends TestCase
             'ignore-paths' => 'tests',
             'vendor' => null,
             'format' => null,
+            'only-tools' => null,
         ]);
     }
 
@@ -259,6 +286,7 @@ class ConfigTest extends TestCase
             'ignore-paths' => null,
             'vendor' => 'yes',
             'format' => null,
+            'only-tools' => null,
         ]);
     }
 
@@ -273,6 +301,7 @@ class ConfigTest extends TestCase
             'ignore-paths' => null,
             'vendor' => null,
             'format' => 'xml',
+            'only-tools' => null,
         ]);
     }
 }

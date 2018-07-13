@@ -88,6 +88,12 @@ class Check extends Command
                  InputOption::VALUE_OPTIONAL,
                  'Config file path',
                  '.pahout.yaml'
+             )
+             ->addOption(
+                 'only-tools',
+                 null,
+                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                 'Check only the given tool types'
              );
     }
 

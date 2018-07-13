@@ -25,6 +25,7 @@ class PahoutHelper
             'ignore-paths' => null,
             'vendor' => null,
             'format' => null,
+            'only-tools' => null,
         ]);
         $pahout = new Pahout([]);
         $klass = new \ReflectionClass('\Pahout\Pahout');

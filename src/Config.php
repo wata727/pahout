@@ -41,6 +41,9 @@ class Config
     /** @var string The name of formatter */
     public $format = 'pretty';
 
+    /** @var string[] Check tool types */
+    private $only_tools = [];
+
     /**
     * Merge the configuration file, arguments and default values ​​and set the configuration instance.
     *
@@ -101,6 +104,9 @@ class Config
         if ($arguments['ignore-tools']) {
             self::setOption('ignore_tools', $arguments['ignore-tools']);
         }
+        if ($arguments['only-tools']) {
+            self::setOption('only_tools', $arguments['only-tools']);
+        }
         if ($arguments['ignore-paths']) {
             self::setOption('ignore_paths', $arguments['ignore-paths']);
         }
@@ -109,6 +115,14 @@ class Config
         }
         if ($arguments['format']) {
             self::setOption('format', $arguments['format']);
+        }
+
+        // Append ignore tools based on only tools
+        if (!empty(self::$config->only_tools)) {
+            $ignore_tools = array_filter(ToolBox::VALID_TOOLS, function ($tool) {
+                return !in_array($tool, self::$config->only_tools, true);
+            });
+            self::$config->ignore_tools = array_unique(array_merge(self::$config->ignore_tools, $ignore_tools));
         }
 
         // If disabled vendor flag, add `vendor` directory to ignore paths.
@@ -177,6 +191,20 @@ class Config
                     }
                 }
                 self::$config->ignore_tools = $value;
+                break;
+            // Only tools is must be array of valid tool types.
+            case 'only_tools':
+                if (!is_array($value)) {
+                    throw new InvalidConfigOptionValueException('`'.$value.'` is invalid tools. It must be array.');
+                }
+                foreach ($value as $tool) {
+                    if (!in_array($tool, ToolBox::VALID_TOOLS, true)) {
+                        throw new InvalidConfigOptionValueException(
+                            '`'.$tool.'` is an invalid tool. Please check the correct tool list.'
+                        );
+                    }
+                }
+                self::$config->only_tools = $value;
                 break;
             // Ignore paths is must be array of files or directories.
             case 'ignore_paths':
