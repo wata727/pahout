@@ -136,6 +136,31 @@ OUTPUT;
         }
     }
 
+    public function test_when_specified_only_tools()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute([
+                '--only-tools' => ['SyntaxError']
+            ]);
+
+            $expected = <<<OUTPUT
+./syntax_error.php:3
+\tSyntaxError: Syntax error occurred. [https://github.com/wata727/pahout/blob/master/docs/SyntaxError.md]
+
+3 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
+        } finally {
+            chdir($work_dir);
+        }
+    }
+
     public function test_when_specified_ignore_paths()
     {
         $work_dir = getcwd();
