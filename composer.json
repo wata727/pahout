@@ -15,7 +15,7 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "ext-ast": "^0.1.4",
+        "ext-ast": "^0.1.7",
         "symfony/console": ">=3.3",
         "symfony/yaml": ">=3.3",
         "psr/log": "~1.0"

@@ -8,8 +8,8 @@ if (version_compare($php_version, '7.1.0', '<')) {
 
 if (extension_loaded('ast')) {
     $ast_version = phpversion('ast');
-    if (version_compare($ast_version, '0.1.4', '<')) {
-        fprintf(STDERR, "php-ast extension was found. But, Pahout requires php-ast version 0.1.4 or newer. The installed version is $ast_version.\n");
+    if (version_compare($ast_version, '0.1.7', '<')) {
+        fprintf(STDERR, "php-ast extension was found. But, Pahout requires php-ast version 0.1.7 or newer. The installed version is $ast_version.\n");
         exit(1);
     }
 } else {

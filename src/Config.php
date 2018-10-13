@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\InputInterface;
 * Pahout Config
 *
 * Merge the configuration file and argument setting items to generate the appropriate settings.
-* It also sets default values ​​and validate the values.
+* It also sets default values and validate the values.
 * Since settings are commonly handled as one instance, it is implemented with a singleton pattern.
 */
 class Config
@@ -21,7 +21,7 @@ class Config
     private const DEFAULT_FILE_PATH = '.pahout.yaml';
 
     /** php-ast version */
-    public const AST_VERSION = 40;
+    public const AST_VERSION = 60;
 
     /** @var Config the single config instancec */
     private static $config;
@@ -45,7 +45,7 @@ class Config
     private $only_tools = [];
 
     /**
-    * Merge the configuration file, arguments and default values ​​and set the configuration instance.
+    * Merge the configuration file, arguments and default values and set the configuration instance.
     *
     * It receives arguments and filenames and merges them with default values.
     * Priorities are as follows:
