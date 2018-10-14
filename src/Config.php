@@ -6,7 +6,6 @@ use Pahout\Exception\InvalidConfigFilePathException;
 use Pahout\Exception\InvalidConfigOptionException;
 use Pahout\Exception\InvalidConfigOptionValueException;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Console\Input\InputInterface;
 
 /**
 * Pahout Config
