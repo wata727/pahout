@@ -1,3 +1,21 @@
+## v0.5.0 (2018-10-14)
+
+From this release, it updates the php-ast AST version to 60 (Previously this is 40). Please update your php-ast extension version.
+
+### Enhancements
+
+- Add new `--only-tools` option ([#33](https://github.com/wata727/pahout/pull/33))
+
+### Changes
+
+- Bump php-ast AST version to 60 ([#35](https://github.com/wata727/pahout/pull/35))
+
+### Others
+
+- CI against PHP 7.2.2 and 7.1.14 ([#31](https://github.com/wata727/pahout/pull/31))
+- CI against PHP 7.2.7 and 7.1.19 ([#32](https://github.com/wata727/pahout/pull/32))
+- CI against PHP 7.1.23 and 7.2.11 ([#36](https://github.com/wata727/pahout/pull/36))
+
 ## v0.4.0 (2018-01-07)
 
 Annotations were introduced in this release. Please see the [README](https://github.com/wata727/pahout/blob/0.4.0/README.md#annotation) for details.

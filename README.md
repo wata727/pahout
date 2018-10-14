@@ -28,7 +28,7 @@ fi
 Pahout requires the following environment:
 
 - PHP 7.1 or newer
-- [php-ast](https://github.com/nikic/php-ast) v0.1.4 or newer
+- [php-ast](https://github.com/nikic/php-ast) v0.1.7 or newer
 
 ### Using Composer
 
