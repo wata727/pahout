@@ -3,7 +3,6 @@
 namespace Pahout\Tool;
 
 use \ast\Node;
-use Pahout\Logger;
 use Pahout\Hint;
 
 /**
