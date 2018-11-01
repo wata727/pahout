@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e17b805e4c1bfc13d4fb6bfb452d8a9d",
+    "content-hash": "d161a0e3a09af3deb0e6ec64eadb94fc",
     "packages": [
         {
             "name": "psr/log",
@@ -123,7 +123,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -181,16 +181,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -236,7 +236,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -633,16 +633,16 @@
         },
         {
             "name": "phan/phan",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phan/phan.git",
-                "reference": "aba95779b350f8b19a86d498c141bec2e105a556"
+                "reference": "d8e38b53093677da1e190663c89bdb1087c14046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phan/phan/zipball/aba95779b350f8b19a86d498c141bec2e105a556",
-                "reference": "aba95779b350f8b19a86d498c141bec2e105a556",
+                "url": "https://api.github.com/repos/phan/phan/zipball/d8e38b53093677da1e190663c89bdb1087c14046",
+                "reference": "d8e38b53093677da1e190663c89bdb1087c14046",
                 "shasum": ""
             },
             "require": {
@@ -660,8 +660,8 @@
                 "phpunit/phpunit": "^6.3.0"
             },
             "suggest": {
-                "ext-ast": "^0.1.5",
-                "ext-tokenizer": "Needed for non-AST support and file/line-based suppressions"
+                "ext-ast": "Needed for parsing ASTs (unless --use-fallback-parser is used). php-ast ^0.1.5|^1.0.0 is needed.",
+                "ext-tokenizer": "Needed for non-AST support and file/line-based suppressions."
             },
             "bin": [
                 "phan",
@@ -695,7 +695,7 @@
                 "php",
                 "static"
             ],
-            "time": "2018-10-08T16:23:47+00:00"
+            "time": "2018-10-23T02:07:02+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -2174,7 +2174,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.1.0",
-        "ext-ast": "^0.1.7"
+        "ext-ast": "^0.1.7|^1.0.0"
     },
     "platform-dev": []
 }
