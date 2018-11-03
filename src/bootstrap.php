@@ -7,7 +7,7 @@ use Pahout\Command\Check;
 
 $check = new Check();
 
-$app = new Application('Pahout', '0.5.0');
+$app = new Application('Pahout', '0.5.1');
 $app->add($check);
 $app->setDefaultCommand($check->getName(), true);
 $app->run();

@@ -1,3 +1,7 @@
+## v0.5.1 (2018-11-03)
+
+- Allow to use php-ast v1.0.0 ([#37](https://github.com/wata727/pahout/pull/37))
+
 ## v0.5.0 (2018-10-14)
 
 From this release, it updates the php-ast AST version to 60 (Previously this is 40). Please update your php-ast extension version.
