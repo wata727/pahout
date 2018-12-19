@@ -3,10 +3,16 @@ php:
   - 7.3.0
   - 7.2.13
   - 7.1.25
+env:
+  matrix:
+  - dependencies=lowest
+  - dependencies=highest
 before_script:
   - if php --ri xdebug >/dev/null; then phpenv config-rm xdebug.ini; fi
+install:
   - pecl install ast
-  - composer install
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi
+  - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi
 script:
   - bin/pahout src
   - vendor/bin/phpunit
