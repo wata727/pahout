@@ -4,7 +4,7 @@ php:
   - 7.2.13
   - 7.1.25
 before_script:
-  - phpenv config-rm xdebug.ini
+  - if php --ri xdebug >/dev/null; then phpenv config-rm xdebug.ini; fi
   - pecl install ast
   - composer install
 script:
