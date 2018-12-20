@@ -13,7 +13,7 @@ if (extension_loaded('ast')) {
         exit(1);
     }
 } else {
-    fprintf(STDERR, "php-ast extension could not be found. Pahout requires php-ast version 0.1.4 or newer.\n");
+    fprintf(STDERR, "php-ast extension could not be found. Pahout requires php-ast version 0.1.7 or newer.\n");
     exit(1);
 }
 
