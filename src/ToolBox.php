@@ -29,6 +29,7 @@ class ToolBox
         'DuplicateCaseCondition',
         'LooseReturnCheck',
         'UnneededRegularExpression',
+        'JSONThrowOnError',
     ];
 
     /**

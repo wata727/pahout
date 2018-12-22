@@ -1,5 +1,9 @@
 # Pahout Hints
 
+## PHP 7.3.0
+
+- [JSONThrowOnError](JSONThrowOnError.md)
+
 ## PHP 7.1.0
 
 - [MultipleCatch](MultipleCatch.md)

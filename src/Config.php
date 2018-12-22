@@ -34,7 +34,7 @@ class Config
     /** @var string[] Ignore files or directories */
     public $ignore_paths = [];
 
-    /** @var bool Check vendor directory */
+    /** @var boolean Check vendor directory */
     public $vendor = false;
 
     /** @var string The name of formatter */
