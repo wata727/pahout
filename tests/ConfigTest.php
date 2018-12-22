@@ -36,7 +36,7 @@ class ConfigTest extends TestCase
             ]);
             $config = Config::getInstance();
 
-            $this->assertEquals('7.1.8', $config->php_version);
+            $this->assertEquals('7.3.0', $config->php_version);
             $this->assertEmpty($config->ignore_tools);
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_vendor/vendor/test.php'

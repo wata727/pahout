@@ -114,7 +114,7 @@ Arguments:
   files                              List of file names or directory names to be analyzed
 
 Options:
-      --php-version[=PHP-VERSION]    Target PHP version [default: "7.1.8"]
+      --php-version[=PHP-VERSION]    Target PHP version [default: "7.3.0"]
       --ignore-tools[=IGNORE-TOOLS]  Ignore tool types [default: Nothing to ignore] (multiple values allowed)
       --ignore-paths[=IGNORE-PATHS]  Ignore files and directories [default: Nothing to ignore] (multiple values allowed)
       --vendor[=VENDOR]              Check vendor directory [default: false]

@@ -26,7 +26,7 @@ class Config
     private static $config;
 
     /** @var string Target PHP version. default is latest version */
-    public $php_version = '7.1.8';
+    public $php_version = '7.3.0';
 
     /** @var string[] Ignore tool types */
     public $ignore_tools = [];
