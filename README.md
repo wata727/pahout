@@ -114,7 +114,7 @@ Arguments:
   files                              List of file names or directory names to be analyzed
 
 Options:
-      --php-version[=PHP-VERSION]    Target PHP version [default: "7.3.0"]
+      --php-version[=PHP-VERSION]    Target PHP version [default: runtime version]
       --ignore-tools[=IGNORE-TOOLS]  Ignore tool types [default: Nothing to ignore] (multiple values allowed)
       --ignore-paths[=IGNORE-PATHS]  Ignore files and directories [default: Nothing to ignore] (multiple values allowed)
       --vendor[=VENDOR]              Check vendor directory [default: false]
@@ -147,9 +147,7 @@ vendor: true
 
 ### PHP Version
 
-Specify the PHP version of your project. The default is the latest version. By setting correctly, you can control the type of hint appropriately.
-
-If you use [phpenv](https://github.com/phpenv/phpenv), changes the default PHP version to `.php-version`.
+Specify the PHP version of your project. The default is the runtime version. Pahout uses this version to select tools.
 
 ### Ignore Tools
 

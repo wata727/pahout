@@ -51,7 +51,7 @@ class Check extends Command
                  'php-version',
                  null,
                  InputOption::VALUE_OPTIONAL,
-                 'Target PHP version <comment>[default: "7.3.0"]</>',
+                 'Target PHP version <comment>[default: runtime version]</>',
                  null
              )
              ->addOption(

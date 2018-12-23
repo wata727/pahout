@@ -36,7 +36,7 @@ class ConfigTest extends TestCase
             ]);
             $config = Config::getInstance();
 
-            $this->assertEquals('7.3.0', $config->php_version);
+            $this->assertEquals(phpversion(), $config->php_version);
             $this->assertEmpty($config->ignore_tools);
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_vendor/vendor/test.php'
@@ -76,14 +76,14 @@ class ConfigTest extends TestCase
         }
     }
 
-    public function test_php_version_file()
+    public function test_default_config_with_2_digit_version()
     {
         $work_dir = getcwd();
         try {
-            chdir(self::FIXTURE_PATH.'/with_php-version');
+            chdir(self::FIXTURE_PATH.'/with_vendor');
 
             Config::load([
-                'php-version' => null,
+                'php-version' => '7.1.25',
                 'ignore-tools' => null,
                 'ignore-paths' => null,
                 'vendor' => null,
@@ -92,29 +92,13 @@ class ConfigTest extends TestCase
             ]);
             $config = Config::getInstance();
 
-            $this->assertEquals('7.0.0', $config->php_version);
-        } finally {
-            chdir($work_dir);
-        }
-    }
-
-    public function test_php_version_file_with_arguments()
-    {
-        $work_dir = getcwd();
-        try {
-            chdir(self::FIXTURE_PATH.'/with_php-version');
-
-            Config::load([
-                'php-version' => '7.1.0',
-                'ignore-tools' => null,
-                'ignore-paths' => null,
-                'vendor' => null,
-                'format' => null,
-                'only-tools' => null,
-            ]);
-            $config = Config::getInstance();
-
-            $this->assertEquals('7.1.0', $config->php_version);
+            $this->assertEquals('7.1.25', $config->php_version);
+            $this->assertEmpty($config->ignore_tools);
+            $this->assertEquals([
+                self::FIXTURE_PATH.'/with_vendor/vendor/test.php'
+            ], $config->ignore_paths);
+            $this->assertFalse($config->vendor);
+            $this->assertEquals('pretty', $config->format);
         } finally {
             chdir($work_dir);
         }
