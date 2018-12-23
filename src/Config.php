@@ -166,7 +166,7 @@ class Config
         switch ($key) {
             // PHP version format is must have a format like `7.1.8`
             case 'php_version':
-                if (preg_match('/^[0-9]\.[0-9]\.[0-9]$/', $value) !== 1) {
+                if (preg_match('/^[0-9]+\.[0-9]+\.[0-9]+$/', $value) !== 1) {
                     throw new InvalidConfigOptionValueException(
                         '`'.$value.'` is an invalid PHP version. Please specify the correct version such as `7.1.8`.'
                     );
