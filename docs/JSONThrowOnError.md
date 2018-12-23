@@ -6,7 +6,7 @@ Previously, these function didn't throw an exception when an error occurred. But
 ## Before
 
 ```php
-json_decode("{");
+json_decode("{"); // JSONThrowOnError: Encourage to specify JSON_THROW_ON_ERROR option.
 if (json_last_error() !== JSON_ERROR_NONE) {
     echo "An error occurred";
 }
@@ -16,7 +16,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 ```php
 try {
-    json_decode("{", false, 512, JSON_THROW_ON_ERROR);
+    json_decode("{", false, 512, JSON_THROW_ON_ERROR); // OK!
 } catch (JsonException $exn) {
     echo "An error occurred";
 }
