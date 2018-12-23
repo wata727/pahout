@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 $php_version = phpversion();
 if (version_compare($php_version, '7.1.0', '<')) {
