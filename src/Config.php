@@ -26,7 +26,7 @@ class Config
     private static $config;
 
     /** @var string Target PHP version. default is latest version */
-    public $php_version = '7.1.8';
+    public $php_version = '7.3.0';
 
     /** @var string[] Ignore tool types */
     public $ignore_tools = [];
@@ -34,7 +34,7 @@ class Config
     /** @var string[] Ignore files or directories */
     public $ignore_paths = [];
 
-    /** @var bool Check vendor directory */
+    /** @var boolean Check vendor directory */
     public $vendor = false;
 
     /** @var string The name of formatter */
