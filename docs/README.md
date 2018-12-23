@@ -13,6 +13,7 @@
 
 - [NullCoalescingOperator](NullCoalescingOperator.md)
 - [RandomInt](RandomInt.md)
+- [DeclareStrictTypes](DeclareStrictTypes.md)
 
 ## PHP 5.6.0
 
