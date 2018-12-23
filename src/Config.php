@@ -25,8 +25,8 @@ class Config
     /** @var Config the single config instancec */
     private static $config;
 
-    /** @var string Target PHP version. default is latest version */
-    public $php_version = '7.3.0';
+    /** @var string Target PHP version. default is runtime version */
+    public $php_version = '0.0.0';
 
     /** @var string[] Ignore tool types */
     public $ignore_tools = [];
@@ -66,11 +66,7 @@ class Config
     {
         // Generate default config instance.
         self::$config = new Config();
-
-        // If `.php-version` file exists, changes default php_version
-        if (is_file('.php-version')) {
-            self::setOption('php_version', trim(file_get_contents('.php-version')));
-        }
+        self::setOption('php_version', phpversion());
 
         // If received file name is valid file, parses this file.
         if (is_file($file)) {
