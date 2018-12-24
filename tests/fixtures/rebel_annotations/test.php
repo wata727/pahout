@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /** @rebel ShortArraySyntax */
 $array = array(1, 2, 3);

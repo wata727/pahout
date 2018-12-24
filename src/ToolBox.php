@@ -30,6 +30,7 @@ class ToolBox
         'LooseReturnCheck',
         'UnneededRegularExpression',
         'JSONThrowOnError',
+        'DeclareStrictTypes',
     ];
 
     /**
