@@ -3,6 +3,7 @@
 ## PHP 7.3.0
 
 - [JSONThrowOnError](JSONThrowOnError.md)
+- [IsCountable](IsCountable.md)
 
 ## PHP 7.1.0
 

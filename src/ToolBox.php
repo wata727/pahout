@@ -31,6 +31,7 @@ class ToolBox
         'UnneededRegularExpression',
         'JSONThrowOnError',
         'DeclareStrictTypes',
+        'IsCountable',
     ];
 
     /**
