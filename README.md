@@ -182,8 +182,8 @@ Using annotations, you can ignore hints for specific lines. Specify the tool nam
 ```php
 <?php
 
-/** @rebel RedundantTernaryOperator */
-$checked = $a === $b ? true : false;
+/** @rebel NullCoalescingOperator */
+$error = isset($response['error']) ? $response['error'] : null;
 ```
 
 The following comments will work in the same way.
@@ -192,11 +192,11 @@ The following comments will work in the same way.
 <?php
 
 /**
-* @rebel RedundantTernaryOperator
+* @rebel NullCoalescingOperator
 */
-$checked = $a === $b ? true : false;
+$error = isset($response['error']) ? $response['error'] : null;
 
-$checked = $a === $b ? true : false; # @rebel RedundantTernaryOperator
+$error = isset($response['error']) ? $response['error'] : null; # @rebel NullCoalescingOperator
 ```
 
 ## Author

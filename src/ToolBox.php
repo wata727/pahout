@@ -23,7 +23,6 @@ class ToolBox
         'RandomInt',
         'EscapeShellArg',
         'ArrayPushShorthand',
-        'RedundantTernaryOperator',
         'DuplicateKey',
         'UnreachableCatch',
         'DuplicateCaseCondition',
