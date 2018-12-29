@@ -40,7 +40,6 @@
 ## All versions
 
 - [ArrayPushShorthand](ArrayPushShorthand.md)
-- [RedundantTernaryOperator](RedundantTernaryOperator.md)
 - [DuplicateKey](DuplicateKey.md)
 - [UnreachableCatch](UnreachableCatch.md)
 - [DuplicateCaseCondition](DuplicateCaseCondition.md)
