@@ -43,5 +43,4 @@
 - [DuplicateKey](DuplicateKey.md)
 - [UnreachableCatch](UnreachableCatch.md)
 - [DuplicateCaseCondition](DuplicateCaseCondition.md)
-- [LooseReturnCheck](LooseReturnCheck.md)
 - [UnneededRegularExpression](UnneededRegularExpression.md)
