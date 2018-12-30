@@ -1,4 +1,4 @@
-FROM php:7.2.10-alpine
+FROM php:7.3.0-alpine
 
 # Setup build environment
 RUN apk update && \
@@ -19,7 +19,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Pahout
-ENV PAHOUT_VERSION 0.5.1
+ENV PAHOUT_VERSION 0.6.0
 RUN composer global require "wata727/pahout:${PAHOUT_VERSION}"
 
 RUN apk del .build-deps
