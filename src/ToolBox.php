@@ -26,7 +26,6 @@ class ToolBox
         'DuplicateKey',
         'UnreachableCatch',
         'DuplicateCaseCondition',
-        'LooseReturnCheck',
         'UnneededRegularExpression',
         'JSONThrowOnError',
         'DeclareStrictTypes',
