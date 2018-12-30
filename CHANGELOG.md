@@ -1,3 +1,24 @@
+## v0.6.0 (2018-12-30)
+
+### Enhancements
+
+- Add new JSONThrowOnError tool ([#40](https://github.com/wata727/pahout/pull/40))
+- Add new DeclareStrictTypes tool ([#43](https://github.com/wata727/pahout/pull/43))
+- Add new IsCountable tool ([#44](https://github.com/wata727/pahout/pull/44))
+
+### Changes
+
+- Make Pahout aware of runtime version ([#41](https://github.com/wata727/pahout/pull/41))
+- Remove RedundantTernaryOperator ([#46](https://github.com/wata727/pahout/pull/46))
+- Remove LooseReturnCheck ([#47](https://github.com/wata727/pahout/pull/47))
+
+### Others
+
+- CI against PHP 7.1.25, 7.2.13 and 7.3.0 ([#38](https://github.com/wata727/pahout/pull/38))
+- Pahout requires php-ast >= 0.1.7 ([#39](https://github.com/wata727/pahout/pull/39))
+- Add example messages to JSONThrowOnError documentation ([#42](https://github.com/wata727/pahout/pull/42))
+- Update utils/ast.php ([#45](https://github.com/wata727/pahout/pull/45))
+
 ## v0.5.1 (2018-11-03)
 
 - Allow to use php-ast v1.0.0 ([#37](https://github.com/wata727/pahout/pull/37))
