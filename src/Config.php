@@ -166,12 +166,24 @@ class Config
         switch ($key) {
             // PHP version format is must have a format like `7.1.8`
             case 'php_version':
-                if (preg_match('/^[0-9]+\.[0-9]+\.[0-9]+$/', $value) !== 1) {
+                // Parse "PHP-Standardized" version value @see https://secure.php.net/manual/en/function.version-compare.php
+                $parsed_version = str_replace("_", ".", $value);
+                $parsed_version = str_replace("-", ".", $parsed_version);
+                $parsed_version = str_replace("+", ".", $parsed_version);
+                $parsed_version = preg_replace('/([^\.\d])/', '.${1}.', $parsed_version);
+                if ($parsed_version === null) {
+                    throw new InvalidConfigOptionException(
+                        '`'.$value.'` is an invalid PHP version. Please specify the correct version such as `7.1.8`.'
+                    );
+                }
+                $parsed_version = implode(".", array_slice(explode(".", $parsed_version), 0, 3));
+
+                if (preg_match('/^[0-9]+\.[0-9]+\.[0-9]+$/', $parsed_version) !== 1) {
                     throw new InvalidConfigOptionValueException(
                         '`'.$value.'` is an invalid PHP version. Please specify the correct version such as `7.1.8`.'
                     );
                 }
-                self::$config->php_version = $value;
+                self::$config->php_version = $parsed_version;
                 break;
             // Ignore tools is must be array of valid tool types.
             case 'ignore_tools':
