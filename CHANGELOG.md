@@ -1,3 +1,9 @@
+## v0.6.1 (2019-01-29)
+
+### Bugfix
+
+- Allow to parse PHP-standardized version ([#49](https://github.com/wata727/pahout/pull/49))
+
 ## v0.6.0 (2018-12-30)
 
 ### Enhancements
