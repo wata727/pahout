@@ -107,8 +107,11 @@ You can change the configuration from the command line.
 
 ```
 $ pahout --help
+Description:
+  A pair programming partner for writing better PHP
+
 Usage:
-  check [options] [--] [<files>]...
+  check [options] [--] [<files>...]
 
 Arguments:
   files                              List of file names or directory names to be analyzed
@@ -117,6 +120,7 @@ Options:
       --php-version[=PHP-VERSION]    Target PHP version [default: runtime version]
       --ignore-tools[=IGNORE-TOOLS]  Ignore tool types [default: Nothing to ignore] (multiple values allowed)
       --ignore-paths[=IGNORE-PATHS]  Ignore files and directories [default: Nothing to ignore] (multiple values allowed)
+      --extensions[=EXTENSIONS]      File extensions to be analyzed [default: php] (multiple values allowed)
       --vendor[=VENDOR]              Check vendor directory [default: false]
   -f, --format[=FORMAT]              Output format [default: "pretty", possibles: "pretty", "json"]
   -c, --config[=CONFIG]              Config file path [default: ".pahout.yaml"]
@@ -128,9 +132,6 @@ Options:
       --no-ansi                      Disable ANSI output
   -n, --no-interaction               Do not ask any interactive question
   -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
-
-Help:
-  A pair programming partner for writing better PHP
 ```
 
 You can also change the configuration by preparing a configuration file called `.pahout.yaml`.
@@ -142,6 +143,10 @@ ignore_tools:
 ignore_paths:
     - tests
     - bin
+extensions:
+    - php
+    - module
+    - inc
 vendor: true
 ```
 
@@ -160,6 +165,10 @@ Contrary to `ignore_tools`, specify tools to check.
 ### Ignore Paths
 
 You can specify the file or directory you want to ignore. If a directory name is specified, all files under that directory are ignored.
+
+### Extensions
+
+File extensions to be analyzed. Default is `php` only.
 
 ### Vendor
 

@@ -69,6 +69,13 @@ class Check extends Command
                  null
              )
              ->addOption(
+                 'extensions',
+                 null,
+                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                 'File extensions to be analyzed <comment>[default: php]</>',
+                 null
+             )
+             ->addOption(
                  'vendor',
                  null,
                  InputOption::VALUE_OPTIONAL,

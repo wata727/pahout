@@ -39,7 +39,7 @@ class Pahout
 
         $config = Config::getInstance();
         // Set a list of analysis target files.
-        $this->files = array_filter(Loader::dig($files), function ($file) use ($config) {
+        $this->files = array_filter(Loader::dig($files, $config), function ($file) use ($config) {
             return !in_array(realpath($file), $config->ignore_paths);
         });
 

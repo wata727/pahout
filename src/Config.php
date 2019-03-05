@@ -34,6 +34,9 @@ class Config
     /** @var string[] Ignore files or directories */
     public $ignore_paths = [];
 
+    /** @var string[] File extensions to be analyzed */
+    public $extensions = ["php"];
+
     /** @var boolean Check vendor directory */
     public $vendor = false;
 
@@ -105,6 +108,9 @@ class Config
         if ($arguments['ignore-paths']) {
             self::setOption('ignore_paths', $arguments['ignore-paths']);
         }
+        if ($arguments['extensions']) {
+            self::setOption('extensions', $arguments['extensions']);
+        }
         if ($arguments['vendor']) {
             self::setOption('vendor', $arguments['vendor']);
         }
@@ -128,11 +134,12 @@ class Config
         // Resolve ignore_paths to file name and reset.
         self::$config->ignore_paths = array_map(function ($path) {
             return realpath($path);
-        }, Loader::dig(self::$config->ignore_paths));
+        }, Loader::dig(self::$config->ignore_paths, self::$config));
 
         Logger::getInstance()->info('PHP version: '.self::$config->php_version);
         Logger::getInstance()->info('Ignore tools: '.var_export(self::$config->ignore_tools, true));
         Logger::getInstance()->info('Ignore paths: '.var_export(self::$config->ignore_paths, true));
+        Logger::getInstance()->info('Extensions: '.var_export(self::$config->extensions, true));
         Logger::getInstance()->info('Vendor: '.var_export(self::$config->vendor, true));
         Logger::getInstance()->info('Format: '.self::$config->format);
     }
@@ -219,6 +226,13 @@ class Config
                     throw new InvalidConfigOptionValueException('`'.$value.'` is invalid paths. It must be array.');
                 }
                 self::$config->ignore_paths = $value;
+                break;
+            // Extensions is must be array of extension.
+            case 'extensions':
+                if (!is_array($value)) {
+                    throw new InvalidConfigOptionValueException('`'.$value.'` is invalid extensions. It must be array.');
+                }
+                self::$config->extensions = $value;
                 break;
             // Vendor flag must be boolean.
             case 'vendor':

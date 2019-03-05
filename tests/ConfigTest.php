@@ -30,6 +30,7 @@ class ConfigTest extends TestCase
                 'php-version' => null,
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -41,6 +42,7 @@ class ConfigTest extends TestCase
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_vendor/vendor/test.php'
             ], $config->ignore_paths);
+            $this->assertEquals(['php'], $config->extensions);
             $this->assertFalse($config->vendor);
             $this->assertEquals('pretty', $config->format);
         } finally {
@@ -58,6 +60,7 @@ class ConfigTest extends TestCase
                 'php-version' => '7.1.0',
                 'ignore-tools' => ['ShortArraySyntax'],
                 'ignore-paths' => ['tests'],
+                'extensions' => ['php', 'module', 'inc'],
                 'vendor' => true,
                 'format' => 'json',
                 'only-tools' => array_diff(ToolBox::VALID_TOOLS, ['ElvisOperator']),
@@ -69,6 +72,7 @@ class ConfigTest extends TestCase
             $this->assertEquals([
                 self::FIXTURE_PATH.'/with_config_file/tests/test1.php'
             ], $config->ignore_paths);
+            $this->assertEquals(['php', 'module', 'inc'], $config->extensions);
             $this->assertTrue($config->vendor);
             $this->assertEquals('json', $config->format);
         } finally {
@@ -86,6 +90,7 @@ class ConfigTest extends TestCase
                 'php-version' => '7.1.25',
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -114,6 +119,7 @@ class ConfigTest extends TestCase
                 'php-version' => '7.4.0-dev',
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -142,6 +148,7 @@ class ConfigTest extends TestCase
                 'php-version' => '4.3.2RC1',
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -170,6 +177,7 @@ class ConfigTest extends TestCase
                 'php-version' => null,
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -183,6 +191,7 @@ class ConfigTest extends TestCase
                 self::FIXTURE_PATH.'/with_config_file/bin/test1.php',
                 self::FIXTURE_PATH.'/with_config_file/bin/test2.php',
             ], $config->ignore_paths);
+            $this->assertEquals(["php", "module", "inc"], $config->extensions);
             $this->assertTrue($config->vendor);
             $this->assertEquals('pretty', $config->format);
         } finally {
@@ -200,6 +209,7 @@ class ConfigTest extends TestCase
                 'php-version' => '7.1.0',
                 'ignore-tools' => ['SyntaxError'],
                 'ignore-paths' => ['tests'],
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -227,6 +237,7 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => null,
             'only-tools' => null,
@@ -246,6 +257,7 @@ class ConfigTest extends TestCase
                 'php-version' => null,
                 'ignore-tools' => null,
                 'ignore-paths' => null,
+                'extensions' => null,
                 'vendor' => null,
                 'format' => null,
                 'only-tools' => null,
@@ -264,6 +276,7 @@ class ConfigTest extends TestCase
             'php-version' => '7.1',
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => null,
             'only-tools' => null,
@@ -279,6 +292,7 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => ['invalid_tool'],
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => null,
             'only-tools' => null,
@@ -294,6 +308,7 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => null,
             'only-tools' => ['invalid_tool'],
@@ -309,6 +324,23 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => 'tests',
+            'extensions' => null,
+            'vendor' => null,
+            'format' => null,
+            'only-tools' => null,
+        ]);
+    }
+
+    public function test_throw_exception_when_specified_an_invalid_extensions()
+    {
+        $this->expectException(InvalidConfigOptionValueException::class);
+        $this->expectExceptionMessage('`php` is invalid extensions. It must be array.');
+
+        Config::load([
+            'php-version' => null,
+            'ignore-tools' => null,
+            'ignore-paths' => null,
+            'extensions' => "php",
             'vendor' => null,
             'format' => null,
             'only-tools' => null,
@@ -324,6 +356,7 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => 'yes',
             'format' => null,
             'only-tools' => null,
@@ -339,6 +372,7 @@ class ConfigTest extends TestCase
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => 'xml',
             'only-tools' => null,

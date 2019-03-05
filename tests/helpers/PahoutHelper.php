@@ -23,6 +23,7 @@ class PahoutHelper
             'php-version' => null,
             'ignore-tools' => null,
             'ignore-paths' => null,
+            'extensions' => null,
             'vendor' => null,
             'format' => null,
             'only-tools' => null,

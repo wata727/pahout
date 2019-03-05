@@ -4,4 +4,8 @@ ignore_tools:
 ignore_paths:
     - tests
     - bin
+extensions:
+    - php
+    - module
+    - inc
 vendor: true
