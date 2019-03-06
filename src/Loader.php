@@ -2,6 +2,7 @@
 
 namespace Pahout;
 
+use Pahout\Config;
 use Pahout\Exception\InvalidFilePathException;
 
 /**
@@ -14,13 +15,15 @@ class Loader
     *
     * If a directory name received, it digs recursively under the directory.
     *
-    * @param string[] $files List of file names and directory names to load.
+    * @param string[] $files  List of file names and directory names to load.
+    * @param Config   $config Application config.
     * @throws InvalidFilePathException Exception when the specified file or directory does not exist.
     * @return string[] List of readable file paths.
     */
-    public static function dig(array $files): array
+    public static function dig(array $files, Config $config): array
     {
         $list = [];
+        $pattern = implode("|", array_map("preg_quote", $config->extensions));
 
         foreach ($files as $file) {
             Logger::getInstance()->info('Load: '.$file);
@@ -30,7 +33,7 @@ class Loader
                 Logger::getInstance()->debug($file.' is directory. Recursively search the file list.');
                 $iterator = new \RegexIterator(
                     new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($file)),
-                    '/^.+\.php$/i'
+                    "{^.+\.$pattern$}i"
                 );
 
                 foreach ($iterator as $file_obj) {

@@ -351,4 +351,30 @@ OUTPUT;
             chdir($work_dir);
         }
     }
+
+    public function test_when_specified_extensions_and_ignore_paths()
+    {
+        $work_dir = getcwd();
+        try {
+            chdir(self::FIXTURE_PATH.'/not_receiving_any_files');
+            $command = new CommandTester(new Check());
+            $command->execute([
+                '--extensions' => ['php7'],
+                '--ignore-paths' => ['subdir']
+            ]);
+
+            $expected = <<<OUTPUT
+./test.php7:3
+\tShortArraySyntax: Use [...] syntax instead of array(...) syntax. [https://github.com/wata727/pahout/blob/master/docs/ShortArraySyntax.md]
+
+1 files checked, 1 hints detected.
+
+OUTPUT;
+
+            $this->assertEquals($expected, $command->getDisplay());
+            $this->assertEquals(Check::EXIT_CODE_HINT_FOUND, $command->getStatusCode());
+        } finally {
+            chdir($work_dir);
+        }
+    }
 }
