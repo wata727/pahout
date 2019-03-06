@@ -1,3 +1,13 @@
+## v0.7.0 (2019-03-06)
+
+### Enhancements
+
+- Add `--extensions` option ([#51](https://github.com/wata727/pahout/pull/51))
+
+### Others
+
+- CI against PHP 7.1.26, 7.2.15 and 7.3.2 ([#52](https://github.com/wata727/pahout/pull/52))
+
 ## v0.6.1 (2019-01-29)
 
 ### Bugfix
