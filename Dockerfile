@@ -1,4 +1,4 @@
-FROM php:7.3.2-alpine
+FROM php:7.4-alpine
 
 # Setup build environment
 RUN apk update && \
@@ -6,7 +6,7 @@ RUN apk update && \
     update-ca-certificates
 
 # Install php-ast
-ENV EXT_AST_VERSION 1.0.1
+ENV EXT_AST_VERSION 1.0.5
 ENV EXT_AST_URL "https://github.com/nikic/php-ast/archive/v${EXT_AST_VERSION}.tar.gz"
 RUN mkdir -p /usr/src/php/ext/ast && \
     wget -qO- ${EXT_AST_URL} | tar xz --strip-components=1 -C /usr/src/php/ext/ast && \
